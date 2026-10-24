@@ -1,0 +1,69 @@
+{
+  "gpu_solo": {
+    "kernels": [
+      {
+        "start_ns": 0,
+        "end_ns": 21886000,
+        "duration_ns": 21886000
+      }
+    ],
+    "total_kernel_ns": 21886000,
+    "wall_ns": 21886000
+  },
+  "npu_solo": {
+    "dma_phases": [
+      {
+        "type": "H2D",
+        "start_ns": 0,
+        "end_ns": 500000,
+        "duration_ns": 500000
+      },
+      {
+        "type": "compute",
+        "start_ns": 500000,
+        "end_ns": 66686000,
+        "duration_ns": 66186000
+      },
+      {
+        "type": "D2H",
+        "start_ns": 66686000,
+        "end_ns": 67186000,
+        "duration_ns": 500000
+      }
+    ],
+    "total_wall_ns": 67186000
+  },
+  "concurrent": {
+    "gpu_kernels": [
+      {
+        "start_ns": 0,
+        "end_ns": 44000000,
+        "duration_ns": 44000000
+      }
+    ],
+    "npu_phases": [
+      {
+        "type": "H2D",
+        "start_ns": 2000000,
+        "end_ns": 2500000,
+        "duration_ns": 500000
+      },
+      {
+        "type": "compute",
+        "start_ns": 2500000,
+        "end_ns": 69186000,
+        "duration_ns": 66686000
+      },
+      {
+        "type": "D2H",
+        "start_ns": 69186000,
+        "end_ns": 69686000,
+        "duration_ns": 500000
+      }
+    ],
+    "wall_ns": 69686000,
+    "overlap_ns": 22186000,
+    "speedup_vs_sequential": 1.32
+  },
+  "note": "Timestamps are illustrative based on measured kernel durations. Actual nanosecond timestamps from gpu_burn and NPU npu_time would be used in production."
+}

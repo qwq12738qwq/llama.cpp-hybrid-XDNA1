@@ -1,0 +1,14 @@
+{
+  "phase": "9f",
+  "test": "persistent_async_benchmark",
+  "kernel": "m1_k1024_n16_matmul_i8_i32",
+  "status": "SKIPPED",
+  "reason": "Skipped due to standalone correctness test failure (100/100 mismatches). Persistent async validation requires numerical correctness first.",
+  "planned_iterations": 100,
+  "planned_metrics": [
+    "submit_latency_us",
+    "device_execution_latency_us",
+    "wait_latency_us",
+    "total_iteration_latency_us"
+  ]
+}

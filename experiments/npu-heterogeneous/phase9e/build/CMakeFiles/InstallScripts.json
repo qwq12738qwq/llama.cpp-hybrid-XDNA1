@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/workspace/llama.cpp/experiments/npu-heterogeneous/phase9e/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

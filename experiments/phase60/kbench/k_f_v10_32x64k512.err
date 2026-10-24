@@ -1,0 +1,116 @@
+Traceback (most recent call last):
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 661, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 619, in main
+    design.specialize(dummy=0).compile(xclbin_path=xp, inst_path=ip, pdi_path=pp)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/callabledesign.py", line 470, in compile
+    return self.compilable.compile(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        xclbin_path=xclbin_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pdi_path=pdi_path,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 392, in compile
+    compile_external_kernels(external_kernels, kernel_dir, target_arch)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/utils.py", line 681, in compile_external_kernels
+    compile_external_kernel(f, kernel_dir, target_arch)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/utils.py", line 738, in compile_external_kernel
+    compile_cxx_core_function(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        source_path=source_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        use_chess=getattr(func, "_use_chess", False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/utils.py", line 375, in compile_cxx_core_function
+    raise RuntimeError(f"[{tool}] compilation failed:\n{ret.stderr.decode()}")
+RuntimeError: [Peano] compilation failed:
+/workspace/llama.cpp/experiments/phase60/kbench/k_f_v10_32x64k512/design.prj/kern_v10.cc:21:23: error: no matching function for call to 'add'
+   21 |                 tot = aie::add(tot, p);
+      |                       ^~~~~~~~
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/aie2/../../detail/../iterator.hpp:1712:4: note: candidate template ignored: could not match 'T *' against 'MMUL' (aka 'mmul<4, 8, 8, signed char, signed char, accauto>')
+ 1712 | T* add(T *ptr, Incr& inc) {
+      |    ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3648:6: note: candidate template ignored: constraints not satisfied [with Vec1 = MMUL, Vec2 = MMUL]
+ 3648 | auto add(const Vec1 &v1, const Vec2 &v2) -> aie_dm_resource_remove_t<Vec1>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3646:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'Vector'
+ 3646 | template <Vector Vec1, Vector Vec2> requires(is_same_vector_v<Vec1, Vec2>)
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:225:18: note: because 'detail::is_vector<aie_dm_resource_remove_t<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>>::value' evaluated to false
+  225 | concept Vector = detail::is_vector<aie_dm_resource_remove_t<T>>::value || detail::is_vector_ref<aie_dm_resource_remove_t<T>>::value;
+      |                  ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:225:75: note: and 'detail::is_vector_ref<aie_dm_resource_remove_t<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>>::value' evaluated to false
+  225 | concept Vector = detail::is_vector<aie_dm_resource_remove_t<T>>::value || detail::is_vector_ref<aie_dm_resource_remove_t<T>>::value;
+      |                                                                           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3723:6: note: candidate template ignored: constraints not satisfied [with E = MMUL, Vec = MMUL]
+ 3723 | auto add(E a, const Vec &v) -> aie_dm_resource_remove_t<Vec>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3721:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'Elem'
+ 3721 | template <Elem E, Vector Vec> requires(is_valid_elem_op_v<E, typename Vec::value_type>)
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:193:16: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'ElemBaseType'
+  193 | concept Elem = ElemBaseType<T> || detail::is_vector_elem_ref<T>::value;
+      |                ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:185:29: note: because 'detail::is_valid_element_type<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>::value' evaluated to false
+  185 | concept ElemBaseType      = detail::is_valid_element_type<T>::value;
+      |                             ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:193:35: note: and 'detail::is_vector_elem_ref<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>::value' evaluated to false
+  193 | concept Elem = ElemBaseType<T> || detail::is_vector_elem_ref<T>::value;
+      |                                   ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3754:6: note: candidate template ignored: constraints not satisfied [with Vec = MMUL, E = MMUL]
+ 3754 | auto add(const Vec &v, E a) -> aie_dm_resource_remove_t<Vec>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3752:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'Vector'
+ 3752 | template <Vector Vec, Elem E> requires(is_valid_elem_op_v<typename Vec::value_type, E>)
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:225:18: note: because 'detail::is_vector<aie_dm_resource_remove_t<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>>::value' evaluated to false
+  225 | concept Vector = detail::is_vector<aie_dm_resource_remove_t<T>>::value || detail::is_vector_ref<aie_dm_resource_remove_t<T>>::value;
+      |                  ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:225:75: note: and 'detail::is_vector_ref<aie_dm_resource_remove_t<aie::mmul<4, 8, 8, signed char, signed char, accauto, aie::accum_ownership::owned>>>::value' evaluated to false
+  225 | concept Vector = detail::is_vector<aie_dm_resource_remove_t<T>>::value || detail::is_vector_ref<aie_dm_resource_remove_t<T>>::value;
+      |                                                                           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3841:6: note: candidate template ignored: constraints not satisfied [with Acc1 = MMUL, Acc2 = MMUL]
+ 3841 | auto add(const Acc1 &acc1, const Acc2 &acc2) -> result_type_t<Acc1>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3838:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'AccumOrOp'
+ 3838 | template <AccumOrOp Acc1, AccumOrOp Acc2> requires(arch::is(arch::Gen2) &&
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:330:21: note: because 'detail::is_accum_or_op_v<aie::mmul<4, 8, 8, signed char>>' evaluated to false
+  330 | concept AccumOrOp = detail::is_accum_or_op_v<T>;
+      |                     ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3883:6: note: candidate template ignored: constraints not satisfied [with Acc = MMUL, Vec = MMUL]
+ 3883 | auto add(const Acc &acc, const Vec &v) -> result_type_t<Acc>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3881:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'AccumOrOp'
+ 3881 | template <AccumOrOp Acc, Vector Vec> requires(Acc::size() == Vec::size())
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:330:21: note: because 'detail::is_accum_or_op_v<aie::mmul<4, 8, 8, signed char>>' evaluated to false
+  330 | concept AccumOrOp = detail::is_accum_or_op_v<T>;
+      |                     ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3928:6: note: candidate template ignored: constraints not satisfied [with Acc = MMUL, E = MMUL]
+ 3928 | auto add(const Acc &acc, E a) -> result_type_t<Acc>
+      |      ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:3926:11: note: because 'aie::mmul<4, 8, 8, signed char>' does not satisfy 'AccumOrOp'
+ 3926 | template <AccumOrOp Acc, Elem E>
+      |           ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/detail/../concepts.hpp:330:21: note: because 'detail::is_accum_or_op_v<aie::mmul<4, 8, 8, signed char>>' evaluated to false
+  330 | concept AccumOrOp = detail::is_accum_or_op_v<T>;
+      |                     ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:7806:3: note: candidate template ignored: constraints not satisfied [with T = MMUL]
+ 7806 | T add(T a, T b) requires(detail::is_floating_point_v<T>)
+      |   ^
+/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/include/aie_api/aie.hpp:7806:26: note: because 'detail::is_floating_point_v<aie::mmul<4, 8, 8, signed char>>' evaluated to false
+ 7806 | T add(T a, T b) requires(detail::is_floating_point_v<T>)
+      |                          ^
+1 error generated.
+

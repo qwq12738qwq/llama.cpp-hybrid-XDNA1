@@ -1,0 +1,36 @@
+{
+  "backends": ["XDNA", "CPU"],
+  "splits": 3,
+  "copies": 4,
+  "events_per_backend": 4,
+  "dependency_chain": [
+    {"split": 0, "backend": "CPU", "ops": ["MUL", "ADD"]},
+    {"split": 1, "backend": "XDNA", "ops": ["MUL_MAT"]},
+    {"split": 2, "backend": "CPU", "ops": ["ADD", "MUL"]}
+  ],
+  "sync_points": [
+    {"between": "split_0 -> split_1", "mechanism": "event_synchronize", "cpu_records_event": true, "xdna_waits_event": true},
+    {"between": "split_1 -> split_2", "mechanism": "event_synchronize", "xdna_records_event": true, "cpu_waits_event": true}
+  ],
+  "hidden_sync_detected": false,
+  "scheduler_apis": [
+    "ggml_backend_sched_new",
+    "ggml_backend_sched_alloc_graph",
+    "ggml_backend_sched_set_tensor_backend",
+    "ggml_backend_sched_graph_compute_async",
+    "ggml_backend_sched_synchronize",
+    "ggml_backend_sched_get_n_splits"
+  ],
+  "backend_event_apis": [
+    "ggml_backend_event_new",
+    "ggml_backend_event_record",
+    "ggml_backend_event_wait",
+    "ggml_backend_event_synchronize"
+  ],
+  "xclbin_mismatch": {
+    "xclbin": "k1024_m16_n16_tile/design.xclbin",
+    "xclbin_dims": {"M": 16, "K": 1024, "N": 16},
+    "required_dims": {"M": 1, "K": 1024, "N": 16},
+    "blocker": "XCLBIN must be regenerated for M=1 to support Qwen3.5 SSM"
+  }
+}

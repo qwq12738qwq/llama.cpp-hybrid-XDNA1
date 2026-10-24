@@ -1,0 +1,5 @@
+# Phase 23 E2E gate, PP512, r=2 (this session, 2026-09-20)
+# baseline frozen (phase22): 1400.6 t/s
+vulkan_only        1369.07 t/s   1.000x  (fresh)
+wholeop_async      1320.18 t/s   0.964x
+split_n_gpu1792    1241.21 t/s   0.907x

@@ -1,0 +1,14 @@
+{
+ "tag": "",
+ "cols": 1,
+ "rows": 4,
+ "split": "m",
+ "merge": false,
+ "workers": 4,
+ "m_tile": 64,
+ "n_tile": 64,
+ "k_chunk": 256,
+ "compile_ok": true,
+ "compile_s": 6.1,
+ "error": ""
+}

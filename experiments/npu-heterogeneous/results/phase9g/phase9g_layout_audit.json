@@ -1,0 +1,103 @@
+{
+  "phase": "9g",
+  "test": "layout_audit",
+  "timestamp": "2026-09-12",
+  "m1_config": {
+    "M": 1,
+    "K": 1024,
+    "N": 16,
+    "TILE_M": 1,
+    "TILE_K": 32,
+    "TILE_N": 16,
+    "k_chunks": 32
+  },
+  "m16_config": {
+    "M": 16,
+    "K": 1024,
+    "N": 16,
+    "TILE_M": 16,
+    "TILE_K": 64,
+    "TILE_N": 16,
+    "k_chunks": 16
+  },
+  "host_A": {
+    "m1": {"logical_shape": [1, 1024], "physical_bytes": 1024, "element_type": "int8", "element_count": 1024},
+    "m16": {"logical_shape": [16, 1024], "physical_bytes": 16384, "element_type": "int8", "element_count": 16384}
+  },
+  "host_B": {
+    "m1": {"logical_shape": [1024, 16], "physical_bytes": 16384, "element_type": "int8", "element_count": 16384},
+    "m16": {"logical_shape": [1024, 16], "physical_bytes": 16384, "element_type": "int8", "element_count": 16384}
+  },
+  "host_C": {
+    "m1": {"logical_shape": [1, 16], "physical_bytes": 64, "element_type": "int32", "element_count": 16},
+    "m16": {"logical_shape": [16, 16], "physical_bytes": 1024, "element_type": "int32", "element_count": 256}
+  },
+  "tap_A": {
+    "m1": {"sizes": [1, 32, 1, 32], "strides": [0, 32, 1024, 1], "offset": 0, "total_elements": 1024},
+    "m16": {"sizes": [1, 16, 16, 64], "strides": [0, 64, 1024, 1], "offset": 0, "total_elements": 16384}
+  },
+  "tap_B": {
+    "m1": {"sizes": [1, 1, 1024, 16], "strides": [0, 0, 16, 1], "offset": 0, "total_elements": 16384},
+    "m16": {"sizes": [1, 1, 1024, 16], "strides": [0, 0, 16, 1], "offset": 0, "total_elements": 16384}
+  },
+  "tap_C": {
+    "m1": {"sizes": [1, 1, 1, 16], "strides": [0, 0, 0, 1], "offset": 0, "total_elements": 16},
+    "m16": {"sizes": [1, 1, 16, 16], "strides": [0, 0, 16, 1], "offset": 0, "total_elements": 256}
+  },
+  "dma_A": {
+    "m1": {"len_bytes": 1024, "sizes": [1, 32, 1, 32], "strides": [0, 32, 1024, 1]},
+    "m16": {"len_bytes": 16384, "sizes": [1, 16, 16, 64], "strides": [0, 64, 1024, 1]}
+  },
+  "dma_B": {
+    "m1": {"len_bytes": 16384, "sizes": [1, 1, 1024, 16], "strides": [0, 0, 16, 1]},
+    "m16": {"len_bytes": 16384, "sizes": [1, 1, 1024, 16], "strides": [0, 0, 16, 1]}
+  },
+  "dma_C": {
+    "m1": {"len_elements": 16, "sizes": [1, 1, 1, 16], "strides": [0, 0, 0, 1]},
+    "m16": {"len_elements": 256, "sizes": [1, 1, 16, 16], "strides": [0, 0, 16, 1]}
+  },
+  "objectfifo_A_L3L2": {
+    "m1": {"type": "memref<32xi8>", "depth": 2, "physical_bytes": 32},
+    "m16": {"type": "memref<1024xi8>", "depth": 2, "physical_bytes": 1024}
+  },
+  "objectfifo_B_L3L2": {
+    "m1": {"type": "memref<512xi8>", "depth": 2, "physical_bytes": 512},
+    "m16": {"type": "memref<1024xi8>", "depth": 2, "physical_bytes": 1024}
+  },
+  "objectfifo_C_L1L2": {
+    "m1": {"type": "memref<16xi32>", "physical_bytes": 64},
+    "m16": {"type": "memref<256xi32>", "physical_bytes": 1024}
+  },
+  "objectfifo_A_L2L1_stream": {
+    "m1": "dims_to_stream: [(32, 1)]",
+    "m16": "dims_to_stream: [(4, 256), (8, 8), (4, 64), (8, 1)]"
+  },
+  "objectfifo_B_L2L1_stream": {
+    "m1": "dims_to_stream: [(512, 1)]",
+    "m16": "dims_to_stream: [(8, 128), (2, 8), (8, 16), (8, 1)]"
+  },
+  "objectfifo_C_L2L3_stream": {
+    "m1": "dims_to_stream: [(1, 16), (16, 1)]",
+    "m16": "dims_to_stream: [(4, 64), (4, 8), (2, 32), (8, 1)]"
+  },
+  "kernel_A_arg": {
+    "m1": "memref<32xi8>",
+    "m16": "memref<1024xi8>"
+  },
+  "kernel_B_arg": {
+    "m1": "memref<512xi8>",
+    "m16": "memref<1024xi8>"
+  },
+  "kernel_C_arg": {
+    "m1": "memref<16xi32>",
+    "m16": "memref<256xi32>"
+  },
+  "k_loop_iterations": {
+    "m1": 32,
+    "m16": 16
+  },
+  "accumulation_mechanism": {
+    "m1": "scalar kernel: *c_ptr += running_sum across 32 calls with same C buffer",
+    "m16": "vectorized kernel: internal accumulation across 16 calls"
+  }
+}

@@ -1,0 +1,155 @@
+ M ggml/CMakeLists.txt
+ M ggml/include/ggml-vulkan.h
+ M ggml/src/CMakeLists.txt
+ M ggml/src/ggml-alloc.c
+ M ggml/src/ggml-backend-reg.cpp
+ M ggml/src/ggml-backend.cpp
+ M ggml/src/ggml-cpu/ggml-cpu.c
+ M ggml/src/ggml-vulkan/ggml-vulkan.cpp
+ M src/llama-context.cpp
+ M src/llama-kv-cache.cpp
+ M src/llama-memory-recurrent.cpp
+ M tests/CMakeLists.txt
+ M tests/test-llama-archs.cpp
+ M tools/CMakeLists.txt
+?? .kilo/
+?? .reasonix/
+?? CMakeFiles/
+?? CTestTestfile.cmake
+?? DartConfiguration.tcl
+?? app/CTestTestfile.cmake
+?? app/cmake_install.cmake
+?? cmake_install.cmake
+?? common/cmake_install.cmake
+?? compile_commands.json
+?? examples/CTestTestfile.cmake
+?? examples/batched/CTestTestfile.cmake
+?? examples/batched/cmake_install.cmake
+?? examples/cmake_install.cmake
+?? examples/convert-llama2c-to-ggml/CTestTestfile.cmake
+?? examples/convert-llama2c-to-ggml/cmake_install.cmake
+?? examples/debug/CTestTestfile.cmake
+?? examples/debug/cmake_install.cmake
+?? examples/diffusion/CTestTestfile.cmake
+?? examples/diffusion/cmake_install.cmake
+?? examples/embedding/CTestTestfile.cmake
+?? examples/embedding/cmake_install.cmake
+?? examples/eval-callback/CTestTestfile.cmake
+?? examples/eval-callback/cmake_install.cmake
+?? examples/gen-docs/CTestTestfile.cmake
+?? examples/gen-docs/cmake_install.cmake
+?? examples/gguf-hash/CTestTestfile.cmake
+?? examples/gguf-hash/cmake_install.cmake
+?? examples/gguf/CTestTestfile.cmake
+?? examples/gguf/cmake_install.cmake
+?? examples/idle/CTestTestfile.cmake
+?? examples/idle/cmake_install.cmake
+?? examples/lookahead/CTestTestfile.cmake
+?? examples/lookahead/cmake_install.cmake
+?? examples/lookup/CTestTestfile.cmake
+?? examples/lookup/cmake_install.cmake
+?? examples/parallel/CTestTestfile.cmake
+?? examples/parallel/cmake_install.cmake
+?? examples/passkey/CTestTestfile.cmake
+?? examples/passkey/cmake_install.cmake
+?? examples/retrieval/CTestTestfile.cmake
+?? examples/retrieval/cmake_install.cmake
+?? examples/simple-chat/CTestTestfile.cmake
+?? examples/simple-chat/cmake_install.cmake
+?? examples/simple/CTestTestfile.cmake
+?? examples/simple/cmake_install.cmake
+?? examples/speculative-simple/CTestTestfile.cmake
+?? examples/speculative-simple/cmake_install.cmake
+?? examples/speculative/CTestTestfile.cmake
+?? examples/speculative/cmake_install.cmake
+?? examples/training/CTestTestfile.cmake
+?? examples/training/cmake_install.cmake
+?? experiments/
+?? ggml/cmake_install.cmake
+?? ggml/ggml-config-version.cmake
+?? ggml/ggml-config.cmake
+?? ggml/include/ggml-backend-profile.h
+?? ggml/include/ggml-xdna.h
+?? ggml/src/cmake_install.cmake
+?? ggml/src/ggml-backend-profile.cpp
+?? ggml/src/ggml-cpu/cmake_install.cmake
+?? ggml/src/ggml-version.h
+?? ggml/src/ggml-xdna/
+?? hetero_trace_ctx512_iter0.json
+?? license.cpp
+?? llama.pc
+?? pocs/CTestTestfile.cmake
+?? pocs/cmake_install.cmake
+?? pocs/vdot/CTestTestfile.cmake
+?? pocs/vdot/cmake_install.cmake
+?? reasonix.toml
+?? src/cmake_install.cmake
+?? src/llama-version.h
+?? test_xdna_q8.cpp
+?? test_xdna_q8_latency.cpp
+?? test_xrt_detailed.cpp
+?? test_xrt_persistent.cpp
+?? test_xrt_v4.cpp
+?? tests/CTestTestfile.cmake
+?? tests/cmake_install.cmake
+?? tests/test-qwen-ssm-beta.cpp
+?? tests/test-xdna-backend.cpp
+?? tests/test_xdna_backend.cpp
+?? tools/CTestTestfile.cmake
+?? tools/batched-bench/CTestTestfile.cmake
+?? tools/batched-bench/cmake_install.cmake
+?? tools/cli/CTestTestfile.cmake
+?? tools/cli/cmake_install.cmake
+?? tools/cmake_install.cmake
+?? tools/completion/CTestTestfile.cmake
+?? tools/completion/cmake_install.cmake
+?? tools/cvector-generator/CTestTestfile.cmake
+?? tools/cvector-generator/cmake_install.cmake
+?? tools/export-lora/CTestTestfile.cmake
+?? tools/export-lora/cmake_install.cmake
+?? tools/fit-params/CTestTestfile.cmake
+?? tools/fit-params/cmake_install.cmake
+?? tools/gguf-split/CTestTestfile.cmake
+?? tools/gguf-split/cmake_install.cmake
+?? tools/imatrix/CTestTestfile.cmake
+?? tools/imatrix/cmake_install.cmake
+?? tools/llama-bench/CTestTestfile.cmake
+?? tools/llama-bench/cmake_install.cmake
+?? tools/mtmd/CTestTestfile.cmake
+?? tools/mtmd/cmake_install.cmake
+?? tools/perplexity/CTestTestfile.cmake
+?? tools/perplexity/cmake_install.cmake
+?? tools/quantize/CTestTestfile.cmake
+?? tools/quantize/cmake_install.cmake
+?? tools/results/CTestTestfile.cmake
+?? tools/results/cmake_install.cmake
+?? tools/server/CTestTestfile.cmake
+?? tools/server/cmake_install.cmake
+?? tools/tokenize/CTestTestfile.cmake
+?? tools/tokenize/cmake_install.cmake
+?? tools/tts/CTestTestfile.cmake
+?? tools/tts/cmake_install.cmake
+?? tools/ui/CTestTestfile.cmake
+?? tools/ui/cmake_install.cmake
+?? vendor/cmake_install.cmake
+?? vendor/cpp-httplib/cmake_install.cmake
+?? vendor/hash/cmake_install.cmake
+?? vendor/miniaudio/cmake_install.cmake
+?? vendor/nlohmann/cmake_install.cmake
+?? vendor/sheredom/cmake_install.cmake
+?? vendor/stb/cmake_install.cmake
+ ggml/CMakeLists.txt                  |   2 +
+ ggml/include/ggml-vulkan.h           |   3 +
+ ggml/src/CMakeLists.txt              |   3 +
+ ggml/src/ggml-alloc.c                |   7 +
+ ggml/src/ggml-backend-reg.cpp        |  19 +-
+ ggml/src/ggml-backend.cpp            | 702 ++++++++++++++++++++++++++++++++++-
+ ggml/src/ggml-cpu/ggml-cpu.c         |  48 ++-
+ ggml/src/ggml-vulkan/ggml-vulkan.cpp | 258 ++++++++++++-
+ src/llama-context.cpp                |  36 +-
+ src/llama-kv-cache.cpp               |   9 +-
+ src/llama-memory-recurrent.cpp       |   9 +-
+ tests/CMakeLists.txt                 | 135 +++++++
+ tests/test-llama-archs.cpp           |   8 +-
+ tools/CMakeLists.txt                 |  15 +
+ 14 files changed, 1221 insertions(+), 33 deletions(-)

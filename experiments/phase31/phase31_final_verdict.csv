@@ -1,0 +1,2 @@
+kv_range,verdict,rationale
+16K-32K-64K,NO_RELIEF,"Measured XDNA int8 GEMM at attention head dim (M=512,K=256,N=4096) = 63.60ms = 16.9 GFLOP/s. Vulkan full attention KV=4096 (all 8 heads, QK+softmax+PV) = 7.28ms. XDNA QK^T alone (one head) already ~9x the whole Vulkan attention; across all 8 heads ~510ms (~70x). Hiding XDNA partition B under Vulkan partition A needs XDNA <=1.4% of KV (16K-32K), where T_vk_A approx T_vk_full, so relief ceiling <=1.4% before softmax/PV/merge/DMA. Hybrid critical path >= Vulkan full for every tested KV."

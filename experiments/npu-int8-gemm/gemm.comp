@@ -1,0 +1,75 @@
+// gemm.comp -- FP32 GEMM compute shader for Radeon 780M (Vulkan)
+// C[M,N] = A[M,K] @ B[K,N]  (row-major), single workgroup processes a TM x TN tile
+// Each thread in the workgroup computes TS x TS sub-tile with shared K.
+#version 450
+
+layout(local_size_x = 8, local_size_y = 8) in;
+
+// Tile sizes via specialization constants
+layout(constant_id = 0) const uint TM = 64;
+layout(constant_id = 1) const uint TN = 64;
+layout(constant_id = 2) const uint TS = 8;   // sub-tile per thread
+
+layout(std430, binding = 0) restrict readonly  buffer BufA { float A[]; };
+layout(std430, binding = 1) restrict readonly  buffer BufB { float B[]; };
+layout(std430, binding = 2) restrict writeonly buffer BufC { float C[]; };
+
+layout(push_constant) uniform PC { uint M; uint K; uint N; } pc;
+
+shared float As[TM][TS];
+shared float Bs[TS][TN];
+
+void main() {
+    uint tx = gl_LocalInvocationID.x;
+    uint ty = gl_LocalInvocationID.y;
+    uint wm = gl_WorkGroupID.x;
+    uint wn = gl_WorkGroupID.y;
+
+    uint m0 = wm * TM;
+    uint n0 = wn * TN;
+
+    float acc[TS][TS];
+    for (int i = 0; i < TS; i++)
+        for (int j = 0; j < TS; j++)
+            acc[i][j] = 0.0;
+
+    for (uint kt = 0; kt < pc.K; kt += TS) {
+        // Load A and B tiles into shared memory
+        for (int i = 0; i < TS; i++) {
+            uint mi = m0 + tx * TS + i;
+            for (int p = 0; p < TS; p++) {
+                uint ki = kt + p;
+                As[tx * TS + i][p] = (mi < pc.M && ki < pc.K) ? A[mi * pc.K + ki] : 0.0;
+            }
+        }
+        for (int j = 0; j < TS; j++) {
+            uint nj = n0 + ty * TS + j;
+            for (int p = 0; p < TS; p++) {
+                uint ki = kt + p;
+                Bs[p][ty * TS + j] = (ki < pc.K && nj < pc.N) ? B[ki * pc.N + nj] : 0.0;
+            }
+        }
+        barrier();
+
+        // Compute micro-tile
+        for (int p = 0; p < TS; p++) {
+            for (int i = 0; i < TS; i++) {
+                for (int j = 0; j < TS; j++) {
+                    acc[i][j] += As[tx * TS + i][p] * Bs[p][ty * TS + j];
+                }
+            }
+        }
+        barrier();
+    }
+
+    // Write output
+    for (int i = 0; i < TS; i++) {
+        uint mi = m0 + tx * TS + i;
+        for (int j = 0; j < TS; j++) {
+            uint nj = n0 + ty * TS + j;
+            if (mi < pc.M && nj < pc.N) {
+                C[mi * pc.N + nj] = acc[i][j];
+            }
+        }
+    }
+}

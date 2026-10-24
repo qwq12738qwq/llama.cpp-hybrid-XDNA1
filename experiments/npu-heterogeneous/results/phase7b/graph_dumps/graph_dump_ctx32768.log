@@ -1,0 +1,25 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon 780M Graphics (RADV PHOENIX) (radv) | uma: 1 | fp16: 1 | bf16: 0 | fp4: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+[XDNA] Registering backend
+[XDNA-META] debug check: env=NULL g_xdna_debug=0
+[XDNA] Device 0: available=1
+[XDNA] Backend registered successfully
+[GGML_REG] register_device called for XDNA0
+[XDNA] persistent engine created m=1 k=192 n=128 two_layer=0
+[GRAPH-DUMP] wrote /tmp/llama_graph_prefill_n512.json
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA | 999 |         pp32768 |        926.34 ± 0.00 |
+
+[XDNA-STATS]
+  supports_op            = 0
+  scheduler_assigned     = 0
+  graph_compute          = 0
+  persistent_execute     = 0
+  xrt_submit             = 0
+  xrt_complete           = 0
+  decode_token           = 0
+[XDNA] persistent engine created m=1 k=192 n=128 two_layer=0
+EXIT_CODE=139

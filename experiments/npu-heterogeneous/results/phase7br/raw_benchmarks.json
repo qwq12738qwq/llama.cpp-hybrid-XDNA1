@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-09-10T17:00:00Z",
+  "device": "Phoenix XDNA1 (Ryzen 7 7840HS)",
+  "compiler": "aiecc mlir-aie",
+  "kernel": "int8_gemm.py (fixed, per-N-column BD splitting)",
+  "results": [
+    {
+      "shape": "M=64 K=512 N=64",
+      "mismatches": 0,
+      "host_e2e_us_mean": 425.0,
+      "npu_exec_us_mean": 227.6,
+      "npu_gops": 18.42,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=64 K=1024 N=64",
+      "mismatches": 0,
+      "host_e2e_us_mean": 471.6,
+      "npu_exec_us_mean": 268.8,
+      "npu_gops": 31.21,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=64 K=1024 N=128",
+      "mismatches": 0,
+      "host_e2e_us_mean": 797.4,
+      "npu_exec_us_mean": 448.8,
+      "npu_gops": 37.39,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=64 K=1024 N=256",
+      "mismatches": 0,
+      "host_e2e_us_mean": 986.0,
+      "npu_exec_us_mean": 760.2,
+      "npu_gops": 44.14,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=64 K=1024 N=512",
+      "mismatches": 0,
+      "host_e2e_us_mean": 1647.0,
+      "npu_exec_us_mean": 1382.6,
+      "npu_gops": 48.54,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=64 K=1024 N=16",
+      "mismatches": 0,
+      "host_e2e_us_mean": 794.7,
+      "npu_exec_us_mean": 538.1,
+      "npu_gops": 31.18,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=128 K=512 N=64",
+      "mismatches": 0,
+      "host_e2e_us_mean": 652.4,
+      "npu_exec_us_mean": 389.3,
+      "npu_gops": 21.55,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=128 K=1024 N=64",
+      "mismatches": 0,
+      "host_e2e_us_mean": 438.5,
+      "npu_exec_us_mean": 414.3,
+      "npu_gops": 38.26,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=128 K=512 N=128",
+      "mismatches": 8192,
+      "total_elements": 16384,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "FAIL"
+    },
+    {
+      "shape": "M=128 K=1024 N=128",
+      "mismatches": 8192,
+      "total_elements": 16384,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "FAIL"
+    },
+    {
+      "shape": "M=128 K=1024 N=256",
+      "mismatches": 8192,
+      "total_elements": 32768,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "FAIL"
+    },
+    {
+      "shape": "M=128 K=1024 N=512",
+      "mismatches": 8192,
+      "total_elements": 65536,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "FAIL"
+    },
+    {
+      "shape": "M=512 K=1024 N=16",
+      "mismatches": 0,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "PASS"
+    },
+    {
+      "shape": "M=512 K=1024 N=64",
+      "mismatches": 0,
+      "host_e2e_us_mean": null,
+      "npu_exec_us_mean": null,
+      "status": "PASS"
+    }
+  ],
+  "notes": [
+    "Single N-column cases (N<=64) pass for all tested M values",
+    "Multi N-column cases (N>64) fail for M>=128 with constant 1-tile-column mismatch",
+    "K=1024 N=6144 M=512 fails (32768 mismatches = 1 tile column of 512x64)",
+    "Root cause: A tile pattern_repeat interaction with multi-output-tile ordering",
+    "Qwen SSM (M=512 K=1024 N=16) passes with tile-n=16"
+  ]
+}

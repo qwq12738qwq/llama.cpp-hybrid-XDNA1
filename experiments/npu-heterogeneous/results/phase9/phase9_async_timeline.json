@@ -1,0 +1,30 @@
+{
+  "phase": "9-C",
+  "description": "Async execution timeline for GPU||NPU cooperative execution",
+  "expected_timeline": {
+    "graph_compute_async_entry": "Submit all XDNA ops via persistent_engine_submit()",
+    "submission_loop": "For each supported MUL_MAT node: dequantize -> submit -> store run_handle",
+    "submission_complete": "Return to caller immediately (non-blocking)",
+    "concurrent_gpu_execution": "GPU backend executes its splits in parallel",
+    "synchronize_call": "Wait for all pending XDNA runs via persistent_engine_wait()",
+    "output_copy": "Copy NPU results to tensor data buffers",
+    "event_record": "Signal completion event for cross-backend dependencies",
+    "event_wait": "Block on events from other backends (e.g., GPU)"
+  },
+  "phase8_reference_timing": {
+    "npu_submit_us": 6,
+    "npu_device_exec_us": 411,
+    "npu_host_wait_us": 149,
+    "gpu_submit_us": 6,
+    "gpu_device_exec_us": 387,
+    "gpu_host_wait_us": 238,
+    "concurrent_wall_us": 625,
+    "speedup_vs_sequential": 1.65
+  },
+  "async_overhead_estimate": {
+    "submit_per_op_us": 2,
+    "wait_per_op_us": 1,
+    "event_signal_us": 1,
+    "event_wait_us": 1
+  }
+}

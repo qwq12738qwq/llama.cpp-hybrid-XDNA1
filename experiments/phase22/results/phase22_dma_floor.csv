@@ -1,0 +1,7 @@
+item,bytes,bandwidth_gbps_assumed,ms_floor,note
+activation_in_i8,524288,2.0,0.26,"A[M,K]=512x1024 int8, per ffn_gate op"
+output_out_f32,7340032,2.0,3.67,"C[M,N]=512x3584 f32, per ffn_gate op"
+transfer_total,7864320,2.0,3.93,"host<->NPU staging floor per op (weights residency-cached)"
+vulkan_op_compute,,,2.73,"real Vulkan ffn_gate op (phase21)"
+npu_kernel_runwait,,,4.69,"measured whole-array run->wait incl. on-device"
+conclusion,,,,"host-staging DMA floor (~3.9ms) alone exceeds the Vulkan op (2.73ms); only dmabuf/UMA zero-copy avoids it"

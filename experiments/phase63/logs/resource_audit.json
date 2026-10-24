@@ -1,0 +1,2508 @@
+[
+ {
+  "compile_ok": true,
+  "compile_s": 19.54,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ]
+  },
+  "locks": 6,
+  "n_flows": 3,
+  "n_shim_ch": 2,
+  "n_mem_ch": 0,
+  "n_core_ch": 2,
+  "n_cores": 1,
+  "family": "direct",
+  "tag": "direct_c1_sep_place",
+  "desc": "direct  wcols=1 sep place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 21.78,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ]
+  },
+  "locks": 6,
+  "n_flows": 3,
+  "n_shim_ch": 2,
+  "n_mem_ch": 0,
+  "n_core_ch": 2,
+  "n_cores": 1,
+  "family": "direct",
+  "tag": "direct_c1_sep_noplace",
+  "desc": "direct  wcols=1 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 17.92,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ]
+  },
+  "locks": 4,
+  "n_flows": 2,
+  "n_shim_ch": 1,
+  "n_mem_ch": 0,
+  "n_core_ch": 1,
+  "n_cores": 1,
+  "family": "direct",
+  "tag": "direct_c1_mrg_place",
+  "desc": "direct  wcols=1 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 16.79,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ]
+  },
+  "locks": 4,
+  "n_flows": 2,
+  "n_shim_ch": 1,
+  "n_mem_ch": 0,
+  "n_core_ch": 1,
+  "n_cores": 1,
+  "family": "direct",
+  "tag": "direct_c1_mrg_noplace",
+  "desc": "direct  wcols=1 mrg noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 14.97,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "1",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ]
+  },
+  "locks": 12,
+  "n_flows": 6,
+  "n_shim_ch": 4,
+  "n_mem_ch": 0,
+  "n_core_ch": 4,
+  "n_cores": 2,
+  "family": "direct",
+  "tag": "direct_c2_sep_place",
+  "desc": "direct  wcols=2 sep place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 15.32,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 12,
+  "n_flows": 6,
+  "n_shim_ch": 4,
+  "n_mem_ch": 0,
+  "n_core_ch": 4,
+  "n_cores": 2,
+  "family": "direct",
+  "tag": "direct_c2_sep_noplace",
+  "desc": "direct  wcols=2 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 18.96,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "1",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0
+   ],
+   "%shim_noc_tile_1_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ]
+  },
+  "locks": 8,
+  "n_flows": 4,
+  "n_shim_ch": 2,
+  "n_mem_ch": 0,
+  "n_core_ch": 2,
+  "n_cores": 2,
+  "family": "direct",
+  "tag": "direct_c2_mrg_place",
+  "desc": "direct  wcols=2 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 13.07,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ]
+  },
+  "locks": 8,
+  "n_flows": 4,
+  "n_shim_ch": 2,
+  "n_mem_ch": 0,
+  "n_core_ch": 2,
+  "n_cores": 2,
+  "family": "direct",
+  "tag": "direct_c2_mrg_noplace",
+  "desc": "direct  wcols=2 mrg noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 27.07,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "3",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_2_2": [
+    0,
+    1
+   ],
+   "%tile_3_2": [
+    0,
+    1
+   ]
+  },
+  "locks": 24,
+  "n_flows": 12,
+  "n_shim_ch": 8,
+  "n_mem_ch": 0,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "direct",
+  "tag": "direct_c4_sep_place",
+  "desc": "direct  wcols=4 sep place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 17.04,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 24,
+  "n_flows": 12,
+  "n_shim_ch": 8,
+  "n_mem_ch": 0,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "direct",
+  "tag": "direct_c4_sep_noplace",
+  "desc": "direct  wcols=4 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 19.18,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "3",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0
+   ],
+   "%shim_noc_tile_1_0": [
+    0
+   ],
+   "%shim_noc_tile_2_0": [
+    0
+   ],
+   "%shim_noc_tile_3_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_2_2": [
+    0
+   ],
+   "%tile_3_2": [
+    0
+   ]
+  },
+  "locks": 16,
+  "n_flows": 8,
+  "n_shim_ch": 4,
+  "n_mem_ch": 0,
+  "n_core_ch": 4,
+  "n_cores": 4,
+  "family": "direct",
+  "tag": "direct_c4_mrg_place",
+  "desc": "direct  wcols=4 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 15.5,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_0_4": [
+    0
+   ],
+   "%tile_0_5": [
+    0
+   ]
+  },
+  "locks": 16,
+  "n_flows": 8,
+  "n_shim_ch": 4,
+  "n_mem_ch": 0,
+  "n_core_ch": 4,
+  "n_cores": 4,
+  "family": "direct",
+  "tag": "direct_c4_mrg_noplace",
+  "desc": "direct  wcols=4 mrg noplace"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 4.08,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_11 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c5_sep_place/design.prj/aie.mlir:16:28: note: see current operation: %13 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c5_sep_place/design.prj/aie.mlir:16:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c5_sep_place",
+  "desc": "direct  wcols=5 sep place"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 11.76,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_11 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c5_sep_noplace/design.prj/aie.mlir:16:28: note: see current operation: %13 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c5_sep_noplace/design.prj/aie.mlir:16:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c5_sep_noplace",
+  "desc": "direct  wcols=5 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 17.15,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "3",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0
+   ],
+   "%shim_noc_tile_2_0": [
+    0
+   ],
+   "%shim_noc_tile_3_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_2_2": [
+    0
+   ],
+   "%tile_3_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ]
+  },
+  "locks": 20,
+  "n_flows": 10,
+  "n_shim_ch": 5,
+  "n_mem_ch": 0,
+  "n_core_ch": 5,
+  "n_cores": 5,
+  "family": "direct",
+  "tag": "direct_c5_mrg_place",
+  "desc": "direct  wcols=5 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 20.23,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_0_4": [
+    0
+   ],
+   "%tile_0_5": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ]
+  },
+  "locks": 20,
+  "n_flows": 10,
+  "n_shim_ch": 5,
+  "n_mem_ch": 0,
+  "n_core_ch": 5,
+  "n_cores": 5,
+  "family": "direct",
+  "tag": "direct_c5_mrg_noplace",
+  "desc": "direct  wcols=5 mrg noplace"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 3.51,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_13 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c7_sep_place/design.prj/aie.mlir:18:28: note: see current operation: %15 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c7_sep_place/design.prj/aie.mlir:18:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c7_sep_place",
+  "desc": "direct  wcols=7 sep place"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 3.4,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_13 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c7_sep_noplace/design.prj/aie.mlir:18:28: note: see current operation: %15 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c7_sep_noplace/design.prj/aie.mlir:18:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c7_sep_noplace",
+  "desc": "direct  wcols=7 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 15.59,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "3",
+    "2"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_2_2": [
+    0
+   ],
+   "%tile_3_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_1_3": [
+    0
+   ],
+   "%tile_2_3": [
+    0
+   ]
+  },
+  "locks": 28,
+  "n_flows": 14,
+  "n_shim_ch": 7,
+  "n_mem_ch": 0,
+  "n_core_ch": 7,
+  "n_cores": 7,
+  "family": "direct",
+  "tag": "direct_c7_mrg_place",
+  "desc": "direct  wcols=7 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 15.72,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_0_4": [
+    0
+   ],
+   "%tile_0_5": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_1_3": [
+    0
+   ],
+   "%tile_1_4": [
+    0
+   ]
+  },
+  "locks": 28,
+  "n_flows": 14,
+  "n_shim_ch": 7,
+  "n_mem_ch": 0,
+  "n_core_ch": 7,
+  "n_cores": 7,
+  "family": "direct",
+  "tag": "direct_c7_mrg_noplace",
+  "desc": "direct  wcols=7 mrg noplace"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 3.52,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_14 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c8_sep_place/design.prj/aie.mlir:19:28: note: see current operation: %16 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c8_sep_place/design.prj/aie.mlir:19:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c8_sep_place",
+  "desc": "direct  wcols=8 sep place"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 3.61,
+  "error": "error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used\n    %logical_shim_noc_14 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c8_sep_noplace/design.prj/aie.mlir:19:28: note: see current operation: %16 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/audit/direct_c8_sep_noplace/design.prj/aie.mlir:19:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "direct",
+  "tag": "direct_c8_sep_noplace",
+  "desc": "direct  wcols=8 sep noplace"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 14.47,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "3",
+    "2"
+   ],
+   [
+    "3",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_2_2": [
+    0
+   ],
+   "%tile_3_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_1_3": [
+    0
+   ],
+   "%tile_2_3": [
+    0
+   ],
+   "%tile_3_3": [
+    0
+   ]
+  },
+  "locks": 32,
+  "n_flows": 16,
+  "n_shim_ch": 8,
+  "n_mem_ch": 0,
+  "n_core_ch": 8,
+  "n_cores": 8,
+  "family": "direct",
+  "tag": "direct_c8_mrg_place",
+  "desc": "direct  wcols=8 mrg place"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 14.07,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ],
+   [
+    "1",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {},
+  "core_channels": {
+   "%tile_0_2": [
+    0
+   ],
+   "%tile_0_3": [
+    0
+   ],
+   "%tile_0_4": [
+    0
+   ],
+   "%tile_0_5": [
+    0
+   ],
+   "%tile_1_2": [
+    0
+   ],
+   "%tile_1_3": [
+    0
+   ],
+   "%tile_1_4": [
+    0
+   ],
+   "%tile_1_5": [
+    0
+   ]
+  },
+  "locks": 32,
+  "n_flows": 16,
+  "n_shim_ch": 8,
+  "n_mem_ch": 0,
+  "n_core_ch": 8,
+  "n_cores": 8,
+  "family": "direct",
+  "tag": "direct_c8_mrg_noplace",
+  "desc": "direct  wcols=8 mrg noplace"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.96,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_4)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c1r1_m/design.prj/aie.mlir:19:5: note: see current operation: \"aie.objectfifo.allocate\"(%0) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c1r1_m",
+  "desc": "relay   1 cols x 1 rows split m"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.77,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_4)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c1r1_n/design.prj/aie.mlir:19:5: note: see current operation: \"aie.objectfifo.allocate\"(%0) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c1r1_n",
+  "desc": "relay   1 cols x 1 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.5,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 22,
+  "n_flows": 9,
+  "n_shim_ch": 2,
+  "n_mem_ch": 4,
+  "n_core_ch": 4,
+  "n_cores": 2,
+  "family": "relay",
+  "tag": "relay_c1r2_m",
+  "desc": "relay   1 cols x 2 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.47,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 22,
+  "n_flows": 9,
+  "n_shim_ch": 2,
+  "n_mem_ch": 4,
+  "n_core_ch": 4,
+  "n_cores": 2,
+  "family": "relay",
+  "tag": "relay_c1r2_n",
+  "desc": "relay   1 cols x 2 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.59,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 42,
+  "n_flows": 15,
+  "n_shim_ch": 2,
+  "n_mem_ch": 6,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "relay",
+  "tag": "relay_c1r4_m",
+  "desc": "relay   1 cols x 4 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.58,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 42,
+  "n_flows": 15,
+  "n_shim_ch": 2,
+  "n_mem_ch": 6,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "relay",
+  "tag": "relay_c1r4_n",
+  "desc": "relay   1 cols x 4 rows split n"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.77,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_9)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c2r1_m/design.prj/aie.mlir:33:5: note: see current operation: \"aie.objectfifo.allocate\"(%2) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c2r1_m",
+  "desc": "relay   2 cols x 1 rows split m"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.75,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_9)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c2r1_n/design.prj/aie.mlir:33:5: note: see current operation: \"aie.objectfifo.allocate\"(%2) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c2r1_n",
+  "desc": "relay   2 cols x 1 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.55,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 44,
+  "n_flows": 18,
+  "n_shim_ch": 4,
+  "n_mem_ch": 8,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "relay",
+  "tag": "relay_c2r2_m",
+  "desc": "relay   2 cols x 2 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.61,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 44,
+  "n_flows": 18,
+  "n_shim_ch": 4,
+  "n_mem_ch": 8,
+  "n_core_ch": 8,
+  "n_cores": 4,
+  "family": "relay",
+  "tag": "relay_c2r2_n",
+  "desc": "relay   2 cols x 2 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.93,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ],
+   [
+    "1",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_1_4": [
+    0,
+    1
+   ],
+   "%tile_1_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 84,
+  "n_flows": 30,
+  "n_shim_ch": 4,
+  "n_mem_ch": 12,
+  "n_core_ch": 16,
+  "n_cores": 8,
+  "family": "relay",
+  "tag": "relay_c2r4_m",
+  "desc": "relay   2 cols x 4 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 3.94,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ],
+   [
+    "1",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_1_4": [
+    0,
+    1
+   ],
+   "%tile_1_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 84,
+  "n_flows": 30,
+  "n_shim_ch": 4,
+  "n_mem_ch": 12,
+  "n_core_ch": 16,
+  "n_cores": 8,
+  "family": "relay",
+  "tag": "relay_c2r4_n",
+  "desc": "relay   2 cols x 4 rows split n"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.77,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_19)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c4r1_m/design.prj/aie.mlir:61:5: note: see current operation: \"aie.objectfifo.allocate\"(%6) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c4r1_m",
+  "desc": "relay   4 cols x 1 rows split m"
+ },
+ {
+  "compile_ok": false,
+  "compile_s": 2.72,
+  "error": "error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_19)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c4r1_n/design.prj/aie.mlir:61:5: note: see current operation: \"aie.objectfifo.allocate\"(%6) <{objFifo_name = @c0_0}> : (index) -> ()",
+  "cores": [],
+  "shim_channels": {},
+  "mem_channels": {},
+  "core_channels": {},
+  "locks": 0,
+  "n_flows": 0,
+  "n_shim_ch": 0,
+  "n_mem_ch": 0,
+  "n_core_ch": 0,
+  "n_cores": 0,
+  "family": "relay",
+  "tag": "relay_c4r1_n",
+  "desc": "relay   4 cols x 1 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 4.02,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "3",
+    "2"
+   ],
+   [
+    "3",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_2_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_3_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_2_2": [
+    0,
+    1
+   ],
+   "%tile_2_3": [
+    0,
+    1
+   ],
+   "%tile_3_2": [
+    0,
+    1
+   ],
+   "%tile_3_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 88,
+  "n_flows": 36,
+  "n_shim_ch": 8,
+  "n_mem_ch": 16,
+  "n_core_ch": 16,
+  "n_cores": 8,
+  "family": "relay",
+  "tag": "relay_c4r2_m",
+  "desc": "relay   4 cols x 2 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 4.09,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "3",
+    "2"
+   ],
+   [
+    "3",
+    "3"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_2_1": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "%mem_tile_3_1": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_2_2": [
+    0,
+    1
+   ],
+   "%tile_2_3": [
+    0,
+    1
+   ],
+   "%tile_3_2": [
+    0,
+    1
+   ],
+   "%tile_3_3": [
+    0,
+    1
+   ]
+  },
+  "locks": 88,
+  "n_flows": 36,
+  "n_shim_ch": 8,
+  "n_mem_ch": 16,
+  "n_core_ch": 16,
+  "n_cores": 8,
+  "family": "relay",
+  "tag": "relay_c4r2_n",
+  "desc": "relay   4 cols x 2 rows split n"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 6.22,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ],
+   [
+    "1",
+    "5"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "2",
+    "4"
+   ],
+   [
+    "2",
+    "5"
+   ],
+   [
+    "3",
+    "2"
+   ],
+   [
+    "3",
+    "3"
+   ],
+   [
+    "3",
+    "4"
+   ],
+   [
+    "3",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_2_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_3_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_1_4": [
+    0,
+    1
+   ],
+   "%tile_1_5": [
+    0,
+    1
+   ],
+   "%tile_2_2": [
+    0,
+    1
+   ],
+   "%tile_2_3": [
+    0,
+    1
+   ],
+   "%tile_2_4": [
+    0,
+    1
+   ],
+   "%tile_2_5": [
+    0,
+    1
+   ],
+   "%tile_3_2": [
+    0,
+    1
+   ],
+   "%tile_3_3": [
+    0,
+    1
+   ],
+   "%tile_3_4": [
+    0,
+    1
+   ],
+   "%tile_3_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 168,
+  "n_flows": 60,
+  "n_shim_ch": 8,
+  "n_mem_ch": 24,
+  "n_core_ch": 32,
+  "n_cores": 16,
+  "family": "relay",
+  "tag": "relay_c4r4_m",
+  "desc": "relay   4 cols x 4 rows split m"
+ },
+ {
+  "compile_ok": true,
+  "compile_s": 6.79,
+  "error": "",
+  "cores": [
+   [
+    "0",
+    "2"
+   ],
+   [
+    "0",
+    "3"
+   ],
+   [
+    "0",
+    "4"
+   ],
+   [
+    "0",
+    "5"
+   ],
+   [
+    "1",
+    "2"
+   ],
+   [
+    "1",
+    "3"
+   ],
+   [
+    "1",
+    "4"
+   ],
+   [
+    "1",
+    "5"
+   ],
+   [
+    "2",
+    "2"
+   ],
+   [
+    "2",
+    "3"
+   ],
+   [
+    "2",
+    "4"
+   ],
+   [
+    "2",
+    "5"
+   ],
+   [
+    "3",
+    "2"
+   ],
+   [
+    "3",
+    "3"
+   ],
+   [
+    "3",
+    "4"
+   ],
+   [
+    "3",
+    "5"
+   ]
+  ],
+  "shim_channels": {
+   "%shim_noc_tile_0_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_1_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_2_0": [
+    0,
+    1
+   ],
+   "%shim_noc_tile_3_0": [
+    0,
+    1
+   ]
+  },
+  "mem_channels": {
+   "%mem_tile_0_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_1_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_2_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "%mem_tile_3_1": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "core_channels": {
+   "%tile_0_2": [
+    0,
+    1
+   ],
+   "%tile_0_3": [
+    0,
+    1
+   ],
+   "%tile_0_4": [
+    0,
+    1
+   ],
+   "%tile_0_5": [
+    0,
+    1
+   ],
+   "%tile_1_2": [
+    0,
+    1
+   ],
+   "%tile_1_3": [
+    0,
+    1
+   ],
+   "%tile_1_4": [
+    0,
+    1
+   ],
+   "%tile_1_5": [
+    0,
+    1
+   ],
+   "%tile_2_2": [
+    0,
+    1
+   ],
+   "%tile_2_3": [
+    0,
+    1
+   ],
+   "%tile_2_4": [
+    0,
+    1
+   ],
+   "%tile_2_5": [
+    0,
+    1
+   ],
+   "%tile_3_2": [
+    0,
+    1
+   ],
+   "%tile_3_3": [
+    0,
+    1
+   ],
+   "%tile_3_4": [
+    0,
+    1
+   ],
+   "%tile_3_5": [
+    0,
+    1
+   ]
+  },
+  "locks": 168,
+  "n_flows": 60,
+  "n_shim_ch": 8,
+  "n_mem_ch": 24,
+  "n_core_ch": 32,
+  "n_cores": 16,
+  "family": "relay",
+  "tag": "relay_c4r4_n",
+  "desc": "relay   4 cols x 4 rows split n"
+ }
+]

@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 557, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 515, in main
+    design.specialize(dummy=0).compile(xclbin_path=xp, inst_path=ip, pdi_path=pp)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/callabledesign.py", line 470, in compile
+    return self.compilable.compile(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        xclbin_path=xclbin_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pdi_path=pdi_path,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 394, in compile
+    compile_mlir_module(
+    ~~~~~~~~~~~~~~~~~~~^
+        mlir_module=mlir_module,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        fold_ddr_addr_offset=fold_ddr_addr_offset,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/utils.py", line 561, in compile_mlir_module
+    _run_aiecc(mlir_file, args)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/utils.py", line 430, in _run_aiecc
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: [aiecc] Compilation failed with exit code 1:
+
+(0/40) input.mlir
+(1/40)           
+(1/40) [0/1] placed.mlir/workspace/llama.cpp/experiments/phase60/kbench/k_w16_d1/design.prj/aie.mlir:27:28: error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+    %logical_shim_noc_22 = aie.logical_tile<ShimNOCTile>(?, ?)
+                           ^
+/workspace/llama.cpp/experiments/phase60/kbench/k_w16_d1/design.prj/aie.mlir:27:28: note: see current operation: %24 = "aie.logical_tile"() <{tile_type = 2 : i32}> : () -> index
+/workspace/llama.cpp/experiments/phase60/kbench/k_w16_d1/design.prj/aie.mlir:27:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile
+
+aiecc: edge 'placed.mlir' (key 'input.mlir') failed
+aiecc: pipeline failed
+

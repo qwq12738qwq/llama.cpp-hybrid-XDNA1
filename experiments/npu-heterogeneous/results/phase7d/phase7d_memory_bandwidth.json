@@ -1,0 +1,22 @@
+{
+  "gpu_solo": {
+    "effective_bandwidth_gbps": 36.0,
+    "kernel_ms": 21.886,
+    "bytes_read_gb": 0.79,
+    "bytes_written_gb": 0.16
+  },
+  "npu_solo": {
+    "h2d_bandwidth_gbps": 36.0,
+    "d2h_bandwidth_gbps": 79.0,
+    "h2d_bytes_gb": 4.19,
+    "d2h_bytes_gb": 0.52
+  },
+  "concurrent": {
+    "combined_effective_gbps": 52.0,
+    "gpu_effective_gbps": 18.0,
+    "npu_effective_gbps": 34.0,
+    "system_saturation_pct": 104,
+    "note": "DDR4-3200 dual-channel theoretical max ~51.2 GB/s. Combined exceeds theoretical due to cache effects and measurement methodology."
+  },
+  "measurement_method": "GPU: bytes from A+B matrices / kernel time. NPU: bytes from transfer_bench H2D/D2H median. Concurrent: sum of effective rates."
+}

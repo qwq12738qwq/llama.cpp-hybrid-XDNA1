@@ -1,0 +1,14 @@
+ M ggml/CMakeLists.txt
+ M ggml/include/ggml-vulkan.h
+ M ggml/src/CMakeLists.txt
+ M ggml/src/ggml-alloc.c
+ M ggml/src/ggml-backend-reg.cpp
+ M ggml/src/ggml-backend.cpp
+ M ggml/src/ggml-cpu/ggml-cpu.c
+ M ggml/src/ggml-vulkan/ggml-vulkan.cpp
+ M src/llama-context.cpp
+ M src/llama-kv-cache.cpp
+ M src/llama-memory-recurrent.cpp
+ M tests/CMakeLists.txt
+ M tests/test-llama-archs.cpp
+ M tools/CMakeLists.txt

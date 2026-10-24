@@ -1,0 +1,20 @@
+[stage 1] Vulkan external-memory capabilities
+  device: AMD Radeon 780M Graphics (RADV PHOENIX)
+  ext VK_KHR_external_memory             : YES
+  ext VK_KHR_external_memory_fd          : YES
+  ext VK_EXT_external_memory_dma_buf     : YES
+  ext VK_EXT_external_memory_host        : YES
+  dma_buf features: export=1 import=1 dedicated_only=0
+  host_ptr features: export=0 import=1
+  vkGetMemoryFdKHR=0x730cbba03e90 vkGetMemoryFdPropertiesKHR=0x730cbba03f40
+[stage 2] Vulkan buffer -> dma-buf fd
+  buffer mem type=0 size=1048576 usage storage
+  exported dma-buf fd = 6
+[stage 3] XRT bo export_buffer() -> handle
+  xrt export handle = 8 (sizeof=4)
+[stage 4] XRT import foreign fd 6
+  [FAIL] mmap(addr=0x730cbdda5000, len=1048576, prot=3, flags=8209, offset=4362076160) failed (err=-1): Operation not permitted
+[stage 5] XRT userptr bo over a host pointer
+  userptr bo OK map=0x730cbdda4000 host=0x730cbdda4000 same_pages=yes size=1048576
+
+SUMMARY: s1=1 s2(vk-export-fd)=1 s3(xrt-export)=1 s4(xrt-import-vkfd)=0 s5(userptr)=1

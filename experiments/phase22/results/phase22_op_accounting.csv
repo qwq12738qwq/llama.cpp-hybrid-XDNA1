@@ -1,0 +1,6 @@
+operator,shape,path,compute_ms,staging_merge_ms,total_op_ms,source
+ffn_gate,512x1024x3584,vulkan_full,2.73,0,2.73,phase21 hybrid_qwen.csv vk_only
+ffn_gate,512x1024x3584,npu_whole_runwait,4.69,7.61,12.30,phase22 XDNA-WA_TIMING + graph log
+ffn_gate,512x1024x3584,npu_split75_n_gpu896,,,16.08,phase22 graph log (NPU 75% + Vulkan slice)
+ffn_gate,512x1024x3584,npu_split50_n_gpu1792,,,22.97,phase22 graph log
+ffn_gate,512x1024x3584,npu_split25_n_gpu2688,,,33.45,phase22 graph log

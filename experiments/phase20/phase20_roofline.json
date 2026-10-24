@@ -1,0 +1,17 @@
+{
+  "roofline_points": [
+    {"shape":"M64_K1024_N3072","FLOPs":402653184,"bytes_moved":3997696,"AI":100.7,"GOPS_kernel":53.00,"DMA_GB_s":0.53,"bound":"COMPUTE"},
+    {"shape":"M128_K1024_N3072","FLOPs":805306368,"bytes_moved":4849664,"AI":166.1,"GOPS_kernel":52.10,"DMA_GB_s":0.31,"bound":"COMPUTE"},
+    {"shape":"M256_K1024_N3072","FLOPs":1610612736,"bytes_moved":6553600,"AI":245.8,"GOPS_kernel":53.46,"DMA_GB_s":0.22,"bound":"COMPUTE"},
+    {"shape":"M512_K1024_N3072","FLOPs":3221225472,"bytes_moved":9961472,"AI":323.4,"GOPS_kernel":53.96,"DMA_GB_s":0.17,"bound":"COMPUTE"},
+    {"shape":"M512_K2048_N3072","FLOPs":6442450944,"bytes_moved":13631488,"AI":472.6,"GOPS_kernel":82.74,"DMA_GB_s":0.18,"bound":"COMPUTE"},
+    {"shape":"M512_K4096_N3072","FLOPs":12884901888,"bytes_moved":20971520,"AI":614.4,"GOPS_kernel":116.71,"DMA_GB_s":0.19,"bound":"COMPUTE"}
+  ],
+  "roofline_model": {
+    "memory_ceiling_GB_s": 14.10,
+    "compute_ceiling_GOPS_estimated": 2000,
+    "ridge_point_AI": 141.5,
+    "conclusion": "All measured points have AI >> ridge_point. All are compute-bound, not memory-bound."
+  },
+  "analysis": "All shapes have AI > 100 FLOP/byte. The memory bandwidth ridge point (compute_peak/memory_bw) is ~141 FLOP/byte at 2000 GOPS / 14 GB/s. All M scaling points (AI=100-323) and K sweep points (AI=323-614) are above the ridge point. The kernel is compute-bound. The 53 GOPS at K=1024 is the single-AIE-core scalar compute ceiling."
+}

@@ -1,0 +1,26 @@
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+...................................................
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3426308 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3426308 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=2637828 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=1 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=1 copy_bytes=2637828 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=3.732 wall_ms=9.383 acc_busy_ms=13.800 overlap_ms=4.430 overlap_pair_sum_ms=4.430 overlap_pair=Vulkan0/CPU acc_busy_pct=147.1
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.254 sched_alloc_ms=0.964 set_inputs_ms=0.335 submit_wall_ms=11.025
+[VK-SUMMARY] busy_ms=415.417 submit_ms=4.428 sync_ms=410.883 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3162120 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=2 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=1 copy_bytes=3162120 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.461 wall_ms=60.056 acc_busy_ms=118.571 overlap_ms=58.528 overlap_pair_sum_ms=58.528 overlap_pair=Vulkan0/CPU acc_busy_pct=197.4
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.294 sched_alloc_ms=1.105 set_inputs_ms=0.469 submit_wall_ms=473.011
+[VK-SUMMARY] busy_ms=397.220 submit_ms=58.526 sync_ms=338.475 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=2637828 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=3 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=1 copy_bytes=2637828 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.435 wall_ms=1.661 acc_busy_ms=2.544 overlap_ms=0.889 overlap_pair_sum_ms=0.889 overlap_pair=Vulkan0/CPU acc_busy_pct=153.2
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.248 sched_alloc_ms=0.980 set_inputs_ms=0.282 submit_wall_ms=3.294
+[VK-SUMMARY] busy_ms=386.391 submit_ms=0.889 sync_ms=385.401 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=0 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3162120 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=4 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=1 copy_bytes=3162120 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.523 wall_ms=2.490 acc_busy_ms=3.976 overlap_ms=1.496 overlap_pair_sum_ms=1.496 overlap_pair=Vulkan0/CPU acc_busy_pct=159.7
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.361 sched_alloc_ms=1.903 set_inputs_ms=0.604 submit_wall_ms=390.931
+[VK-SUMMARY] busy_ms=395.486 submit_ms=1.496 sync_ms=393.901 n_submit=1 n_sync=1

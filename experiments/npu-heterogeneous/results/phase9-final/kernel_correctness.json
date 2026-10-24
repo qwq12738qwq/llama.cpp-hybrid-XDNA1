@@ -1,0 +1,37 @@
+{
+  "kernel": "matmul_scalar_i8_i32",
+  "dimensions": {"M": 1, "K": 32, "N": 16},
+  "data_types": {"input": "int8", "output": "int32"},
+  "test_patterns": [
+    {"name": "all_ones", "expected": 32, "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "arange_A", "expected": 496, "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "arange_B", "expected": "variable", "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "random_5iter", "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "positive_only", "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "negative_only", "result": "PASS", "mismatches": 0, "max_abs_error": 0},
+    {"name": "small_values", "result": "PASS", "mismatches": 0, "max_abs_error": 0}
+  ],
+  "microkernel_tests": [
+    {"name": "single_multiply_pos", "operation": "5*7=35", "result": "PASS"},
+    {"name": "single_multiply_neg", "operation": "-5*7=-35", "result": "PASS"},
+    {"name": "accumulation_ones", "operation": "sum(1*1) K=32", "result": "PASS"},
+    {"name": "accumulation_range", "operation": "sum(0..31)=496", "result": "PASS"},
+    {"name": "accumulation_neg", "operation": "sum(-1*1)=-32", "result": "PASS"},
+    {"name": "max_int8", "operation": "127*127*32=516128", "result": "PASS"},
+    {"name": "min_int8", "operation": "-128*-128*32=524288", "result": "PASS"},
+    {"name": "mixed_signs", "operation": "-128*127*32=-520192", "result": "PASS"}
+  ],
+  "m_dimension_coverage": [
+    {"M": 1, "result": "PASS"},
+    {"M": 2, "result": "PASS"},
+    {"M": 4, "result": "PASS"},
+    {"M": 8, "result": "PASS"},
+    {"M": 16, "result": "PASS"}
+  ],
+  "k_dimension_ladder": [
+    {"K": 32, "result": "PASS", "method": "direct"},
+    {"K": 64, "result": "FAIL", "reason": "DMA limit 1023 exceeded (64*16=1024)"},
+    {"K": 1024, "result": "PASS", "method": "32-chunk accumulation"}
+  ],
+  "overall": "PASS - Exact numerical correctness achieved"
+}

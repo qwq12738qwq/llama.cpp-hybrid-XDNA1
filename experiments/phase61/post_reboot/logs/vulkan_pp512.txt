@@ -1,0 +1,9 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon 780M Graphics (RADV PHOENIX) (radv) | uma: 1 | fp16: 1 | bf16: 0 | fp4: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |           pp512 |      1242.35 ± 31.62 |
+
+build: 7620399f5 (10823)

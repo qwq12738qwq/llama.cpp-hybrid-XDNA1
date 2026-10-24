@@ -1,0 +1,94 @@
+{
+  "phase": "9-A",
+  "audit_date": "2026-09-11",
+  "audit_scope": "Current ggml-xdna backend implementation",
+  "findings": {
+    "ownership_model": {
+      "description": "Device context owns XRT device, UUID, kernel. Backend context references device context and persistent engine. Registry owns device contexts.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:140-155", "ggml/src/ggml-xdna/ggml-xdna.cpp:465-468"],
+      "status": "Structured but device/backend tightly coupled"
+    },
+    "xrt_initialization": {
+      "description": "Creates xrt::device and gets UUID in device_init_context. Does NOT load xclbin or create kernel. Kernel creation happens in persistent engine init_xrt.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:215-224", "ggml/src/ggml-xdna/xdna-persistent.cpp:109-155"],
+      "status": "PARTIAL - xclbin/kernel loading deferred to persistent engine"
+    },
+    "buffer_allocation": {
+      "description": "Buffer type uses malloc for host memory. Persistent engine allocates XRT BOs (inst_bo, weight_bo, input_bo[2], output_bo[2]) for device memory. Tensors stay in host memory until execution.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:250-264", "ggml/src/ggml-xdna/xdna-persistent.cpp:157-175"],
+      "status": "HYBRID - host buffers for tensors, XRT BOs for persistent execution"
+    },
+    "persistent_engine": {
+      "description": "Full XRT implementation with double-buffered async interface. Has init_xrt, submit, wait methods. Uses MLIR_AIE kernel with persistent instruction BO. Double-buffered input/output BOs for pipeline.",
+      "files": ["ggml/src/ggml-xdna/xdna-persistent.h", "ggml/src/ggml-xdna/xdna-persistent.cpp"],
+      "status": "IMPLEMENTED - Phase 8 async model ported"
+    },
+    "synchronous_points": {
+      "description": "graph_compute executes all ops synchronously in loop. synchronize() is no-op. event_record/wait are no-ops. Device caps report async=false, events=false.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:527-668", "ggml/src/ggml-xdna/ggml-xdna.cpp:670-672", "ggml/src/ggml-xdna/ggml-xdna.cpp:742-750"],
+      "status": "FULLY_SYNCHRONOUS - async infrastructure exists but not used"
+    },
+    "supports_op": {
+      "description": "Supports MUL_MAT with original (M=1, K=192, N=128) and Qwen SSM (M=1/2, K=1024, N=16) shapes for Q8_0/F32 types.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:353-407"],
+      "status": "SHAPE_RESTRICTED - matches Phase 8 validated shapes"
+    },
+    "scheduler_assignment": {
+      "description": "offload_op = supports_op. Device reports caps.async=false, caps.events=false. Scheduler won't use async paths.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:177-188", "ggml/src/ggml-xdna/ggml-xdna.cpp:420-422"],
+      "status": "ASYNC_DISABLED - prevents scheduler async usage"
+    },
+    "cpu_fallback": {
+      "description": "supports_buft allows CPU buffer type. If XDNA doesn't support op, falls back to CPU.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:409-418"],
+      "status": "FUNCTIONAL"
+    },
+    "tensor_copy_path": {
+      "description": "cpy_tensor_async uses memcpy (synchronous host-to-host). No async DMA implementation.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:710-717"],
+      "status": "SYNC_ONLY"
+    },
+    "graph_synchronization": {
+      "description": "event_new, event_free, event_synchronize, event_record, event_wait all return nullptr or no-op. Device reports no event support.",
+      "files": ["ggml/src/ggml-xdna/ggml-xdna.cpp:424-437", "ggml/src/ggml-xdna/ggml-xdna.cpp:742-750"],
+      "status": "NO_EVENT_SUPPORT"
+    }
+  },
+  "critical_gaps": [
+    "Device caps report async=false, events=false - must be true for scheduler async",
+    "No XRT event implementation for cross-backend synchronization",
+    "graph_compute is synchronous - doesn't use persistent_engine submit/wait",
+    "graph_compute_async not implemented",
+    "synchronize is no-op - should wait for pending async operations",
+    "Backend doesn't connect to persistent engine's xclbin/insts paths",
+    "Async tensor copy not implemented (uses memcpy)"
+  ],
+  "phase8_reference": {
+    "async_model": "pyxrt.run.start() / wait() for true async submission",
+    "persistent_buffers": "XRT BOs created once, reused across iterations",
+    "pipeline": "Double-buffered (depth=2) achieves 1.69x speedup",
+    "concurrent": "GPU||NPU achieves 1.65x speedup with 0 mismatches",
+    "xclbin": "/home/ubuntu12738/Storage/Cache/llama.cpp/experiments/npu-int8-gemm/k1024_m16_n16_tile/design.xclbin",
+    "insts": "/home/ubuntu12738/Storage/Cache/llama.cpp/experiments/npu-int8-gemm/k1024_m16_n16_tile/design.insts.bin",
+    "validated_shapes": "M=1, K=1024, N=16 (Qwen SSM)",
+    "files": ["experiments/npu-heterogeneous/phase8/npu_persistent_async.py", "experiments/npu-heterogeneous/phase8/run_phase8.py"]
+  },
+  "required_changes": [
+    "Enable async/events in device caps (async=true, events=true)",
+    "Implement XRT event interface (event_new, event_free, event_record, event_wait, event_synchronize)",
+    "Implement graph_compute_async using persistent_engine submit",
+    "Implement synchronize to wait for pending operations",
+    "Connect backend to persistent engine with xclbin/insts paths",
+    "Use async execution pattern in graph_compute: submit all, then sync",
+    "Implement async tensor copy using XRT BO operations"
+  ],
+  "implementation_status": {
+    "async_caps_enabled": "DONE - caps.async=true, caps.events=true",
+    "xrt_event_interface": "DONE - event_new, event_free, event_synchronize, event_record, event_wait implemented using std::promise/future",
+    "graph_compute_async": "DONE - submits all ops via persistent_engine_submit, returns immediately",
+    "synchronize": "DONE - waits for all pending runs via persistent_engine_wait",
+    "backend_persistent_engine_connection": "DONE - init_xrt called with Phase 8 xclbin/insts paths",
+    "async_execution_pattern": "DONE - graph_compute calls graph_compute_async then synchronize",
+    "async_tensor_copy": "PARTIAL - basic memcpy, XRT BO async copy not implemented"
+  }
+}

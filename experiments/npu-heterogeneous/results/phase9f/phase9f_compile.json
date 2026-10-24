@@ -1,0 +1,32 @@
+{
+  "phase": "9f",
+  "kernel": "m1_k1024_n16_matmul_i8_i32",
+  "M": 1,
+  "K": 1024,
+  "N": 16,
+  "tile_m": 1,
+  "tile_k": 32,
+  "tile_n": 16,
+  "vectorized": false,
+  "scalar_path": true,
+  "k_chunked": true,
+  "k_chunks": 32,
+  "a_tile_bytes": 32,
+  "b_tile_bytes": 512,
+  "c_tile_bytes": 64,
+  "compile_status": "SUCCESS",
+  "xclbin_path": "/home/ubuntu12738/Storage/Cache/llama.cpp/experiments/npu-int8-gemm/k1024_m1_n16/design.xclbin",
+  "insts_path": "/home/ubuntu12738/Storage/Cache/llama.cpp/experiments/npu-int8-gemm/k1024_m1_n16/design.insts.bin",
+  "pdi_path": "/home/ubuntu12738/Storage/Cache/llama.cpp/experiments/npu-int8-gemm/k1024_m1_n16/main.pdi",
+  "xclbin_exists": true,
+  "insts_exists": true,
+  "pdi_exists": true,
+  "xclbin_size_bytes": 10873,
+  "insts_size_bytes": 420,
+  "pdi_size_bytes": 4416,
+  "artifacts": {
+    "design.xclbin": "10873 bytes",
+    "design.insts.bin": "420 bytes",
+    "main.pdi": "4416 bytes"
+  }
+}

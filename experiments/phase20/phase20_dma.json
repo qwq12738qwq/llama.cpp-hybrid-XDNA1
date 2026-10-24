@@ -1,0 +1,18 @@
+{
+  "DMA_sizes": [
+    {"size_bytes":1024,"H2D_GB_s":1.55,"D2H_GB_s":2.47,"RT_GB_s":1.01},
+    {"size_bytes":4096,"H2D_GB_s":4.11,"D2H_GB_s":10.15,"RT_GB_s":3.01},
+    {"size_bytes":16384,"H2D_GB_s":7.50,"D2H_GB_s":33.85,"RT_GB_s":5.95},
+    {"size_bytes":65536,"H2D_GB_s":10.87,"D2H_GB_s":64.19,"RT_GB_s":9.54},
+    {"size_bytes":262144,"H2D_GB_s":12.75,"D2H_GB_s":80.37,"RT_GB_s":11.01},
+    {"size_bytes":1048576,"H2D_GB_s":14.10,"D2H_GB_s":116.38,"RT_GB_s":13.07},
+    {"size_bytes":4194304,"H2D_GB_s":11.48,"D2H_GB_s":113.36,"RT_GB_s":10.28},
+    {"size_bytes":16777216,"H2D_GB_s":2.51,"D2H_GB_s":85.52,"RT_GB_s":2.45},
+    {"size_bytes":67108864,"H2D_GB_s":1.28,"D2H_GB_s":83.16,"RT_GB_s":1.26}
+  ],
+  "H2D_peak_GB_s": 14.10,
+  "D2H_peak_GB_s": 116.38,
+  "RT_peak_GB_s": 13.07,
+  "H2D_peak_at_bytes": 1048576,
+  "D2H_peak_at_bytes": 1048576
+}

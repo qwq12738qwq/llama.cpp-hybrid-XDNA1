@@ -1,0 +1,7 @@
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/xdna-phase18-harness.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/edit_cache.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/rebuild_cache.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/list_install_components.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/install.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/install/local.dir
+/workspace/llama.cpp/tools/xdna-phase18/build/CMakeFiles/install/strip.dir

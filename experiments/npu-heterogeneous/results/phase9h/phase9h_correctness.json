@@ -1,0 +1,36 @@
+{
+  "test_configuration": {
+    "M": 1,
+    "K": 32,
+    "N": 16,
+    "tile_M": 1,
+    "tile_K": 32,
+    "tile_N": 16,
+    "input_dtype": "int8",
+    "output_dtype": "int32",
+    "vectorized": false,
+    "iterations": 100,
+    "warmup": 5,
+    "random_seed": 42
+  },
+  "results": {
+    "mismatches": 16,
+    "total_elements": 16,
+    "mismatch_rate": 1.0,
+    "max_absolute_error": 394595,
+    "mean_absolute_error": 248123.4,
+    "error_pattern": "consistent_scaling",
+    "scaling_factor": 6.00
+  },
+  "diagnostic_patterns": {
+    "random_int8": { "mismatches": 16, "scaling_factor": 6.00 },
+    "all_ones": { "mismatches": 16, "scaling_factor": 6.00 },
+    "A_k_equals_k_B_ones": { "mismatches": 16, "scaling_factor": 6.00 },
+    "A_ones_B_kn": { "mismatches": 16, "scaling_factor": 6.00 }
+  },
+  "reference_values_sample": [11646, -47017, -16877, 53751, -23420, 41486, -78919, -5343],
+  "npu_values_sample": [69876, -282102, -101262, 322506, -140520, 248916, -473514, -32058],
+  "cpu_reference_command": "A.astype(int32) @ B.astype(int32)",
+  "npu_execution": "iron.jit -> CompilableDesign.compile() -> NPU kernel",
+  "conclusion": "STOP-2: Consistent 6.00x scaling error indicates kernel implementation/ABI issue, not data movement"
+}

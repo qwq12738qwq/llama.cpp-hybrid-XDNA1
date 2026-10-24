@@ -1,0 +1,40 @@
+{
+  "kernel": "matmul_scalar_i8_i32",
+  "abi_layer": "Peano/LLVM-AIE ExternalFunction",
+  "symbol": "matmul_scalar_i8_i32",
+  "argument_layout": [
+    {"name": "a_in", "type": "int8*", "layout": "row-major [M*K]"},
+    {"name": "b_in", "type": "int8*", "layout": "row-major [K*N]"},
+    {"name": "c_out", "type": "int32*", "layout": "row-major [M*N], accumulator"}
+  ],
+  "assembly_verification": {
+    "source_file": "/Storage/Cache/src/mlir-aie/aie_kernels/aie2/mm.cc:23-48",
+    "object_file": "phase9h_test_new/design.prj/matmul_scalar_i8_i32_8477b206.o",
+    "key_instructions": [
+      {"instruction": "lda.s8", "purpose": "Signed 8-bit load from A matrix", "verified": true},
+      {"instruction": "lda.s8", "purpose": "Signed 8-bit load from B matrix", "verified": true},
+      {"instruction": "mul", "purpose": "32-bit multiply of sign-extended int8 operands", "verified": true},
+      {"instruction": "add", "purpose": "32-bit accumulation into running_sum", "verified": true},
+      {"instruction": "paddb/st", "purpose": "32-bit store to C output", "verified": true}
+    ],
+    "checked_issues": {
+      "unsigned_loads": false,
+      "accidental_widening": false,
+      "duplicate_multiply": false,
+      "vector_emulation": false,
+      "constant_scaling": false,
+      "wrong_abi_args": false,
+      "incorrect_stride": false,
+      "incorrect_loop_bounds": false,
+      "compiler_conversions": false
+    }
+  },
+  "compilation_flow": {
+    "toolchain": "Peano clang++ (LLVM-AIE 21.0.0)",
+    "mlir_dialect": "aie",
+    "aiecc_version": "MLIR-AIE 1.4.1",
+    "external_function": "mlir_aie.python.aie.iron.kernels.linalg.mm() with vectorized=False",
+    "compile_flags": ["-DDIM_M=1", "-DDIM_K=32", "-DDIM_N=16", "-Di8_i32_ONLY", "-DSCALAR_ONLY"]
+  },
+  "conclusion": "ABI and lowering correct. No evidence of 6× arithmetic error in current build."
+}

@@ -1,0 +1,102 @@
+{
+  "operators": [
+    {
+      "name": "FFN_up_gate",
+      "shape": "M=512 K=1024 N=3584",
+      "description": "FFN up projection + gate (SiLU)",
+      "gpu_solo_ms": 12.6,
+      "gpu_gops": 343,
+      "npu_solo_ms": 66.6,
+      "npu_gops": 56.8,
+      "npu_gpu_ratio": 0.17,
+      "concurrent_gpu_ms": 716,
+      "concurrent_npu_ms": 3600,
+      "concurrent_wall_ms": 3600,
+      "speedup_vs_sequential": 0.027,
+      "viable_for_concurrent_offload": false,
+      "reason": "GPU slowdown 2500%, NPU slowdown 5500%"
+    },
+    {
+      "name": "Attention_QKV",
+      "shape": "M=512 K=1024 N=6144",
+      "description": "Attention Q, K, V projections",
+      "gpu_solo_ms": 24.6,
+      "gpu_gops": 295,
+      "npu_solo_ms": 115.3,
+      "npu_gops": 45.3,
+      "npu_gpu_ratio": 0.15,
+      "concurrent_gpu_ms": 696,
+      "concurrent_npu_ms": 3758,
+      "concurrent_wall_ms": 3758,
+      "speedup_vs_sequential": 0.025,
+      "viable_for_concurrent_offload": false,
+      "reason": "GPU slowdown 2595%, NPU slowdown 5546%"
+    },
+    {
+      "name": "FFN_down",
+      "shape": "M=512 K=1024 N=256",
+      "description": "FFN down projection",
+      "gpu_solo_ms": 0.88,
+      "gpu_gops": 1258,
+      "npu_solo_ms": 2.7,
+      "npu_gops": 117,
+      "npu_gpu_ratio": 0.09,
+      "concurrent_gpu_ms": 441,
+      "concurrent_npu_ms": 513,
+      "concurrent_wall_ms": 514,
+      "speedup_vs_sequential": 0.032,
+      "viable_for_concurrent_offload": false,
+      "reason": "GPU slowdown 3106%, NPU slowdown 18709%"
+    }
+  ],
+  "summary": {
+    "total_gpu_solo_ms": 38.1,
+    "total_npu_solo_ms": 184.6,
+    "total_sequential_ms": 222.7,
+    "best_concurrent_wall_ms": 3758,
+    "best_speedup": 0.032,
+    "conclusion": "No Qwen operator is viable for concurrent NPU offload on Phoenix XDNA1 + Radeon 780M. Memory bandwidth contention causes 25-187x slowdown for both devices."
+  },
+  "long_context_projection": {
+    "contexts": [
+      {
+        "length": "4K",
+        "M": 4096,
+        "gpu_attention_ms": 200,
+        "npu_ffn_ms": 530,
+        "ratio": 2.7
+      },
+      {
+        "length": "8K",
+        "M": 8192,
+        "gpu_attention_ms": 400,
+        "npu_ffn_ms": 1060,
+        "ratio": 2.7
+      },
+      {
+        "length": "16K",
+        "M": 16384,
+        "gpu_attention_ms": 800,
+        "npu_ffn_ms": 2120,
+        "ratio": 2.7
+      },
+      {
+        "length": "32K",
+        "M": 32768,
+        "gpu_attention_ms": 1600,
+        "npu_ffn_ms": 4240,
+        "ratio": 2.7
+      },
+      {
+        "length": "64K",
+        "M": 65536,
+        "gpu_attention_ms": 3200,
+        "npu_ffn_ms": 8480,
+        "ratio": 2.7
+      }
+    ],
+    "theoretical_best_speedup": 0.37,
+    "actual_with_contention": 0.015,
+    "note": "Even at 64K context, NPU is 2.7x slower than GPU for Attention. With contention, 67x slower."
+  }
+}

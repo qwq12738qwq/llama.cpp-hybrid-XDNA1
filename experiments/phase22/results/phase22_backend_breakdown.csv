@@ -1,0 +1,3 @@
+config,shape,pack_ms,start_ms,wait_ms,copyback_ms,kernel,note
+q8scale_c1,512x1024x3584,0.47,0.09,553.50,2.07,M512_K1024_N3584_C1_Q8SCALEV,"gen_q8_scale_vec.py single-column kernel; XRT run->wait() dominates"
+q8scale_c1,512x1024x3584,0.42,0.03,552.85,2.20,M512_K1024_N3584_C1_Q8SCALEV,"second op, same xclbin"

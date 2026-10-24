@@ -1,0 +1,9 @@
+SMOKE PASS M=64 K=1024 N=1024 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=64 K=1024 N=2048 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=128 K=1024 N=1024 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=128 K=1024 N=2048 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=256 K=1024 N=1024 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=256 K=1024 N=2048 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=512 K=1024 N=1024 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SMOKE PASS M=512 K=1024 N=2048 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+SWEEP_DONE fail=0

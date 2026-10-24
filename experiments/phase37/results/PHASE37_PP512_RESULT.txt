@@ -1,0 +1,20 @@
+PHASE37 PP512 RESULTS (llama-bench)
+
+Vulkan-only baseline (-dev Vulkan0):
+  avg_ns: 378052337 (378ms)
+  avg_ts: 1357 tokens/sec
+
+XDNA+Vulkan hybrid (-dev "AMD Phoenix XDNA1 NPU/Vulkan0", GGML_XDNA_QWEN_PP=1):
+  avg_ns: 44821951425 (44821ms = 44.8s)
+  avg_ts: 11.4 tokens/sec
+  XDNA ops executed: 78
+  Speedup vs Vulkan: 0.0084x (118x SLOWER)
+
+Root cause analysis:
+  - XDNA backend reads tensors from Vulkan buffers via ggml_backend_tensor_get()
+  - Each GEMM requires PCIe readback of weights and inputs, CPU quantization, XRT submit/wait, and result copyback
+  - Q8_0 scale-aware kernel wait time: ~552ms per GEMM (M=512 K=1024 N=3584)
+  - Standalone Phase 36 benchmark (Iron/AIE Python) showed 1.41x-1.68x speedup, but that uses direct NPU memory
+  - The C++ integration path has not been optimized for zero-copy data movement
+
+Conclusion: The llama.cpp C++ integration is not ready for production use. The data movement overhead completely negates the XDNA compute advantage.

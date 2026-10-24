@@ -1,0 +1,48 @@
+{
+  "note": "No meaningful overlap observed - all concurrent executions show catastrophic slowdown",
+  "experiments": [
+    {
+      "name": "GPU Attention QKV || NPU FFN up/gate",
+      "gpu_solo_ms": 25.8,
+      "npu_solo_ms": 66.6,
+      "gpu_concurrent_ms": 696,
+      "npu_concurrent_ms": 3758,
+      "wall_concurrent_ms": 3758,
+      "sequential_ms": 92.4,
+      "speedup_vs_sequential": 0.025,
+      "gpu_slowdown_pct": 2595,
+      "npu_slowdown_pct": 5546,
+      "overlap_ms": 0,
+      "interpretation": "NPU does not overlap with GPU - both severely slowed by memory contention"
+    },
+    {
+      "name": "GPU large GEMM || NPU FFN up/gate",
+      "gpu_solo_ms": 91.5,
+      "npu_solo_ms": 66.6,
+      "gpu_concurrent_ms": 2425,
+      "npu_concurrent_ms": 3713,
+      "wall_concurrent_ms": 3714,
+      "sequential_ms": 158.2,
+      "speedup_vs_sequential": 0.043,
+      "gpu_slowdown_pct": 2550,
+      "npu_slowdown_pct": 5472,
+      "overlap_ms": 0,
+      "interpretation": "No overlap benefit - 23x slower than sequential"
+    },
+    {
+      "name": "GPU FFN up || NPU FFN down",
+      "gpu_solo_ms": 13.8,
+      "npu_solo_ms": 2.7,
+      "gpu_concurrent_ms": 441,
+      "npu_concurrent_ms": 513,
+      "wall_concurrent_ms": 514,
+      "sequential_ms": 16.5,
+      "speedup_vs_sequential": 0.032,
+      "gpu_slowdown_pct": 3106,
+      "npu_slowdown_pct": 18709,
+      "overlap_ms": 0,
+      "interpretation": "No overlap benefit - 31x slower than sequential"
+    }
+  ],
+  "conclusion": "All concurrent executions show ZERO effective overlap. The wall time equals max(GPU_concurrent, NPU_concurrent) because both run at severely degraded performance simultaneously. True overlap would show wall < max(GPU_solo, NPU_solo)."
+}

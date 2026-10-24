@@ -1,0 +1,8 @@
+config,test,t_s,ratio_vs_vulkan_only
+vulkan-only,pp512,1378.64,1.000
+current-hybrid,pp512,1253.18,0.909
+sysmem-hybrid,pp512,1327.44,0.963
+vulkan-only,pp2048,1395.03,1.000
+sysmem-hybrid,pp2048,1309.27,0.938
+vulkan-only,pp8192,1289.81,1.000
+sysmem-hybrid,pp8192,1223.52,0.949

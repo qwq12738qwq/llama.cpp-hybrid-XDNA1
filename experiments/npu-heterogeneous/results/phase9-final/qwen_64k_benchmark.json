@@ -1,0 +1,23 @@
+{
+  "status": "NOT_RUN",
+  "reason": "Requires Stage 10-11 completion",
+  "planned_contexts": [4096, 8192, 16384, 32768, 65536],
+  "required_prerequisites": [
+    "GPU→XDNA→GPU integration working",
+    "Async pipeline with double-buffering",
+    "KV-cache management across devices",
+    "Scheduler backend assignment verified"
+  ],
+  "metrics_per_context": [
+    "gpu_only_latency_per_token_ms",
+    "gpu_xdna_latency_per_token_ms", 
+    "speedup_ratio",
+    "gpu_utilization_pct",
+    "xdna_utilization_pct",
+    "cpu_utilization_pct",
+    "sync_overhead_ms",
+    "memory_bandwidth_gb_s",
+    "kv_cache_behavior"
+  ],
+  "measurement_methodology": "steady-state decode, ≥100 tokens, identical prompt/generation settings"
+}

@@ -1,0 +1,33 @@
+{
+  "gpu_solo": {
+    "sclk_mhz": 2700,
+    "mclk_mhz": 2800,
+    "fclk_mhz": 1400,
+    "temp_c": 46,
+    "power_w": 40,
+    "busy_pct": 95,
+    "power_state": "D0",
+    "performance_level": "auto"
+  },
+  "gpu_npu_concurrent": {
+    "sclk_mhz": 2700,
+    "mclk_mhz": 2800,
+    "fclk_mhz": 1400,
+    "temp_c": 47,
+    "power_w": 42,
+    "busy_pct": 95,
+    "power_state": "D0",
+    "performance_level": "auto"
+  },
+  "npu_solo": {
+    "note": "NPU clock/temp/power not exposed via sysfs. XRT does not provide real-time power metrics."
+  },
+  "delta": {
+    "sclk_mhz": 0,
+    "mclk_mhz": 0,
+    "temp_c": 1,
+    "power_w": 2,
+    "busy_pct": 0
+  },
+  "conclusion": "No GPU clock collapse, no thermal throttling, no power-management transitions. Slowdown is not power-management interference."
+}

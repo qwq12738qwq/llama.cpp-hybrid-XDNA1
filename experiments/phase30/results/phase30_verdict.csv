@@ -1,0 +1,9 @@
+check,candidate,result,evidence,verdict
+A,async overlap Vulkan/XDNA,PASS,Phase20G overlap_proof 20/20 overlap>0 best=350us (rerun today),overlap exists
+B,prep hiding,XDNA prep 1.8ms hidden when Vulkan per-layer/tile >= 32K (see hiding_arithmetic.csv),hidden but vacuous
+C,KV compression (q8_0 K/V E2E),FAIL,f16 712 vs q8_0 676 t/s @64K (retention 0.504 vs 0.489),no relief
+C2,KV byte reduction (q8_0 K, f16 V, MMQ direct read),FAIL,f16 714 vs q8_0K 624 t/s @64K,no relief (slower)
+- ,occupancy (ubatch 512/1024/2048),REFUTED,943/799/682 t/s @32K - bigger ub slower,not occupancy-bound
+- ,KV bandwidth,NOT BOUND,unique eff bw 33-53 GB/s << LPDDR5 ~120 GB/s,layout/access already optimal
+1,long-context decay source,-,attention ~100% of PP time at 64K (6ops 717ms/ubatch x128),inherent O(C^2) + latency
+VERDICT,-,FAILURE-A,no async-able KV dataflow that relieves Vulkan critical path; overlap possible but no useful prep,

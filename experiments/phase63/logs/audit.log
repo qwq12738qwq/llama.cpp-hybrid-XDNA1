@@ -1,0 +1,55 @@
+direct  wcols=1 sep place              ok   cores= 1 flows=  3 shim_ch=  2 mem_ch= 0 core_ch=  2 locks=  6 (19.54s)
+direct  wcols=1 sep noplace            ok   cores= 1 flows=  3 shim_ch=  2 mem_ch= 0 core_ch=  2 locks=  6 (21.78s)
+direct  wcols=1 mrg place              ok   cores= 1 flows=  2 shim_ch=  1 mem_ch= 0 core_ch=  1 locks=  4 (17.92s)
+direct  wcols=1 mrg noplace            ok   cores= 1 flows=  2 shim_ch=  1 mem_ch= 0 core_ch=  1 locks=  4 (16.79s)
+direct  wcols=2 sep place              ok   cores= 2 flows=  6 shim_ch=  4 mem_ch= 0 core_ch=  4 locks= 12 (14.97s)
+direct  wcols=2 sep noplace            ok   cores= 2 flows=  6 shim_ch=  4 mem_ch= 0 core_ch=  4 locks= 12 (15.32s)
+direct  wcols=2 mrg place              ok   cores= 2 flows=  4 shim_ch=  2 mem_ch= 0 core_ch=  2 locks=  8 (18.96s)
+direct  wcols=2 mrg noplace            ok   cores= 2 flows=  4 shim_ch=  2 mem_ch= 0 core_ch=  2 locks=  8 (13.07s)
+direct  wcols=4 sep place              ok   cores= 4 flows= 12 shim_ch=  8 mem_ch= 0 core_ch=  8 locks= 24 (27.07s)
+direct  wcols=4 sep noplace            ok   cores= 4 flows= 12 shim_ch=  8 mem_ch= 0 core_ch=  8 locks= 24 (17.04s)
+direct  wcols=4 mrg place              ok   cores= 4 flows=  8 shim_ch=  4 mem_ch= 0 core_ch=  4 locks= 16 (19.18s)
+direct  wcols=4 mrg noplace            ok   cores= 4 flows=  8 shim_ch=  4 mem_ch= 0 core_ch=  4 locks= 16 (15.5s)
+direct  wcols=5 sep place              FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (4.08s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=5 sep noplace            FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (11.76s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=5 mrg place              ok   cores= 5 flows= 10 shim_ch=  5 mem_ch= 0 core_ch=  5 locks= 20 (17.15s)
+direct  wcols=5 mrg noplace            ok   cores= 5 flows= 10 shim_ch=  5 mem_ch= 0 core_ch=  5 locks= 20 (20.23s)
+direct  wcols=7 sep place              FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (3.51s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=7 sep noplace            FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (3.4s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=7 mrg place              ok   cores= 7 flows= 14 shim_ch=  7 mem_ch= 0 core_ch=  7 locks= 28 (15.59s)
+direct  wcols=7 mrg noplace            ok   cores= 7 flows= 14 shim_ch=  7 mem_ch= 0 core_ch=  7 locks= 28 (15.72s)
+direct  wcols=8 sep place              FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (3.52s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=8 sep noplace            FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (3.61s)
+        error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+direct  wcols=8 mrg place              ok   cores= 8 flows= 16 shim_ch=  8 mem_ch= 0 core_ch=  8 locks= 32 (14.47s)
+direct  wcols=8 mrg noplace            ok   cores= 8 flows= 16 shim_ch=  8 mem_ch= 0 core_ch=  8 locks= 32 (14.07s)
+relay   1 cols x 1 rows split m        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.96s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   1 cols x 1 rows split n        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.77s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   1 cols x 2 rows split m        ok   cores= 2 flows=  9 shim_ch=  2 mem_ch= 4 core_ch=  4 locks= 22 (3.5s)
+relay   1 cols x 2 rows split n        ok   cores= 2 flows=  9 shim_ch=  2 mem_ch= 4 core_ch=  4 locks= 22 (3.47s)
+relay   1 cols x 4 rows split m        ok   cores= 4 flows= 15 shim_ch=  2 mem_ch= 6 core_ch=  8 locks= 42 (3.59s)
+relay   1 cols x 4 rows split n        ok   cores= 4 flows= 15 shim_ch=  2 mem_ch= 6 core_ch=  8 locks= 42 (3.58s)
+relay   2 cols x 1 rows split m        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.77s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   2 cols x 1 rows split n        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.75s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   2 cols x 2 rows split m        ok   cores= 4 flows= 18 shim_ch=  4 mem_ch= 8 core_ch=  8 locks= 44 (3.55s)
+relay   2 cols x 2 rows split n        ok   cores= 4 flows= 18 shim_ch=  4 mem_ch= 8 core_ch=  8 locks= 44 (3.61s)
+relay   2 cols x 4 rows split m        ok   cores= 8 flows= 30 shim_ch=  4 mem_ch=12 core_ch= 16 locks= 84 (3.93s)
+relay   2 cols x 4 rows split n        ok   cores= 8 flows= 30 shim_ch=  4 mem_ch=12 core_ch= 16 locks= 84 (3.94s)
+relay   4 cols x 1 rows split m        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.77s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   4 cols x 1 rows split n        FAIL cores= 0 flows=  0 shim_ch=  0 mem_ch= 0 core_ch=  0 locks=  0 (2.72s)
+        error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module
+relay   4 cols x 2 rows split m        ok   cores= 8 flows= 36 shim_ch=  8 mem_ch=16 core_ch= 16 locks= 88 (4.02s)
+relay   4 cols x 2 rows split n        ok   cores= 8 flows= 36 shim_ch=  8 mem_ch=16 core_ch= 16 locks= 88 (4.09s)
+relay   4 cols x 4 rows split m        ok   cores=16 flows= 60 shim_ch=  8 mem_ch=24 core_ch= 32 locks=168 (6.22s)
+relay   4 cols x 4 rows split n        ok   cores=16 flows= 60 shim_ch=  8 mem_ch=24 core_ch= 32 locks=168 (6.79s)
+wrote /workspace/llama.cpp/experiments/phase63/scripts/../logs/resource_audit.json

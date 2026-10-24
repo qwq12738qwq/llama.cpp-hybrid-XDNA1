@@ -1,0 +1,13 @@
+=== XDNA xdna_smoke isolated GEMM runs (int8, native xrt run start/wait, kernel exec only) ===
+-- M=512 K=256 N=3072 dir=M512_K256_N3072_C1_Tm64_Tk64_Tn64
+[smoke] start_ns=20108 wait_ns=47283958 state=4
+SMOKE PASS M=512 K=256 N=3072 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+-- M=512 K=256 N=4096 dir=M512_K256_N4096_C1_Tm64_Tk64_Tn64
+[smoke] start_ns=19455 wait_ns=63433793 state=4
+SMOKE PASS M=512 K=256 N=4096 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+-- M=512 K=1024 N=1024 dir=M512_K1024_N1024_C1
+[smoke] start_ns=15589 wait_ns=20347583 state=4
+SMOKE PASS M=512 K=1024 N=1024 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4
+-- M=512 K=1024 N=2048 dir=M512_K1024_N2048_C1
+[smoke] start_ns=12484 wait_ns=40565357 state=4
+SMOKE PASS M=512 K=1024 N=2048 mismatches=0 max_abs=0 max_rel=0.000e+00 state=4

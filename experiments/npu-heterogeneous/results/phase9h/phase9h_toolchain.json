@@ -1,0 +1,16 @@
+{
+  "python_version": "3.14.4",
+  "mlir_aie_version": "1.4.1",
+  "iron_available": true,
+  "aiecc_available": true,
+  "clang_version": "21.0.0 (Xilinx llvm-aie c9c5ecb7)",
+  "xrt_version": "2.21.75",
+  "npu_device": "Phoenix XDNA1 (/dev/accel/accel0)",
+  "peano_available": false,
+  "aiecc_path": "/home/ubuntu12738/Storage/Cache/src/mlir-aie-venv/bin/aiecc",
+  "clang_path": "/home/ubuntu12738/Storage/Cache/src/mlir-aie-venv/lib/python3.14/site-packages/llvm-aie/bin/clang",
+  "mlir_aie_python_path": "/home/ubuntu12738/Storage/Cache/src/mlir-aie-venv/lib/python3.14/site-packages/mlir_aie/python",
+  "NPU_CACHE_DIR": "not set",
+  "XILINX_XRT": "not set",
+  "AIECC_PATH": "not set"
+}

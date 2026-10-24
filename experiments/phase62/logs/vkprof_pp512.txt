@@ -1,0 +1,75 @@
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon 780M Graphics (RADV PHOENIX) (radv) | uma: 1 | fp16: 1 | bf16: 0 | fp4: 0 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+| model                          |       size |     params | backend    | ngl |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | --------------: | -------------------: |
+----------------
+Vulkan Timings:
+ADD: 66 x 144.136 us = 9513.04 us
+CONCAT: 18 x 1632.54 us = 29385.7 us
+CONT: 6 x 298.88 us = 1793.28 us
+CPY: 36 x 50.012 us = 1800.44 us
+FLASH_ATTN_EXT dst(256,8,512,1),  q(256,512,8,1),  k(256,512,2,1),  v(256,512,2,1),  m(512,512,1,1): 6 x 670.567 us = 4023.4 us (3202.49 GFLOPS/s)
+GATED_DELTA_NET: 18 x 1680.84 us = 30255.1 us
+GET_ROWS: 37 x 36.088 us = 1335.28 us
+GLU: 24 x 665.458 us = 15971 us
+L2_NORM: 36 x 335.211 us = 12067.6 us
+MUL: 42 x 219.622 us = 9224.15 us
+MUL_MAT q8_0 m=1024 n=512 k=2048: 24 x 882.903 us = 21189.7 us (2431.7 GFLOPS/s)
+MUL_MAT q8_0 m=1024 n=512 k=3584: 24 x 1411.36 us = 33872.7 us (2662.37 GFLOPS/s)
+MUL_MAT q8_0 m=16 n=512 k=1024: 36 x 72.682 us = 2616.56 us (230.717 GFLOPS/s)
+MUL_MAT q8_0 m=2048 n=512 k=1024: 18 x 1048.42 us = 18871.6 us (2047.3 GFLOPS/s)
+MUL_MAT q8_0 m=3584 n=512 k=1024: 48 x 1842.36 us = 88433.2 us (2038.83 GFLOPS/s)
+MUL_MAT q8_0 m=4096 n=512 k=1024: 6 x 1986.68 us = 11920.1 us (2160.83 GFLOPS/s)
+MUL_MAT q8_0 m=512 n=512 k=1024: 12 x 286.019 us = 3432.24 us (1876.13 GFLOPS/s)
+MUL_MAT q8_0 m=6144 n=512 k=1024: 18 x 3141.03 us = 56538.5 us (2050.06 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=248320 n=1 k=1024: 1 x 6470.33 us = 6470.33 us (78.5603 GFLOPS/s)
+RMS_NORM_MUL RMS_NORM(1024,512,1,1): 49 x 139.984 us = 6859.25 us
+RMS_NORM_MUL RMS_NORM(128,16,512,1): 18 x 413.258 us = 7438.64 us
+RMS_NORM_MUL RMS_NORM(256,2,512,1): 6 x 79.677 us = 478.066 us
+RMS_NORM_MUL RMS_NORM(256,8,512,1): 6 x 316.36 us = 1898.16 us
+ROPE: 12 x 157.044 us = 1884.53 us
+SCALE: 36 x 31.045 us = 1117.62 us
+SET_ROWS: 12 x 48.909 us = 586.908 us
+SIGMOID: 24 x 66.237 us = 1589.69 us
+SILU: 18 x 265.559 us = 4780.07 us
+SOFTPLUS: 18 x 4.347 us = 78.261 us
+SSM_CONV_SILU SSM_CONV: 18 x 1052.93 us = 18952.7 us
+Total time: 404378 us.
+----------------
+Vulkan Timings:
+ADD: 66 x 136.875 us = 9033.77 us
+CONCAT: 18 x 1480.79 us = 26654.2 us
+CONT: 6 x 310.863 us = 1865.18 us
+CPY: 36 x 46.297 us = 1666.71 us
+FLASH_ATTN_EXT dst(256,8,512,1),  q(256,512,8,1),  k(256,512,2,1),  v(256,512,2,1),  m(512,512,1,1): 6 x 613.859 us = 3683.16 us (3498.33 GFLOPS/s)
+GATED_DELTA_NET: 18 x 1529.59 us = 27532.6 us
+GET_ROWS: 37 x 32.355 us = 1197.14 us
+GLU: 24 x 642.987 us = 15431.7 us
+L2_NORM: 36 x 294.591 us = 10605.3 us
+MUL: 42 x 214.873 us = 9024.69 us
+MUL_MAT q8_0 m=1024 n=512 k=2048: 24 x 806.997 us = 19367.9 us (2660.43 GFLOPS/s)
+MUL_MAT q8_0 m=1024 n=512 k=3584: 24 x 1289.73 us = 30953.5 us (2913.46 GFLOPS/s)
+MUL_MAT q8_0 m=16 n=512 k=1024: 36 x 66.236 us = 2384.51 us (253.169 GFLOPS/s)
+MUL_MAT q8_0 m=2048 n=512 k=1024: 18 x 941.181 us = 16941.3 us (2280.58 GFLOPS/s)
+MUL_MAT q8_0 m=3584 n=512 k=1024: 48 x 1708.6 us = 82013 us (2198.44 GFLOPS/s)
+MUL_MAT q8_0 m=4096 n=512 k=1024: 6 x 1925.24 us = 11551.4 us (2229.79 GFLOPS/s)
+MUL_MAT q8_0 m=512 n=512 k=1024: 12 x 272.039 us = 3264.48 us (1972.54 GFLOPS/s)
+MUL_MAT q8_0 m=6144 n=512 k=1024: 18 x 2788.37 us = 50190.7 us (2309.34 GFLOPS/s)
+MUL_MAT_VEC q8_0 m=248320 n=1 k=1024: 1 x 7603.77 us = 7603.77 us (66.8499 GFLOPS/s)
+RMS_NORM_MUL RMS_NORM(1024,512,1,1): 49 x 135.245 us = 6627.05 us
+RMS_NORM_MUL RMS_NORM(128,16,512,1): 18 x 359.564 us = 6472.17 us
+RMS_NORM_MUL RMS_NORM(256,2,512,1): 6 x 76.618 us = 459.711 us
+RMS_NORM_MUL RMS_NORM(256,8,512,1): 6 x 311.097 us = 1866.58 us
+ROPE: 12 x 157.078 us = 1884.94 us
+SCALE: 36 x 29.489 us = 1061.64 us
+SET_ROWS: 12 x 47.469 us = 569.637 us
+SIGMOID: 24 x 63.88 us = 1533.14 us
+SILU: 18 x 257.226 us = 4630.07 us
+SOFTPLUS: 18 x 3.935 us = 70.847 us
+SSM_CONV_SILU SSM_CONV: 18 x 1015.26 us = 18274.7 us
+Total time: 374415 us.
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |           pp512 |       1345.82 ± 0.00 |
+
+build: 7620399f5 (10823)

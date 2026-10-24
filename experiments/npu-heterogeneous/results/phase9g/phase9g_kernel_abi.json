@@ -1,0 +1,64 @@
+{
+  "phase": "9g",
+  "test": "kernel_abi",
+  "timestamp": "2026-09-12",
+  "kernel_name": "matmul_scalar_i8_i32",
+  "source_file": "mm.cc",
+  "template_signature": "matmul_scalar<T_in, T_out, rowA, colA, colB, b_row_maj, c_row_maj>",
+  "instantiation": {
+    "T_in": "int8",
+    "T_out": "int32",
+    "rowA": 1,
+    "colA": 32,
+    "colB": 16,
+    "b_row_maj": true,
+    "c_row_maj": true
+  },
+  "compile_flags": [
+    "-DDIM_M=1",
+    "-DDIM_K=32",
+    "-DDIM_N=16",
+    "-Di8_i32_ONLY"
+  ],
+  "abi_table": {
+    "A": {
+      "kernel_logical_shape": [1, 32],
+      "physical_bytes": 32,
+      "elements": 32,
+      "element_type": "int8",
+      "layout": "row-major (contiguous)",
+      "meaning": "one M×K tile",
+      "bytes_per_invocation": 32
+    },
+    "B": {
+      "kernel_logical_shape": [32, 16],
+      "physical_bytes": 512,
+      "elements": 512,
+      "element_type": "int8",
+      "layout": "row-major (stride 16)",
+      "meaning": "one K×N tile",
+      "bytes_per_invocation": 512
+    },
+    "C": {
+      "kernel_logical_shape": [1, 16],
+      "physical_bytes": 64,
+      "elements": 16,
+      "element_type": "int32",
+      "layout": "row-major (contiguous)",
+      "meaning": "one output row",
+                    "values_per_invocation": 16
+    }
+  },
+  "kernel_semantics": {
+    "accumulation": "YES - *c_ptr += running_sum",
+    "k_tile_assumption": "K=32 per invocation",
+    "mlir_worker_invocations": 32,
+    "c_buffer_lifecycle": "acquire once before K-loop, pass to all 32 calls, release after K-loop"
+  },
+  "verification": {
+    "abi_matches_mlir": true,
+    "accumulation_correct": true,
+    "layout_matches_tap": true,
+    "compilation_status": "FAILED - ExternalFunction not compiled by aiecc"
+  }
+}

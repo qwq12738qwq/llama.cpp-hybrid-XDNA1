@@ -1,0 +1,779 @@
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+[XDNA] Device buffer type initialized
+[GGML_REG] register_device called for AMD Phoenix XDNA1 NPU
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+....................................................................
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (0):
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (0):
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=3 n_graph_inputs=6 n_split_inputs=9 n_backend_transitions=2 copy_bytes=13860 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=3 n_graph_inputs=6 n_split_inputs=9 n_backend_transitions=2 copy_bytes=15396 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=3 n_graph_inputs=6 n_split_inputs=9 n_backend_transitions=2 copy_bytes=15396 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=3 n_graph_inputs=6 n_split_inputs=9 n_backend_transitions=2 copy_bytes=15396 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=68 n_graph_inputs=6 n_split_inputs=79 n_backend_transitions=21 copy_bytes=410462084 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=3 n_graph_inputs=6 n_split_inputs=9 n_backend_transitions=2 copy_bytes=15396 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=68 n_graph_inputs=6 n_split_inputs=79 n_backend_transitions=21 copy_bytes=410462084 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[SCHED-STATS] n_splits=68 n_graph_inputs=6 n_split_inputs=79 n_backend_transitions=22 copy_bytes=139243400 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-COMPUTE] split=0 backend=CPU nodes=1 submit_ms=0.551
+[SCHED-COPY] split=1 input=model.input_embed input_backend=CPU split_backend=Vulkan0 bytes=2097152 time_ms=0.119
+[SCHED-COPY] split=1 input= (view) input_backend=CPU split_backend=Vulkan0 bytes=4 time_ms=0.001
+[SCHED-COPY] split=1 input= (view) input_backend=CPU split_backend=Vulkan0 bytes=0 time_ms=0.000
+[SCHED-COPY] split=1 input=leaf_55 input_backend=CPU split_backend=Vulkan0 bytes=8192 time_ms=0.019
+[SCHED-COPY] split=1 input=leaf_59 input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.001
+[SCHED-COPY] split=1 input=leaf_61 input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.001
+[SCHED-COPY] split=1 input=attn_inp_kq_mask input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=1.274
+[SCHED-COMPUTE] split=1 backend=Vulkan0 nodes=1168 submit_ms=101.636
+[SCHED-COPY] split=2 input=blk.20.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.052
+[SCHED-COMPUTE] split=2 backend=Vulkan0 nodes=3 submit_ms=0.024
+[SCHED-COMPUTE] split=3 backend=CPU nodes=6 submit_ms=0.085
+[SCHED-COPY] split=4 input=blk.20.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.020
+[SCHED-COPY] split=4 input=conv_states_reshaped-20 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.002
+[SCHED-COMPUTE] split=4 backend=Vulkan0 nodes=6 submit_ms=0.082
+[VK-SUMMARY] busy_ms=427.176 submit_ms=101.737 sync_ms=5.363 n_submit=3 n_sync=1
+[SCHED-COPY] split=5 input=conv_state_last-20 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=9.947
+[SCHED-COMPUTE] split=5 backend=CPU nodes=8 submit_ms=6.818
+[SCHED-COPY] split=6 input=blk.20.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.026
+[SCHED-COMPUTE] split=6 backend=Vulkan0 nodes=7 submit_ms=0.088
+[SCHED-COPY] split=7 input=blk.20.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.004
+[SCHED-COMPUTE] split=7 backend=Vulkan0 nodes=2 submit_ms=0.030
+[SCHED-COPY] split=8 input=blk.20.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.007
+[SCHED-COMPUTE] split=8 backend=Vulkan0 nodes=2 submit_ms=0.039
+[SCHED-COPY] split=9 input=blk.20.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.005
+[SCHED-COMPUTE] split=9 backend=Vulkan0 nodes=2 submit_ms=0.027
+[SCHED-COPY] split=10 input=blk.20.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.008
+[SCHED-COPY] split=10 input=state_predelta-20 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.003
+[SCHED-COMPUTE] split=10 backend=Vulkan0 nodes=7 submit_ms=0.039
+[VK-SUMMARY] busy_ms=4.280 submit_ms=0.221 sync_ms=3.732 n_submit=5 n_sync=1
+[SCHED-COPY] split=11 input=new_state-20 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=4.385
+[SCHED-COMPUTE] split=11 backend=CPU nodes=2 submit_ms=0.056
+[SCHED-COPY] split=12 input=blk.20.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.005
+[SCHED-COMPUTE] split=12 backend=Vulkan0 nodes=2 submit_ms=0.028
+[SCHED-COPY] split=13 input=blk.20.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.003
+[SCHED-COMPUTE] split=13 backend=Vulkan0 nodes=5 submit_ms=0.020
+[SCHED-COPY] split=14 input=blk.20.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.002
+[SCHED-COMPUTE] split=14 backend=Vulkan0 nodes=4 submit_ms=0.026
+[SCHED-COPY] split=15 input=blk.20.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.004
+[SCHED-COMPUTE] split=15 backend=Vulkan0 nodes=1 submit_ms=0.012
+[SCHED-COPY] split=16 input=blk.20.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.003
+[SCHED-COMPUTE] split=16 backend=Vulkan0 nodes=1 submit_ms=0.012
+[SCHED-COPY] split=17 input=blk.20.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.003
+[SCHED-COMPUTE] split=17 backend=Vulkan0 nodes=2 submit_ms=0.027
+[SCHED-COPY] split=18 input=blk.20.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.342
+[SCHED-COMPUTE] split=18 backend=Vulkan0 nodes=3 submit_ms=0.393
+[SCHED-COPY] split=19 input=blk.21.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.436
+[SCHED-COMPUTE] split=19 backend=Vulkan0 nodes=3 submit_ms=0.135
+[SCHED-COMPUTE] split=20 backend=CPU nodes=6 submit_ms=0.021
+[SCHED-COPY] split=21 input=blk.21.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.016
+[SCHED-COPY] split=21 input=conv_states_reshaped-21 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.002
+[SCHED-COMPUTE] split=21 backend=Vulkan0 nodes=6 submit_ms=0.071
+[VK-SUMMARY] busy_ms=19.463 submit_ms=0.717 sync_ms=5.364 n_submit=9 n_sync=1
+[SCHED-COPY] split=22 input=conv_state_last-21 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=8.305
+[SCHED-COMPUTE] split=22 backend=CPU nodes=8 submit_ms=0.197
+[SCHED-COPY] split=23 input=blk.21.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.017
+[SCHED-COMPUTE] split=23 backend=Vulkan0 nodes=7 submit_ms=0.067
+[SCHED-COPY] split=24 input=blk.21.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.003
+[SCHED-COMPUTE] split=24 backend=Vulkan0 nodes=2 submit_ms=0.029
+[SCHED-COPY] split=25 input=blk.21.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.002
+[SCHED-COMPUTE] split=25 backend=Vulkan0 nodes=2 submit_ms=0.020
+[SCHED-COPY] split=26 input=blk.21.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.006
+[SCHED-COMPUTE] split=26 backend=Vulkan0 nodes=2 submit_ms=0.019
+[SCHED-COPY] split=27 input=blk.21.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.007
+[SCHED-COPY] split=27 input=state_predelta-21 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.003
+[SCHED-COMPUTE] split=27 backend=Vulkan0 nodes=7 submit_ms=0.032
+[VK-SUMMARY] busy_ms=4.438 submit_ms=0.167 sync_ms=4.134 n_submit=5 n_sync=1
+[SCHED-COPY] split=28 input=new_state-21 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=4.620
+[SCHED-COMPUTE] split=28 backend=CPU nodes=2 submit_ms=0.052
+[SCHED-COPY] split=29 input=blk.21.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.005
+[SCHED-COMPUTE] split=29 backend=Vulkan0 nodes=2 submit_ms=0.034
+[SCHED-COPY] split=30 input=blk.21.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.003
+[SCHED-COMPUTE] split=30 backend=Vulkan0 nodes=5 submit_ms=0.020
+[SCHED-COPY] split=31 input=blk.21.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.002
+[SCHED-COMPUTE] split=31 backend=Vulkan0 nodes=4 submit_ms=0.044
+[SCHED-COPY] split=32 input=blk.21.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.004
+[SCHED-COMPUTE] split=32 backend=Vulkan0 nodes=1 submit_ms=0.014
+[SCHED-COPY] split=33 input=blk.21.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.004
+[SCHED-COMPUTE] split=33 backend=Vulkan0 nodes=1 submit_ms=0.013
+[SCHED-COPY] split=34 input=blk.21.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.004
+[SCHED-COMPUTE] split=34 backend=Vulkan0 nodes=2 submit_ms=0.034
+[SCHED-COPY] split=35 input=blk.21.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.004
+[SCHED-COMPUTE] split=35 backend=Vulkan0 nodes=3 submit_ms=0.034
+[SCHED-COPY] split=36 input=blk.22.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.004
+[SCHED-COMPUTE] split=36 backend=Vulkan0 nodes=3 submit_ms=0.018
+[SCHED-COMPUTE] split=37 backend=CPU nodes=6 submit_ms=0.030
+[SCHED-COPY] split=38 input=blk.22.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.022
+[SCHED-COPY] split=38 input=conv_states_reshaped-22 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.003
+[SCHED-COMPUTE] split=38 backend=Vulkan0 nodes=6 submit_ms=0.100
+[VK-SUMMARY] busy_ms=17.920 submit_ms=0.308 sync_ms=6.081 n_submit=9 n_sync=1
+[SCHED-COPY] split=39 input=conv_state_last-22 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=9.714
+[SCHED-COMPUTE] split=39 backend=CPU nodes=8 submit_ms=0.170
+[SCHED-COPY] split=40 input=blk.22.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.020
+[SCHED-COMPUTE] split=40 backend=Vulkan0 nodes=7 submit_ms=0.093
+[SCHED-COPY] split=41 input=blk.22.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.004
+[SCHED-COMPUTE] split=41 backend=Vulkan0 nodes=2 submit_ms=0.023
+[SCHED-COPY] split=42 input=blk.22.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.003
+[SCHED-COMPUTE] split=42 backend=Vulkan0 nodes=2 submit_ms=0.034
+[SCHED-COPY] split=43 input=blk.22.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.008
+[SCHED-COMPUTE] split=43 backend=Vulkan0 nodes=2 submit_ms=0.034
+[SCHED-COPY] split=44 input=blk.22.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.011
+[SCHED-COPY] split=44 input=state_predelta-22 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.004
+[SCHED-COMPUTE] split=44 backend=Vulkan0 nodes=7 submit_ms=0.040
+[VK-SUMMARY] busy_ms=4.776 submit_ms=0.223 sync_ms=4.336 n_submit=5 n_sync=1
+[SCHED-COPY] split=45 input=new_state-22 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=5.029
+[SCHED-COMPUTE] split=45 backend=CPU nodes=2 submit_ms=0.105
+[SCHED-COPY] split=46 input=blk.22.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.009
+[SCHED-COMPUTE] split=46 backend=Vulkan0 nodes=2 submit_ms=0.059
+[SCHED-COPY] split=47 input=blk.22.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.006
+[SCHED-COMPUTE] split=47 backend=Vulkan0 nodes=5 submit_ms=0.033
+[SCHED-COPY] split=48 input=blk.22.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.004
+[SCHED-COMPUTE] split=48 backend=Vulkan0 nodes=4 submit_ms=0.047
+[SCHED-COPY] split=49 input=blk.22.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.009
+[SCHED-COMPUTE] split=49 backend=Vulkan0 nodes=1 submit_ms=0.018
+[SCHED-COPY] split=50 input=blk.22.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.006
+[SCHED-COMPUTE] split=50 backend=Vulkan0 nodes=1 submit_ms=0.022
+[SCHED-COPY] split=51 input=blk.22.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.007
+[SCHED-COMPUTE] split=51 backend=Vulkan0 nodes=2 submit_ms=0.052
+[SCHED-COPY] split=52 input=blk.22.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.007
+[SCHED-COMPUTE] split=52 backend=Vulkan0 nodes=3 submit_ms=0.045
+[SCHED-COPY] split=53 input=blk.23.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.009
+[SCHED-COMPUTE] split=53 backend=Vulkan0 nodes=1 submit_ms=0.034
+[SCHED-COPY] split=54 input=blk.23.attn_q.weight input_backend=CPU split_backend=Vulkan0 bytes=4456448 time_ms=0.007
+[SCHED-COMPUTE] split=54 backend=Vulkan0 nodes=3 submit_ms=0.045
+[SCHED-COPY] split=55 input=blk.23.attn_q_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=1024 time_ms=0.243
+[SCHED-COMPUTE] split=55 backend=Vulkan0 nodes=2 submit_ms=0.063
+[SCHED-COPY] split=56 input=blk.23.attn_v.weight input_backend=CPU split_backend=Vulkan0 bytes=557056 time_ms=0.188
+[SCHED-COMPUTE] split=56 backend=Vulkan0 nodes=2 submit_ms=0.031
+[SCHED-COPY] split=57 input=blk.23.attn_k.weight input_backend=CPU split_backend=Vulkan0 bytes=557056 time_ms=0.324
+[SCHED-COMPUTE] split=57 backend=Vulkan0 nodes=3 submit_ms=0.324
+[SCHED-COPY] split=58 input=blk.23.attn_k_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=1024 time_ms=0.183
+[SCHED-COMPUTE] split=58 backend=Vulkan0 nodes=3 submit_ms=0.055
+[VK-SUMMARY] busy_ms=19.582 submit_ms=0.822 sync_ms=14.985 n_submit=13 n_sync=1
+[SCHED-COPY] split=59 input=Kcur-23 (view) input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=15.828
+[SCHED-COPY] split=59 input=Vcur-23 (view) input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=0.663
+[SCHED-COMPUTE] split=59 backend=CPU nodes=6 submit_ms=0.160
+[SCHED-COPY] split=60 input=cache_v_l23 (view) (permuted) (transposed) input_backend=CPU split_backend=Vulkan0 bytes=524288 time_ms=0.172
+[SCHED-COPY] split=60 input=cache_k_l23 (view) (permuted) input_backend=CPU split_backend=Vulkan0 bytes=524288 time_ms=0.135
+[SCHED-COMPUTE] split=60 backend=Vulkan0 nodes=14 submit_ms=0.149
+[SCHED-COPY] split=61 input=blk.23.attn_output.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.010
+[SCHED-COMPUTE] split=61 backend=Vulkan0 nodes=3 submit_ms=0.061
+[SCHED-COPY] split=62 input=blk.23.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.012
+[SCHED-COMPUTE] split=62 backend=Vulkan0 nodes=1 submit_ms=0.027
+[SCHED-COPY] split=63 input=blk.23.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.010
+[SCHED-COMPUTE] split=63 backend=Vulkan0 nodes=1 submit_ms=0.033
+[SCHED-COPY] split=64 input=blk.23.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.011
+[SCHED-COMPUTE] split=64 backend=Vulkan0 nodes=2 submit_ms=0.073
+[SCHED-COPY] split=65 input=blk.23.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.011
+[SCHED-COMPUTE] split=65 backend=Vulkan0 nodes=3 submit_ms=0.058
+[SCHED-COPY] split=66 input=output_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.018
+[SCHED-COPY] split=66 input=leaf_375 input_backend=CPU split_backend=Vulkan0 bytes=4 time_ms=16.460
+[SCHED-COMPUTE] split=66 backend=Vulkan0 nodes=2 submit_ms=0.130
+[VK-SUMMARY] busy_ms=17.719 submit_ms=0.526 sync_ms=0.326 n_submit=7 n_sync=1
+[SCHED-COPY] split=67 input=result_norm input_backend=Vulkan0 split_backend=CPU bytes=4096 time_ms=0.729
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[SCHED-COMPUTE] split=67 backend=CPU nodes=1 submit_ms=13.713
+[SCHED-SUMMARY] seq=1 n_nodes=1563 n_nodes_gpu=1492 n_nodes_xdna=0 n_nodes_cpu=71 n_mm_gpu=198 n_mm_xdna=0 n_mm_cpu=1 n_splits=68 n_transitions=22 n_copies=79 n_copy_bufs=4 copy_bytes=139243400 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=126.707 sync_ms=358.563 wall_ms=554.652 acc_busy_ms=1029.839 overlap_ms=475.204 overlap_pair_sum_ms=475.204 overlap_pair=Vulkan0/CPU acc_busy_pct=185.7
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.320 sched_alloc_ms=1.438 set_inputs_ms=0.469 submit_wall_ms=556.960
+[SCHED-COMPUTE] split=0 backend=CPU nodes=1 submit_ms=0.472
+[SCHED-COPY] split=1 input=model.input_embed input_backend=CPU split_backend=Vulkan0 bytes=2097152 time_ms=0.024
+[SCHED-COPY] split=1 input= (view) input_backend=CPU split_backend=Vulkan0 bytes=4 time_ms=0.002
+[SCHED-COPY] split=1 input= (view) input_backend=CPU split_backend=Vulkan0 bytes=0 time_ms=0.000
+[SCHED-COPY] split=1 input=leaf_55 input_backend=CPU split_backend=Vulkan0 bytes=8192 time_ms=0.040
+[SCHED-COPY] split=1 input=leaf_59 input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.003
+[SCHED-COPY] split=1 input=leaf_61 input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.003
+[SCHED-COPY] split=1 input=attn_inp_kq_mask input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.096
+[SCHED-COMPUTE] split=1 backend=Vulkan0 nodes=1168 submit_ms=1.350
+[SCHED-COPY] split=2 input=blk.20.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.011
+[SCHED-COMPUTE] split=2 backend=Vulkan0 nodes=3 submit_ms=0.024
+[SCHED-COMPUTE] split=3 backend=CPU nodes=6 submit_ms=0.028
+[SCHED-COPY] split=4 input=blk.20.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.026
+[SCHED-COPY] split=4 input=conv_states_reshaped-20 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.002
+[SCHED-COMPUTE] split=4 backend=Vulkan0 nodes=6 submit_ms=0.095
+[VK-SUMMARY] busy_ms=413.890 submit_ms=1.466 sync_ms=6.613 n_submit=3 n_sync=1
+[SCHED-COPY] split=5 input=conv_state_last-20 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=8.385
+[SCHED-COMPUTE] split=5 backend=CPU nodes=8 submit_ms=0.209
+[SCHED-COPY] split=6 input=blk.20.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.020
+[SCHED-COMPUTE] split=6 backend=Vulkan0 nodes=7 submit_ms=0.074
+[SCHED-COPY] split=7 input=blk.20.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.005
+[SCHED-COMPUTE] split=7 backend=Vulkan0 nodes=2 submit_ms=0.026
+[SCHED-COPY] split=8 input=blk.20.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.004
+[SCHED-COMPUTE] split=8 backend=Vulkan0 nodes=2 submit_ms=0.033
+[SCHED-COPY] split=9 input=blk.20.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.008
+[SCHED-COMPUTE] split=9 backend=Vulkan0 nodes=2 submit_ms=0.018
+[SCHED-COPY] split=10 input=blk.20.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.006
+[SCHED-COPY] split=10 input=state_predelta-20 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.004
+[SCHED-COMPUTE] split=10 backend=Vulkan0 nodes=7 submit_ms=0.033
+[VK-SUMMARY] busy_ms=4.917 submit_ms=0.183 sync_ms=4.559 n_submit=5 n_sync=1
+[SCHED-COPY] split=11 input=new_state-20 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=5.022
+[SCHED-COMPUTE] split=11 backend=CPU nodes=2 submit_ms=0.140
+[SCHED-COPY] split=12 input=blk.20.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.011
+[SCHED-COMPUTE] split=12 backend=Vulkan0 nodes=2 submit_ms=0.076
+[SCHED-COPY] split=13 input=blk.20.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.008
+[SCHED-COMPUTE] split=13 backend=Vulkan0 nodes=5 submit_ms=0.050
+[SCHED-COPY] split=14 input=blk.20.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.005
+[SCHED-COMPUTE] split=14 backend=Vulkan0 nodes=4 submit_ms=0.111
+[SCHED-COPY] split=15 input=blk.20.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.006
+[SCHED-COMPUTE] split=15 backend=Vulkan0 nodes=1 submit_ms=0.025
+[SCHED-COPY] split=16 input=blk.20.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.007
+[SCHED-COMPUTE] split=16 backend=Vulkan0 nodes=1 submit_ms=0.024
+[SCHED-COPY] split=17 input=blk.20.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.005
+[SCHED-COMPUTE] split=17 backend=Vulkan0 nodes=2 submit_ms=0.057
+[SCHED-COPY] split=18 input=blk.20.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.004
+[SCHED-COMPUTE] split=18 backend=Vulkan0 nodes=3 submit_ms=0.056
+[SCHED-COPY] split=19 input=blk.21.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.004
+[SCHED-COMPUTE] split=19 backend=Vulkan0 nodes=3 submit_ms=0.017
+[SCHED-COMPUTE] split=20 backend=CPU nodes=6 submit_ms=0.028
+[SCHED-COPY] split=21 input=blk.21.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.018
+[SCHED-COPY] split=21 input=conv_states_reshaped-21 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.002
+[SCHED-COMPUTE] split=21 backend=Vulkan0 nodes=6 submit_ms=0.102
+[VK-SUMMARY] busy_ms=20.257 submit_ms=0.515 sync_ms=7.062 n_submit=9 n_sync=1
+[SCHED-COPY] split=22 input=conv_state_last-21 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=9.216
+[SCHED-COMPUTE] split=22 backend=CPU nodes=8 submit_ms=0.382
+[SCHED-COPY] split=23 input=blk.21.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.030
+[SCHED-COMPUTE] split=23 backend=Vulkan0 nodes=7 submit_ms=0.104
+[SCHED-COPY] split=24 input=blk.21.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.006
+[SCHED-COMPUTE] split=24 backend=Vulkan0 nodes=2 submit_ms=1.042
+[SCHED-COPY] split=25 input=blk.21.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.015
+[SCHED-COMPUTE] split=25 backend=Vulkan0 nodes=2 submit_ms=0.059
+[SCHED-COPY] split=26 input=blk.21.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.013
+[SCHED-COMPUTE] split=26 backend=Vulkan0 nodes=2 submit_ms=0.031
+[SCHED-COPY] split=27 input=blk.21.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.013
+[SCHED-COPY] split=27 input=state_predelta-21 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.004
+[SCHED-COMPUTE] split=27 backend=Vulkan0 nodes=7 submit_ms=0.046
+[VK-SUMMARY] busy_ms=4.905 submit_ms=1.279 sync_ms=3.297 n_submit=5 n_sync=1
+[SCHED-COPY] split=28 input=new_state-21 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=3.563
+[SCHED-COMPUTE] split=28 backend=CPU nodes=2 submit_ms=0.277
+[SCHED-COPY] split=29 input=blk.21.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.007
+[SCHED-COMPUTE] split=29 backend=Vulkan0 nodes=2 submit_ms=0.162
+[SCHED-COPY] split=30 input=blk.21.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.006
+[SCHED-COMPUTE] split=30 backend=Vulkan0 nodes=5 submit_ms=0.031
+[SCHED-COPY] split=31 input=blk.21.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.003
+[SCHED-COMPUTE] split=31 backend=Vulkan0 nodes=4 submit_ms=0.030
+[SCHED-COPY] split=32 input=blk.21.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.006
+[SCHED-COMPUTE] split=32 backend=Vulkan0 nodes=1 submit_ms=0.019
+[SCHED-COPY] split=33 input=blk.21.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.003
+[SCHED-COMPUTE] split=33 backend=Vulkan0 nodes=1 submit_ms=0.014
+[SCHED-COPY] split=34 input=blk.21.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.003
+[SCHED-COMPUTE] split=34 backend=Vulkan0 nodes=2 submit_ms=0.034
+[SCHED-COPY] split=35 input=blk.21.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.005
+[SCHED-COMPUTE] split=35 backend=Vulkan0 nodes=3 submit_ms=0.036
+[SCHED-COPY] split=36 input=blk.22.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.003
+[SCHED-COMPUTE] split=36 backend=Vulkan0 nodes=3 submit_ms=0.015
+[SCHED-COMPUTE] split=37 backend=CPU nodes=6 submit_ms=0.058
+[SCHED-COPY] split=38 input=blk.22.attn_qkv.weight input_backend=CPU split_backend=Vulkan0 bytes=6684672 time_ms=0.046
+[SCHED-COPY] split=38 input=conv_states_reshaped-22 input_backend=CPU split_backend=Vulkan0 bytes=73728 time_ms=0.003
+[SCHED-COMPUTE] split=38 backend=Vulkan0 nodes=6 submit_ms=0.139
+[VK-SUMMARY] busy_ms=20.518 submit_ms=0.479 sync_ms=6.569 n_submit=9 n_sync=1
+[SCHED-COPY] split=39 input=conv_state_last-22 input_backend=Vulkan0 split_backend=CPU bytes=12654592 time_ms=8.239
+[SCHED-COMPUTE] split=39 backend=CPU nodes=8 submit_ms=0.672
+[SCHED-COPY] split=40 input=blk.22.ssm_conv1d.weight input_backend=CPU split_backend=Vulkan0 bytes=98304 time_ms=0.019
+[SCHED-COMPUTE] split=40 backend=Vulkan0 nodes=7 submit_ms=0.092
+[SCHED-COPY] split=41 input=blk.22.ssm_alpha.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.003
+[SCHED-COMPUTE] split=41 backend=Vulkan0 nodes=2 submit_ms=0.020
+[SCHED-COPY] split=42 input=blk.22.ssm_dt.bias input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.002
+[SCHED-COMPUTE] split=42 backend=Vulkan0 nodes=2 submit_ms=0.026
+[SCHED-COPY] split=43 input=blk.22.ssm_a input_backend=CPU split_backend=Vulkan0 bytes=64 time_ms=0.011
+[SCHED-COMPUTE] split=43 backend=Vulkan0 nodes=2 submit_ms=0.036
+[SCHED-COPY] split=44 input=blk.22.ssm_beta.weight input_backend=CPU split_backend=Vulkan0 bytes=17408 time_ms=0.008
+[SCHED-COPY] split=44 input=state_predelta-22 input_backend=CPU split_backend=Vulkan0 bytes=1048576 time_ms=0.004
+[SCHED-COMPUTE] split=44 backend=Vulkan0 nodes=7 submit_ms=0.037
+[VK-SUMMARY] busy_ms=5.190 submit_ms=0.210 sync_ms=4.451 n_submit=5 n_sync=1
+[SCHED-COPY] split=45 input=new_state-22 input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=4.763
+[SCHED-COMPUTE] split=45 backend=CPU nodes=2 submit_ms=0.105
+[SCHED-COPY] split=46 input=blk.22.ssm_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=512 time_ms=0.008
+[SCHED-COMPUTE] split=46 backend=Vulkan0 nodes=2 submit_ms=0.050
+[SCHED-COPY] split=47 input=blk.22.attn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.006
+[SCHED-COMPUTE] split=47 backend=Vulkan0 nodes=5 submit_ms=0.028
+[SCHED-COPY] split=48 input=blk.22.ssm_out.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.004
+[SCHED-COMPUTE] split=48 backend=Vulkan0 nodes=4 submit_ms=0.038
+[SCHED-COPY] split=49 input=blk.22.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.004
+[SCHED-COMPUTE] split=49 backend=Vulkan0 nodes=1 submit_ms=0.020
+[SCHED-COPY] split=50 input=blk.22.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.006
+[SCHED-COMPUTE] split=50 backend=Vulkan0 nodes=1 submit_ms=0.018
+[SCHED-COPY] split=51 input=blk.22.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.007
+[SCHED-COMPUTE] split=51 backend=Vulkan0 nodes=2 submit_ms=0.041
+[SCHED-COPY] split=52 input=blk.22.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.008
+[SCHED-COMPUTE] split=52 backend=Vulkan0 nodes=3 submit_ms=0.045
+[SCHED-COPY] split=53 input=blk.23.attn_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.007
+[SCHED-COMPUTE] split=53 backend=Vulkan0 nodes=1 submit_ms=0.020
+[SCHED-COPY] split=54 input=blk.23.attn_q.weight input_backend=CPU split_backend=Vulkan0 bytes=4456448 time_ms=0.007
+[SCHED-COMPUTE] split=54 backend=Vulkan0 nodes=3 submit_ms=0.023
+[SCHED-COPY] split=55 input=blk.23.attn_q_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=1024 time_ms=0.008
+[SCHED-COMPUTE] split=55 backend=Vulkan0 nodes=2 submit_ms=0.018
+[SCHED-COPY] split=56 input=blk.23.attn_v.weight input_backend=CPU split_backend=Vulkan0 bytes=557056 time_ms=0.006
+[SCHED-COMPUTE] split=56 backend=Vulkan0 nodes=2 submit_ms=0.021
+[SCHED-COPY] split=57 input=blk.23.attn_k.weight input_backend=CPU split_backend=Vulkan0 bytes=557056 time_ms=0.008
+[SCHED-COMPUTE] split=57 backend=Vulkan0 nodes=3 submit_ms=0.048
+[SCHED-COPY] split=58 input=blk.23.attn_k_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=1024 time_ms=0.007
+[SCHED-COMPUTE] split=58 backend=Vulkan0 nodes=3 submit_ms=0.019
+[VK-SUMMARY] busy_ms=19.958 submit_ms=0.388 sync_ms=19.104 n_submit=13 n_sync=1
+[SCHED-COPY] split=59 input=Kcur-23 (view) input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=19.365
+[SCHED-COPY] split=59 input=Vcur-23 (view) input_backend=Vulkan0 split_backend=CPU bytes=1048576 time_ms=0.263
+[SCHED-COMPUTE] split=59 backend=CPU nodes=6 submit_ms=0.111
+[SCHED-COPY] split=60 input=cache_v_l23 (view) (permuted) (transposed) input_backend=CPU split_backend=Vulkan0 bytes=524288 time_ms=0.060
+[SCHED-COPY] split=60 input=cache_k_l23 (view) (permuted) input_backend=CPU split_backend=Vulkan0 bytes=524288 time_ms=0.041
+[SCHED-COMPUTE] split=60 backend=Vulkan0 nodes=14 submit_ms=0.074
+[SCHED-COPY] split=61 input=blk.23.attn_output.weight input_backend=CPU split_backend=Vulkan0 bytes=2228224 time_ms=0.007
+[SCHED-COMPUTE] split=61 backend=Vulkan0 nodes=3 submit_ms=0.037
+[SCHED-COPY] split=62 input=blk.23.post_attention_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.005
+[SCHED-COMPUTE] split=62 backend=Vulkan0 nodes=1 submit_ms=0.024
+[SCHED-COPY] split=63 input=blk.23.ffn_gate.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.006
+[SCHED-COMPUTE] split=63 backend=Vulkan0 nodes=1 submit_ms=0.018
+[SCHED-COPY] split=64 input=blk.23.ffn_up.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.003
+[SCHED-COMPUTE] split=64 backend=Vulkan0 nodes=2 submit_ms=0.081
+[SCHED-COPY] split=65 input=blk.23.ffn_down.weight input_backend=CPU split_backend=Vulkan0 bytes=3899392 time_ms=0.005
+[SCHED-COMPUTE] split=65 backend=Vulkan0 nodes=3 submit_ms=0.052
+[SCHED-COPY] split=66 input=output_norm.weight input_backend=CPU split_backend=Vulkan0 bytes=4096 time_ms=0.007
+[SCHED-COPY] split=66 input=leaf_375 input_backend=CPU split_backend=Vulkan0 bytes=4 time_ms=13.257
+[SCHED-COMPUTE] split=66 backend=Vulkan0 nodes=2 submit_ms=0.107
+[VK-SUMMARY] busy_ms=14.409 submit_ms=0.390 sync_ms=0.246 n_submit=7 n_sync=1
+[SCHED-COPY] split=67 input=result_norm input_backend=Vulkan0 split_backend=CPU bytes=4096 time_ms=0.326
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x79cc869a0e90 data=0x79cbb2b13000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x635fd1283da0 data=0x79cc48428000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x79cc2b54aa90 data=0x79cbb290f000 ne=[1024,1,1,1]
+[SCHED-COMPUTE] split=67 backend=CPU nodes=1 submit_ms=12.423
+[SCHED-SUMMARY] seq=2 n_nodes=1563 n_nodes_gpu=1492 n_nodes_xdna=0 n_nodes_cpu=71 n_mm_gpu=198 n_mm_xdna=0 n_mm_cpu=1 n_splits=68 n_transitions=22 n_copies=79 n_copy_bufs=4 copy_bytes=139243400 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=19.833 sync_ms=444.432 wall_ms=527.042 acc_busy_ms=979.279 overlap_ms=452.331 overlap_pair_sum_ms=452.331 overlap_pair=Vulkan0/CPU acc_busy_pct=185.8
+[LLAMA-UBATCH] n_tokens=512 reused=1 graph_build_ms=0.000 sched_alloc_ms=0.000 set_inputs_ms=0.902 submit_wall_ms=528.072
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done

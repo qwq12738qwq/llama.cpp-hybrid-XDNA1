@@ -1,0 +1,43 @@
+{
+  "experiment": "Phase 8-D DDR Contention Instrumentation",
+  "date": "2026-09-11",
+  "hardware": "Phoenix XDNA1 NPU + Radeon 780M GPU",
+  "workload": "INT8 GEMM M=1 K=1024 N=16",
+  "note": "Hardware DDR counters not directly accessible. Using proxy metrics from execution times.",
+  "proxy_metrics": {
+    "gpu_solo_total_us_median": 798.33,
+    "npu_solo_total_us_median": 153.11,
+    "concurrent_total_us_median": 625.06,
+    "gpu_concurrent_vs_solo_ratio": 0.783,
+    "npu_concurrent_vs_solo_ratio": 0.974
+  },
+  "interpretation": {
+    "gpu_slowdown_percent": -21.7,
+    "npu_slowdown_percent": -2.6,
+    "conclusion": "No observable DDR contention at this workload size. GPU actually shows negative slowdown (faster in concurrent), likely due to measurement methodology where concurrent wait time overlaps with NPU execution."
+  },
+  "sweep_npu_workload": [
+    {
+      "npu_workload_percent": 25,
+      "note": "Not tested - requires NPU kernel with configurable work size"
+    },
+    {
+      "npu_workload_percent": 50,
+      "note": "Not tested - requires NPU kernel with configurable work size"
+    },
+    {
+      "npu_workload_percent": 75,
+      "note": "Not tested - requires NPU kernel with configurable work size"
+    },
+    {
+      "npu_workload_percent": 100,
+      "gpu_slowdown_percent": -21.7,
+      "npu_slowdown_percent": -2.6
+    }
+  ],
+  "limitations": [
+    "No hardware DDR bandwidth counters available on Phoenix XDNA1 via XRT",
+    "Proxy metrics based on wall-clock execution times only",
+    "NPU workload sweep requires recompiling xclbin with different tile configurations"
+  ]
+}

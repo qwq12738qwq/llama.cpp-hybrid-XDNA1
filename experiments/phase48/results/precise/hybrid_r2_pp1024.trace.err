@@ -1,0 +1,62 @@
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+[XDNA] Device buffer type initialized
+[GGML_REG] register_device called for AMD Phoenix XDNA1 NPU
+...................................................
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (0):
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (0):
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3426308 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=6696 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3426308 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=2637828 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=1 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=4 copy_bytes=2637828 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.092 wall_ms=7.580 acc_busy_ms=13.860 overlap_ms=6.291 overlap_pair_sum_ms=6.291 overlap_pair=Vulkan0/CPU acc_busy_pct=182.8
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.263 sched_alloc_ms=0.952 set_inputs_ms=0.388 submit_wall_ms=9.276
+[VK-SUMMARY] busy_ms=409.892 submit_ms=6.206 sync_ms=403.482 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3162120 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=2 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=4 copy_bytes=3162120 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.006 wall_ms=60.608 acc_busy_ms=119.198 overlap_ms=58.607 overlap_pair_sum_ms=58.607 overlap_pair=Vulkan0/CPU acc_busy_pct=196.7
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.308 sched_alloc_ms=1.161 set_inputs_ms=0.637 submit_wall_ms=466.637
+[VK-SUMMARY] busy_ms=393.476 submit_ms=58.424 sync_ms=334.509 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=2637828 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=3 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=4 copy_bytes=2637828 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.007 wall_ms=3.536 acc_busy_ms=5.437 overlap_ms=1.927 overlap_pair_sum_ms=1.927 overlap_pair=Vulkan0/CPU acc_busy_pct=153.7
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.422 sched_alloc_ms=2.226 set_inputs_ms=0.609 submit_wall_ms=7.167
+[VK-SUMMARY] busy_ms=382.433 submit_ms=1.802 sync_ms=380.211 n_submit=1 n_sync=1
+[SCHED-STATS] n_splits=2 n_graph_inputs=6 n_split_inputs=8 n_backend_transitions=1 copy_bytes=3162120 vk_to_xdna_count=0 vk_to_xdna_bytes=0 xdna_to_vk_count=0 xdna_to_vk_bytes=0
+[SCHED-SUMMARY] seq=4 n_nodes=1391 n_nodes_gpu=1388 n_nodes_xdna=0 n_nodes_cpu=3 n_mm_gpu=187 n_mm_xdna=0 n_mm_cpu=0 n_splits=2 n_transitions=1 n_copies=8 n_copy_bufs=4 copy_bytes=3162120 v2x_n=0 v2x_bytes=0 v2x_ms=0.000 x2v_n=0 x2v_bytes=0 x2v_ms=0.000 c2x_n=0 c2x_bytes=0 c2x_ms=0.000 x2c_n=0 x2c_bytes=0 x2c_ms=0.000 alloc_ms=0.000 submit_ms=0.000 sync_ms=0.005 wall_ms=4.414 acc_busy_ms=6.171 overlap_ms=1.767 overlap_pair_sum_ms=1.767 overlap_pair=Vulkan0/CPU acc_busy_pct=139.8
+[LLAMA-UBATCH] n_tokens=512 reused=0 graph_build_ms=0.421 sched_alloc_ms=1.673 set_inputs_ms=0.759 submit_wall_ms=388.018
+[VK-SUMMARY] busy_ms=397.920 submit_ms=1.650 sync_ms=396.079 n_submit=1 n_sync=1
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done

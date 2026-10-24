@@ -1,0 +1,24 @@
+{
+  "mlir_aie_git_commit": "601fc859532f2539bebb33ac89139584c76ae8a2",
+  "mlir_aie_tag": "v1.4.1",
+  "llvm_aie_git_commit": "a5d028e8ca21cbafaf63b3d5b9ab59410830e452",
+  "llvm_aie_tag": null,
+  "aiecc_python_package": "mlir-aie==1.4.1",
+  "aiecc_git_sha": "601fc85",
+  "aiecc_compiled": "Sep 16 2026 03:27:42",
+  "aiecc_binary": "/Storage/Cache/src/mlir-aie-venv/lib/python3.14/site-packages/mlir_aie/bin/aiecc",
+  "iron_python_package": null,
+  "peano_requirements_txt": "llvm-aie==22.0.0.2026090201+a36c62b9",
+  "container": "npu-dev",
+  "xrt_version": "2.21.75",
+  "npu_firmware": "1.5.5.391",
+  "hardware": "Ryzen 7 7840HS Phoenix XDNA1 AIE2 NPU1",
+  "host": "Ubuntu",
+  "python_version": "3.14.4",
+  "source_dirs": {
+    "mlir_aie_src": "/Storage/Cache/mlir-aie-src",
+    "llvm_aie_src": "/Storage/Cache/llvm-aie",
+    "mlir_aie_build": "/Storage/Cache/src/mlir-aie",
+    "mlir_aie_venv": "/Storage/Cache/src/mlir-aie-venv"
+  }
+}

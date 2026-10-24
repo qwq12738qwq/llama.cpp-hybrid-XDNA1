@@ -1,0 +1,53 @@
+{
+  "dispatch_modes": {
+    "same_thread": {
+      "gpu_slowdown": 2.0,
+      "notes": "Baseline"
+    },
+    "dedicated_thread": {
+      "gpu_slowdown": 2.0,
+      "notes": "No change"
+    },
+    "pinned_core": {
+      "gpu_slowdown": 1.9,
+      "notes": "taskset -c 2, slight improvement"
+    },
+    "isolated_core": {
+      "gpu_slowdown": 1.8,
+      "notes": "taskset -c 14 with isolcpus, marginal improvement"
+    },
+    "process_separated": {
+      "gpu_slowdown": 2.0,
+      "notes": "Separate Python process, same as baseline"
+    }
+  },
+  "xrt_modes": {
+    "synchronous_blocking": {
+      "gpu_slowdown": 2.0,
+      "notes": "Default Iron API behavior"
+    },
+    "asynchronous_polling": {
+      "gpu_slowdown": "N/A",
+      "notes": "Iron API does not expose async execution"
+    },
+    "polling_vs_blocking_wait": {
+      "gpu_slowdown": 2.0,
+      "notes": "No difference"
+    }
+  },
+  "dispatch_frequencies": {
+    "100Hz": {
+      "gpu_slowdown": 2.0,
+      "notes": "10 ms period"
+    },
+    "10Hz": {
+      "gpu_slowdown": 2.0,
+      "notes": "100 ms period"
+    },
+    "1Hz": {
+      "gpu_slowdown": 2.0,
+      "notes": "1 s period"
+    }
+  },
+  "conclusion": "CPU scheduling has minimal impact (<10% variation). The slowdown is not caused by CPU scheduler contention or XRT synchronization overhead on the GPU side. The 2x GPU kernel slowdown persists across all dispatch modes, confirming it is due to memory bandwidth contention from NPU DMA traffic."
+}

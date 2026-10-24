@@ -1,0 +1,18 @@
+{
+  "iterations": 3,
+  "events": [
+    {"name": "sched_start", "start_us": 0.0, "end_us": 45.2, "backend": "scheduler"},
+    {"name": "sched_sync", "start_us": 45.2, "end_us": 168.5, "backend": "scheduler"},
+    {"name": "sched_start", "start_us": 168.5, "end_us": 213.7, "backend": "scheduler"},
+    {"name": "sched_sync", "start_us": 213.7, "end_us": 337.2, "backend": "scheduler"},
+    {"name": "sched_start", "start_us": 337.2, "end_us": 382.4, "backend": "scheduler"},
+    {"name": "sched_sync", "start_us": 382.4, "end_us": 506.1, "backend": "scheduler"}
+  ],
+  "analysis": {
+    "gpu_xdna_overlap": false,
+    "hidden_global_sync": false,
+    "scheduler_model": "sequential_splits",
+    "split_execution_order": ["CPU_split0", "XDNA_split1", "CPU_split2"],
+    "event_sync_points": ["CPU_event0 → XDNA_wait0", "XDNA_event1 → CPU_wait1"]
+  }
+}

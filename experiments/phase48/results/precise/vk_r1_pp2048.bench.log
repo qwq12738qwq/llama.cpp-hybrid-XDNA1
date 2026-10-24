@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0
+RESULT,pp=2048,batch=2048,ubatch=512,mode=bench,pp_tps=1331.20,pp_tps_sd=7.50,pp_ms=1538.466,pp_ms_sd=8.676,pp_tps_mean=1329.44,n_warmup=2,n_measure=9,peak_rss_kb=172596,tag=vk_r1

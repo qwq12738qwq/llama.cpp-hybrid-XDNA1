@@ -1,0 +1,79 @@
+{
+ "M": 512,
+ "K": 1024,
+ "N": 3584,
+ "flops": 3758096384.0,
+ "dma": {
+  "n_mt": 16,
+  "n_nt_c": 14,
+  "n_kc": 4,
+  "groups": 896,
+  "a_unique": 589824,
+  "b_unique": 4128768,
+  "c_bytes": 7340032,
+  "a_actual": 33030144,
+  "b_actual": 66060288,
+  "dma_unique": 12058624,
+  "dma_actual": 106430464,
+  "redundancy": 8.826086956521738,
+  "a_redundancy": 56.0,
+  "b_redundancy": 16.0
+ },
+ "pack_a_ms": 0.0,
+ "pack_b_ms": 0.0,
+ "bo_write_a_ms": 6.916300000739284,
+ "bo_write_b_ms": 0.39388000004692003,
+ "sync_to_ms": 0.14360700151883066,
+ "rows": [
+  {
+   "c_zero_sync_ms": 0.298002,
+   "run_ctor_arg_ms": 0.049392,
+   "submit_ms": 0.034604,
+   "wait_ms": 359.054969,
+   "sync_from_ms": 0.204229,
+   "copyback_ms": 0.93841,
+   "max_err": 187.62642669677734,
+   "gflops_wait": 10.466632433653912
+  },
+  {
+   "c_zero_sync_ms": 0.293374,
+   "run_ctor_arg_ms": 0.051596,
+   "submit_ms": 0.038631,
+   "wait_ms": 359.83778,
+   "sync_from_ms": 0.225879,
+   "copyback_ms": 0.926187,
+   "max_err": 187.62642669677734,
+   "gflops_wait": 10.443862742817055
+  },
+  {
+   "c_zero_sync_ms": 0.246487,
+   "run_ctor_arg_ms": 0.057767,
+   "submit_ms": 0.037439,
+   "wait_ms": 356.666553,
+   "sync_from_ms": 0.213135,
+   "copyback_ms": 0.940123,
+   "max_err": 187.62642669677734,
+   "gflops_wait": 10.536722191609595
+  },
+  {
+   "c_zero_sync_ms": 0.245115,
+   "run_ctor_arg_ms": 0.051385,
+   "submit_ms": 0.036027,
+   "wait_ms": 356.629684,
+   "sync_from_ms": 0.127136,
+   "copyback_ms": 1.47301,
+   "max_err": 187.62642669677734,
+   "gflops_wait": 10.537811496364391
+  },
+  {
+   "c_zero_sync_ms": 0.309494,
+   "run_ctor_arg_ms": 0.042128,
+   "submit_ms": 0.025777,
+   "wait_ms": 358.30503,
+   "sync_from_ms": 0.131283,
+   "copyback_ms": 0.914205,
+   "max_err": 187.62642669677734,
+   "gflops_wait": 10.488539287321755
+  }
+ ]
+}

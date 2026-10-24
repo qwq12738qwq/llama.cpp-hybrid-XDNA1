@@ -1,0 +1,16 @@
+{
+  "phase": "9f",
+  "test": "ggml_correctness_validation",
+  "kernel": "m1_k1024_n16_matmul_i8_i32",
+  "status": "SKIPPED",
+  "reason": "Skipped due to standalone correctness test failure (100/100 mismatches). ggml integration requires standalone kernel correctness first.",
+  "planned_test": "CPU -> XDNA MUL_MAT -> CPU graph with M=1,K=1024,N=16",
+  "planned_iterations": 100,
+  "planned_reference": "pure CPU ggml reference",
+  "planned_metrics": [
+    "numerical_mismatches",
+    "crashes",
+    "heap_corruption",
+    "asan_ubsan_errors"
+  ]
+}

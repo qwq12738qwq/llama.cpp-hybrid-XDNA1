@@ -1,0 +1,1058 @@
+{
+  "config": {
+    "M_values": [
+      16384,
+      32768,
+      65536
+    ],
+    "iters": 2,
+    "skip_npu": false
+  },
+  "candidates": [
+    {
+      "op": "Q_proj",
+      "op_type": "GEMM",
+      "desc": "Q projection: [M,4096] @ [4096,4096]",
+      "M": 16384,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 20.759,
+        "compute_ms": 267.37,
+        "d2h_ms": 17.766,
+        "total_ms": 306.325,
+        "gops": 2056.16,
+        "total_ops": 549755813888,
+        "gmac": 549.76
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 17616.3
+      }
+    },
+    {
+      "op": "K_proj",
+      "op_type": "GEMM",
+      "desc": "K projection: [M,4096] @ [4096,4096]",
+      "M": 16384,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 20.81,
+        "compute_ms": 266.205,
+        "d2h_ms": 17.796,
+        "total_ms": 305.212,
+        "gops": 2065.16,
+        "total_ops": 549755813888,
+        "gmac": 549.76
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 17616.3
+      }
+    },
+    {
+      "op": "V_proj",
+      "op_type": "GEMM",
+      "desc": "V projection: [M,4096] @ [4096,4096]",
+      "M": 16384,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 20.777,
+        "compute_ms": 265.222,
+        "d2h_ms": 18.191,
+        "total_ms": 304.232,
+        "gops": 2072.82,
+        "total_ops": 549755813888,
+        "gmac": 549.76
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 17616.3
+      }
+    },
+    {
+      "op": "O_proj",
+      "op_type": "GEMM",
+      "desc": "O projection: [M,4096] @ [4096,4096]",
+      "M": 16384,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 20.747,
+        "compute_ms": 267.677,
+        "d2h_ms": 17.832,
+        "total_ms": 306.443,
+        "gops": 2053.8,
+        "total_ops": 549755813888,
+        "gmac": 549.76
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 17616.3
+      }
+    },
+    {
+      "op": "QK_t",
+      "op_type": "GEMM",
+      "desc": "QK^T per head: [M,128] @ [128,M]",
+      "M": 16384,
+      "K": 128,
+      "N": 16384,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 128,
+        "N": 16384,
+        "h2d_ms": 1.41,
+        "compute_ms": 75.559,
+        "d2h_ms": 70.133,
+        "total_ms": 147.622,
+        "gops": 909.48,
+        "total_ops": 68719476736,
+        "gmac": 68.72
+      },
+      "npu": {
+        "status": "TIMEOUT"
+      }
+    },
+    {
+      "op": "Attn_V",
+      "op_type": "GEMM",
+      "desc": "Attn x V per head: [M,M] @ [M,128]",
+      "M": 16384,
+      "K": 128,
+      "N": 128,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 128,
+        "N": 128,
+        "h2d_ms": 0.602,
+        "compute_ms": 0.232,
+        "d2h_ms": 0.582,
+        "total_ms": 1.505,
+        "gops": 2314.89,
+        "total_ops": 536870912,
+        "gmac": 0.54
+      },
+      "npu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 128,
+        "N": 128,
+        "compute_ms": 60.63995849999999,
+        "total_ms": 61.155173000000005,
+        "h2d_ms": 0.06695949999999999,
+        "d2h_ms": 0.5447015000000001,
+        "overhead_ms": 0.5152145000000091,
+        "gops": 8.853418196188246
+      }
+    },
+    {
+      "op": "FFN_gate",
+      "op_type": "GEMM",
+      "desc": "FFN gate: [M,14336] @ [14336,4096]",
+      "M": 16384,
+      "K": 14336,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 14336,
+        "N": 4096,
+        "h2d_ms": 72.619,
+        "compute_ms": 651.057,
+        "d2h_ms": 18.514,
+        "total_ms": 740.51,
+        "gops": 2955.42,
+        "total_ops": 1924145348608,
+        "gmac": 1924.15
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 14336,
+        "N": 4096,
+        "error": "K=14336 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 61658.299999999996
+      }
+    },
+    {
+      "op": "FFN_up",
+      "op_type": "GEMM",
+      "desc": "FFN up: [M,14336] @ [14336,4096]",
+      "M": 16384,
+      "K": 14336,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 14336,
+        "N": 4096,
+        "h2d_ms": 72.107,
+        "compute_ms": 646.395,
+        "d2h_ms": 18.313,
+        "total_ms": 736.249,
+        "gops": 2976.73,
+        "total_ops": 1924145348608,
+        "gmac": 1924.15
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 14336,
+        "N": 4096,
+        "error": "K=14336 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 61658.299999999996
+      }
+    },
+    {
+      "op": "FFN_down",
+      "op_type": "GEMM",
+      "desc": "FFN down: [M,4096] @ [4096,14336]",
+      "M": 16384,
+      "K": 4096,
+      "N": 14336,
+      "gpu": {
+        "status": "ERROR",
+        "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=16384 K=4096 N=14336\nradv/amdgpu: The CS has been cancelled because the context is lost. This context is guilty of a hard recovery.\nVK error -4 at line 291\n"
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 16384,
+        "K": 4096,
+        "N": 14336,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 17616.3
+      }
+    },
+    {
+      "op": "RMSNorm",
+      "op_type": "ELEMENTWISE",
+      "desc": "RMSNorm: [M,4096] elementwise",
+      "M": 16384,
+      "K": 0,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 2.147483648,
+        "total_ms": 2.147483648,
+        "h2d_ms": 0,
+        "d2h_ms": 0
+      },
+      "npu": {
+        "status": "ESTIMATED",
+        "op": "RMSNorm",
+        "M": 16384,
+        "N": 4096,
+        "compute_ms": 26.843545600000002,
+        "h2d_ms": 0.05,
+        "d2h_ms": 0.05,
+        "total_ms": 26.943545600000004,
+        "overhead_ms": 0.05,
+        "note": "Estimated from memory bandwidth"
+      }
+    },
+    {
+      "op": "Activation",
+      "op_type": "ELEMENTWISE",
+      "desc": "SwiGLU activation: [M,4096] elementwise",
+      "M": 16384,
+      "K": 0,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 2.147483648,
+        "total_ms": 2.147483648,
+        "h2d_ms": 0,
+        "d2h_ms": 0
+      },
+      "npu": {
+        "status": "ESTIMATED",
+        "op": "Activation",
+        "M": 16384,
+        "N": 4096,
+        "compute_ms": 26.843545600000002,
+        "h2d_ms": 0.05,
+        "d2h_ms": 0.05,
+        "total_ms": 26.943545600000004,
+        "overhead_ms": 0.05,
+        "note": "Estimated from memory bandwidth"
+      }
+    },
+    {
+      "op": "Q_proj",
+      "op_type": "GEMM",
+      "desc": "Q projection: [M,4096] @ [4096,4096]",
+      "M": 32768,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 37.395,
+        "compute_ms": 425.1,
+        "d2h_ms": 35.977,
+        "total_ms": 498.981,
+        "gops": 2586.48,
+        "total_ops": 1099511627776,
+        "gmac": 1099.51
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 35229.1
+      }
+    },
+    {
+      "op": "K_proj",
+      "op_type": "GEMM",
+      "desc": "K projection: [M,4096] @ [4096,4096]",
+      "M": 32768,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 37.607,
+        "compute_ms": 424.48,
+        "d2h_ms": 36.765,
+        "total_ms": 498.111,
+        "gops": 2590.25,
+        "total_ops": 1099511627776,
+        "gmac": 1099.51
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 35229.1
+      }
+    },
+    {
+      "op": "V_proj",
+      "op_type": "GEMM",
+      "desc": "V projection: [M,4096] @ [4096,4096]",
+      "M": 32768,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 36.929,
+        "compute_ms": 426.457,
+        "d2h_ms": 35.723,
+        "total_ms": 499.33,
+        "gops": 2578.24,
+        "total_ops": 1099511627776,
+        "gmac": 1099.51
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 35229.1
+      }
+    },
+    {
+      "op": "O_proj",
+      "op_type": "GEMM",
+      "desc": "O projection: [M,4096] @ [4096,4096]",
+      "M": 32768,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "h2d_ms": 37.5,
+        "compute_ms": 424.54,
+        "d2h_ms": 36.044,
+        "total_ms": 497.409,
+        "gops": 2589.89,
+        "total_ops": 1099511627776,
+        "gmac": 1099.51
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 4096,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 35229.1
+      }
+    },
+    {
+      "op": "QK_t",
+      "op_type": "GEMM",
+      "desc": "QK^T per head: [M,128] @ [128,M]",
+      "M": 32768,
+      "K": 128,
+      "N": 32768,
+      "gpu": {
+        "status": "ERROR",
+        "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=32768 K=128 N=32768\nradv/amdgpu: Failed to allocate a buffer:\nradv/amdgpu:    size      : 4294967296 bytes\nradv/amdgpu:    alignment : 262144 bytes\nradv/amdgpu:    domains   : 4\nVK error -2 at line 139\n"
+      },
+      "npu": {
+        "status": "ERROR",
+        "error": "Traceback (most recent call last):\n  File \"/experiments/gpu-npu-prefill/npu_candidate_bench.py\", line 334, in <module>\n    main()\n    ~~~~^^\n  File \"/experiments/gpu-npu-prefill/npu_candidate_bench.py\", line 315, in main\n    result = measure_gemm(args.M, args.K, args.N, args.iters)\n  File \"/experiments/gpu-npu-prefill/npu_candidate_bench.py\", line 90, in measure_gemm\n    compiled = design.specialize(M=M, K=K, N=N).compile()\n  File \"/root/src/mlir-aie-venv/lib/python3.14/site-packages/mlir_aie/py"
+      }
+    },
+    {
+      "op": "Attn_V",
+      "op_type": "GEMM",
+      "desc": "Attn x V per head: [M,M] @ [M,128]",
+      "M": 32768,
+      "K": 128,
+      "N": 128,
+      "gpu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 128,
+        "N": 128,
+        "h2d_ms": 1.089,
+        "compute_ms": 0.451,
+        "d2h_ms": 1.12,
+        "total_ms": 2.756,
+        "gops": 2381.14,
+        "total_ops": 1073741824,
+        "gmac": 1.07
+      },
+      "npu": {
+        "status": "OK",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 128,
+        "N": 128,
+        "compute_ms": 120.4275275,
+        "total_ms": 120.899793,
+        "h2d_ms": 0.1227715,
+        "d2h_ms": 0.8808575000000001,
+        "overhead_ms": 0.4722655000000086,
+        "gops": 8.91608294457428
+      }
+    },
+    {
+      "op": "FFN_gate",
+      "op_type": "GEMM",
+      "desc": "FFN gate: [M,14336] @ [14336,4096]",
+      "M": 32768,
+      "K": 14336,
+      "N": 4096,
+      "gpu": {
+        "status": "ERROR",
+        "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=32768 K=14336 N=4096\nradv/amdgpu: Not enough memory for command submission.\nVK error -4 at line 291\n"
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 14336,
+        "N": 4096,
+        "error": "K=14336 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 123303.09999999999
+      }
+    },
+    {
+      "op": "FFN_up",
+      "op_type": "GEMM",
+      "desc": "FFN up: [M,14336] @ [14336,4096]",
+      "M": 32768,
+      "K": 14336,
+      "N": 4096,
+      "gpu": {
+        "status": "ERROR",
+        "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=32768 K=14336 N=4096\nradv/amdgpu: Not enough memory for command submission.\nVK error -4 at line 291\n"
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 14336,
+        "N": 4096,
+        "error": "K=14336 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 123303.09999999999
+      }
+    },
+    {
+      "op": "FFN_down",
+      "op_type": "GEMM",
+      "desc": "FFN down: [M,4096] @ [4096,14336]",
+      "M": 32768,
+      "K": 4096,
+      "N": 14336,
+      "gpu": {
+        "status": "ERROR",
+        "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=32768 K=4096 N=14336\nradv/amdgpu: Not enough memory for command submission.\nVK error -4 at line 291\n"
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "op": "GEMM",
+        "M": 32768,
+        "K": 4096,
+        "N": 14336,
+        "error": "K=4096 > 512 exceeds DMA BD generation limit (mlir-aie 1.4.1)",
+        "note": "Would require tiling K into 512-wide chunks",
+        "estimated_tiled_ms": 35229.1
+      }
+    },
+    {
+      "op": "RMSNorm",
+      "op_type": "ELEMENTWISE",
+      "desc": "RMSNorm: [M,4096] elementwise",
+      "M": 32768,
+      "K": 0,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 4.294967296,
+        "total_ms": 4.294967296,
+        "h2d_ms": 0,
+        "d2h_ms": 0
+      },
+      "npu": {
+        "status": "ESTIMATED",
+        "op": "RMSNorm",
+        "M": 32768,
+        "N": 4096,
+        "compute_ms": 53.687091200000005,
+        "h2d_ms": 0.05,
+        "d2h_ms": 0.05,
+        "total_ms": 53.787091200000006,
+        "overhead_ms": 0.05,
+        "note": "Estimated from memory bandwidth"
+      }
+    },
+    {
+      "op": "Activation",
+      "op_type": "ELEMENTWISE",
+      "desc": "SwiGLU activation: [M,4096] elementwise",
+      "M": 32768,
+      "K": 0,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 4.294967296,
+        "total_ms": 4.294967296,
+        "h2d_ms": 0,
+        "d2h_ms": 0
+      },
+      "npu": {
+        "status": "ESTIMATED",
+        "op": "Activation",
+        "M": 32768,
+        "N": 4096,
+        "compute_ms": 53.687091200000005,
+        "h2d_ms": 0.05,
+        "d2h_ms": 0.05,
+        "total_ms": 53.787091200000006,
+        "overhead_ms": 0.05,
+        "note": "Estimated from memory bandwidth"
+      }
+    },
+    {
+      "op": "Q_proj",
+      "op_type": "GEMM",
+      "desc": "Q projection: [M,4096] @ [4096,4096]",
+      "M": 65536,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 913.39,
+        "total_ms": 1060.63,
+        "h2d_ms": 77.48,
+        "d2h_ms": 73.472,
+        "gops": 2407.54
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "compute_ms": Infinity,
+        "total_ms": Infinity,
+        "note": "M too large for NPU"
+      }
+    },
+    {
+      "op": "K_proj",
+      "op_type": "GEMM",
+      "desc": "K projection: [M,4096] @ [4096,4096]",
+      "M": 65536,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 846.976,
+        "total_ms": 992.192,
+        "h2d_ms": 73.592,
+        "d2h_ms": 70.772,
+        "gops": 2596.33
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "compute_ms": Infinity,
+        "total_ms": Infinity,
+        "note": "M too large for NPU"
+      }
+    },
+    {
+      "op": "V_proj",
+      "op_type": "GEMM",
+      "desc": "V projection: [M,4096] @ [4096,4096]",
+      "M": 65536,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 847.258,
+        "total_ms": 994.584,
+        "h2d_ms": 75.474,
+        "d2h_ms": 72.896,
+        "gops": 2595.46
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "compute_ms": Infinity,
+        "total_ms": Infinity,
+        "note": "M too large for NPU"
+      }
+    },
+    {
+      "op": "O_proj",
+      "op_type": "GEMM",
+      "desc": "O projection: [M,4096] @ [4096,4096]",
+      "M": 65536,
+      "K": 4096,
+      "N": 4096,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 849.618,
+        "total_ms": 994.822,
+        "h2d_ms": 73.884,
+        "d2h_ms": 70.86,
+        "gops": 2588.25
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "compute_ms": Infinity,
+        "total_ms": Infinity,
+        "note": "M too large for NPU"
+      }
+    },
+    {
+      "op": "Attn_V",
+      "op_type": "GEMM",
+      "desc": "Attn x V per head: [M,M] @ [M,128]",
+      "M": 65536,
+      "K": 128,
+      "N": 128,
+      "gpu": {
+        "status": "ESTIMATED",
+        "compute_ms": 0.906,
+        "total_ms": 5.882,
+        "h2d_ms": 2.276,
+        "d2h_ms": 2.526,
+        "gops": 2372.49
+      },
+      "npu": {
+        "status": "BLOCKED",
+        "compute_ms": Infinity,
+        "total_ms": Infinity,
+        "note": "M too large for NPU"
+      }
+    }
+  ],
+  "results": {
+    "16384": {
+      "classifications": [
+        {
+          "op": "Q_proj",
+          "M": 16384,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (2%)",
+          "gpu_compute_ms": 267.37,
+          "gpu_total_ms": 306.325,
+          "npu_compute_ms": 17616.3,
+          "npu_total_ms": 17616.3
+        },
+        {
+          "op": "K_proj",
+          "M": 16384,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (2%)",
+          "gpu_compute_ms": 266.205,
+          "gpu_total_ms": 305.212,
+          "npu_compute_ms": 17616.3,
+          "npu_total_ms": 17616.3
+        },
+        {
+          "op": "V_proj",
+          "M": 16384,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (2%)",
+          "gpu_compute_ms": 265.222,
+          "gpu_total_ms": 304.232,
+          "npu_compute_ms": 17616.3,
+          "npu_total_ms": 17616.3
+        },
+        {
+          "op": "O_proj",
+          "M": 16384,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (2%)",
+          "gpu_compute_ms": 267.677,
+          "gpu_total_ms": 306.443,
+          "npu_compute_ms": 17616.3,
+          "npu_total_ms": 17616.3
+        },
+        {
+          "op": "QK_t",
+          "M": 16384,
+          "K": 128,
+          "N": 16384,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 75.559,
+          "gpu_total_ms": 147.622,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        },
+        {
+          "op": "Attn_V",
+          "M": 16384,
+          "K": 128,
+          "N": 128,
+          "class": "C",
+          "reason": "NPU not hidden (0%)",
+          "gpu_compute_ms": 0.232,
+          "gpu_total_ms": 1.505,
+          "npu_compute_ms": 60.63995849999999,
+          "npu_total_ms": 61.155173000000005
+        },
+        {
+          "op": "FFN_gate",
+          "M": 16384,
+          "K": 14336,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 651.057,
+          "gpu_total_ms": 740.51,
+          "npu_compute_ms": 61658.299999999996,
+          "npu_total_ms": 61658.299999999996
+        },
+        {
+          "op": "FFN_up",
+          "M": 16384,
+          "K": 14336,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 646.395,
+          "gpu_total_ms": 736.249,
+          "npu_compute_ms": 61658.299999999996,
+          "npu_total_ms": 61658.299999999996
+        },
+        {
+          "op": "RMSNorm",
+          "M": 16384,
+          "K": 0,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (8%)",
+          "gpu_compute_ms": 2.147483648,
+          "gpu_total_ms": 2.147483648,
+          "npu_compute_ms": 26.843545600000002,
+          "npu_total_ms": 26.943545600000004
+        },
+        {
+          "op": "Activation",
+          "M": 16384,
+          "K": 0,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (8%)",
+          "gpu_compute_ms": 2.147483648,
+          "gpu_total_ms": 2.147483648,
+          "npu_compute_ms": 26.843545600000002,
+          "npu_total_ms": 26.943545600000004
+        }
+      ],
+      "model": {
+        "M": 16384,
+        "gpu_only_ms": 2852.3929672960003,
+        "sync_ms": 2852.3929672960003,
+        "async_ms": 2852.392967296,
+        "sync_overhead_ms": 0.0,
+        "npu_offload_ops": 0
+      }
+    },
+    "32768": {
+      "classifications": [
+        {
+          "op": "Q_proj",
+          "M": 32768,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 425.1,
+          "gpu_total_ms": 498.981,
+          "npu_compute_ms": 35229.1,
+          "npu_total_ms": 35229.1
+        },
+        {
+          "op": "K_proj",
+          "M": 32768,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 424.48,
+          "gpu_total_ms": 498.111,
+          "npu_compute_ms": 35229.1,
+          "npu_total_ms": 35229.1
+        },
+        {
+          "op": "V_proj",
+          "M": 32768,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 426.457,
+          "gpu_total_ms": 499.33,
+          "npu_compute_ms": 35229.1,
+          "npu_total_ms": 35229.1
+        },
+        {
+          "op": "O_proj",
+          "M": 32768,
+          "K": 4096,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (1%)",
+          "gpu_compute_ms": 424.54,
+          "gpu_total_ms": 497.409,
+          "npu_compute_ms": 35229.1,
+          "npu_total_ms": 35229.1
+        },
+        {
+          "op": "Attn_V",
+          "M": 32768,
+          "K": 128,
+          "N": 128,
+          "class": "C",
+          "reason": "NPU not hidden (0%)",
+          "gpu_compute_ms": 0.451,
+          "gpu_total_ms": 2.756,
+          "npu_compute_ms": 120.4275275,
+          "npu_total_ms": 120.899793
+        },
+        {
+          "op": "RMSNorm",
+          "M": 32768,
+          "K": 0,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (8%)",
+          "gpu_compute_ms": 4.294967296,
+          "gpu_total_ms": 4.294967296,
+          "npu_compute_ms": 53.687091200000005,
+          "npu_total_ms": 53.787091200000006
+        },
+        {
+          "op": "Activation",
+          "M": 32768,
+          "K": 0,
+          "N": 4096,
+          "class": "C",
+          "reason": "NPU not hidden (8%)",
+          "gpu_compute_ms": 4.294967296,
+          "gpu_total_ms": 4.294967296,
+          "npu_compute_ms": 53.687091200000005,
+          "npu_total_ms": 53.787091200000006
+        }
+      ],
+      "model": {
+        "M": 32768,
+        "gpu_only_ms": 2005.1769345920004,
+        "sync_ms": 2005.1769345920004,
+        "async_ms": 2005.176934592,
+        "sync_overhead_ms": 0.0,
+        "npu_offload_ops": 0
+      }
+    },
+    "65536": {
+      "classifications": [
+        {
+          "op": "Q_proj",
+          "M": 65536,
+          "K": 4096,
+          "N": 4096,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 913.39,
+          "gpu_total_ms": 1060.63,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        },
+        {
+          "op": "K_proj",
+          "M": 65536,
+          "K": 4096,
+          "N": 4096,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 846.976,
+          "gpu_total_ms": 992.192,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        },
+        {
+          "op": "V_proj",
+          "M": 65536,
+          "K": 4096,
+          "N": 4096,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 847.258,
+          "gpu_total_ms": 994.584,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        },
+        {
+          "op": "O_proj",
+          "M": 65536,
+          "K": 4096,
+          "N": 4096,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 849.618,
+          "gpu_total_ms": 994.822,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        },
+        {
+          "op": "Attn_V",
+          "M": 65536,
+          "K": 128,
+          "N": 128,
+          "class": "A",
+          "reason": "NPU blocked or unavailable",
+          "gpu_compute_ms": 0.906,
+          "gpu_total_ms": 5.882,
+          "npu_compute_ms": -1,
+          "npu_total_ms": -1
+        }
+      ],
+      "model": {
+        "M": 65536,
+        "gpu_only_ms": 4048.11,
+        "sync_ms": 4048.11,
+        "async_ms": 4048.11,
+        "sync_overhead_ms": 0.0,
+        "npu_offload_ops": 0
+      }
+    }
+  },
+  "verdict": {
+    "best_M": 16384,
+    "best_speedup": 1.0000000000000002,
+    "verdict": "NEUTRAL",
+    "detail": "Async overlap is roughly break-even (1.00x at M=16384)"
+  }
+}

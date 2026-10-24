@@ -1,0 +1,13 @@
+device count = 1
+device 0 = AMD Radeon 780M Graphics (RADV PHOENIX)
+shape: wt[1024,1792] Q8_0 x bt[1024,512] F32 -> ct[1792,512]  (3.67 MB)
+device buft name = Vulkan0
+host-output buft name = Vulkan_HostOutput
+[CPU ] alloc=0.02 set=2.43 compute=20.29 get=1.30 ms
+[VK-device] alloc=0.08 set=0.64 compute=2.32 get=12.93 ms
+[VK-hostout] alloc=2.92 set=0.38 compute=2.76 get=1.36 ms
+[correctness] vk-device vs cpu: bad=807337 maxrel=3.317e+04
+[correctness] vk-hostout vs cpu: bad=807337 maxrel=3.317e+04
+[correctness] vk-hostout vs vk-device: diff=0 maxrel=0.000e+00
+sample hostout[0..3] = 8288.00000 5092.00000 8264.00000 -2080.00000 (cpu 8284.56445 5063.22461 8269.54590 -2111.71191)
+DONE

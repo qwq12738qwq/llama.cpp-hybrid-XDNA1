@@ -1,0 +1,136 @@
+{
+  "M": 64,
+  "K": 512,
+  "N": 64,
+  "label": "M64_K512_N64",
+  "cpu": {
+    "status": "OK",
+    "backend": "CPU",
+    "op": "GEMM",
+    "M": 64,
+    "K": 512,
+    "N": 64,
+    "dtype": "<class 'numpy.float32'>",
+    "iters": 5,
+    "warmup": 2,
+    "compute_us": {
+      "min": 16.099,
+      "mean": 17.0732,
+      "median": 17.031,
+      "p95": 18.625,
+      "p99": 18.625,
+      "max": 18.625
+    },
+    "total_us": {
+      "min": 16.099,
+      "mean": 17.0732,
+      "median": 17.031,
+      "p95": 18.625,
+      "p99": 18.625,
+      "max": 18.625
+    },
+    "compute_ms_median": 0.017030999999999998,
+    "total_ms_median": 0.017030999999999998,
+    "gops": 246.27467559156835,
+    "total_ops": 4194304.0,
+    "gmac": 0.004194304
+  },
+  "gpu": {
+    "status": "OK",
+    "op": "GEMM",
+    "M": 64,
+    "K": 512,
+    "N": 64,
+    "h2d_ms": 0.062,
+    "compute_ms": 0.027,
+    "d2h_ms": 0.039,
+    "total_ms": 0.176,
+    "gops": 153.68,
+    "total_ops": 4194304,
+    "gmac": 0.0
+  },
+  "npu": {
+    "status": "OK",
+    "backend": "NPU",
+    "op": "GEMM",
+    "M": 64,
+    "K": 512,
+    "N": 64,
+    "tile_m": 64,
+    "tile_k": 64,
+    "tile_n": 64,
+    "dtype": "int8/int32",
+    "iters": 5,
+    "warmup": 2,
+    "init_ms": 33.64447000058135,
+    "cold_npu_us": null,
+    "mismatches": 0,
+    "wall_us": {
+      "min": 460.269,
+      "mean": 544.0215999999999,
+      "median": 522.524,
+      "p95": 654.026,
+      "p99": 654.026,
+      "max": 654.026
+    },
+    "npu_us": {
+      "min": 266.642,
+      "mean": 292.9364,
+      "median": 272.292,
+      "p95": 347.08,
+      "p99": 347.08,
+      "max": 347.08
+    },
+    "host_overhead_us": {
+      "min": 188.298,
+      "mean": 251.0852,
+      "median": 250.933,
+      "p95": 315.62199999999996,
+      "p99": 315.62199999999996,
+      "max": 315.62199999999996
+    },
+    "wall_ms_median": 0.522524,
+    "npu_ms_median": 0.272292,
+    "overhead_ms_median": 0.250933,
+    "gops_npu": 15.403698970223143,
+    "gops_wall": 8.027007371910189
+  },
+  "transfer": {
+    "status": "OK",
+    "backend": "NPU_TRANSFER",
+    "M": 64,
+    "K": 512,
+    "N": 64,
+    "bytes_A": 32768,
+    "bytes_B": 32768,
+    "bytes_total": 65536,
+    "iters": 10,
+    "h2d_A_us": {
+      "min": 1.372,
+      "mean": 1.5139,
+      "median": 1.463,
+      "p95": 1.804,
+      "p99": 1.804,
+      "max": 1.804
+    },
+    "d2h_A_us": {
+      "min": 0.882,
+      "mean": 1.0307,
+      "median": 0.931,
+      "p95": 1.613,
+      "p99": 1.613,
+      "max": 1.613
+    },
+    "e2e_A_us": {
+      "min": 2.295,
+      "mean": 2.3864,
+      "median": 2.395,
+      "p95": 2.525,
+      "p99": 2.525,
+      "max": 2.525
+    },
+    "h2d_A_bw_gbps": 22.39781271360219,
+    "d2h_A_bw_gbps": 35.19656283566058
+  },
+  "gpu_status": "OK"
+}

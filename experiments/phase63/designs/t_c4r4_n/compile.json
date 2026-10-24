@@ -1,0 +1,14 @@
+{
+ "tag": "",
+ "cols": 4,
+ "rows": 4,
+ "split": "n",
+ "merge": false,
+ "workers": 16,
+ "m_tile": 64,
+ "n_tile": 64,
+ "k_chunk": 256,
+ "compile_ok": false,
+ "compile_s": 3.84,
+ "error": "[aiecc] Compilation failed with exit code 1:\n\n(0/40) input.mlir\n(1/40)           \n(1/40) [0/1] placed.mlir/workspace/llama.cpp/experiments/phase63/designs/t_c4r4_n/design.prj/aie.mlir:43:28: error: no ShimNOCTile on the device has 1 input/0 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 8/8 input, 8/8 output channels used\n    %logical_shim_noc_37 = aie.logical_tile<ShimNOCTile>(?, ?)\n                           ^\n/workspace/llama.cpp/experiments/phase63/designs/t_c4r4_n/design.prj/aie.mlir:43:28: note: see current operation: %40 = \"aie.logical_tile\"() <{tile_type = 2 : i32}> : () -> index\n/workspace/llama.cpp/experiments/phase63/designs/t_c4r4_n/design.prj/aie.mlir:43:28: note: this is the device's total ShimNOCTile DMA budget, not a placement choice -- no column has spare capacity to pin to; fan traffic through a MemTile, or reduce the number of DMA-attached ObjectFIFOs feeding this tile\n\naiecc: edge 'placed.mlir' (key 'input.mlir') failed\naiecc: pipeline failed\n"
+}

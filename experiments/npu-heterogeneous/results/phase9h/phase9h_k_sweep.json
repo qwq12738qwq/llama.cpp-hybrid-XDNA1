@@ -1,0 +1,20 @@
+{
+  "k_sweep_status": "BLOCKED_AT_K32",
+  "reason": "Phase 9H-C correctness gate failed at K=32 (6.00x scaling error)",
+  "planned_sweep": {
+    "K_values": [32, 64, 128, 256, 512, 1024],
+    "iterations_per_K": 100,
+    "success_criteria": "0 mismatches, max_abs_error = 0"
+  },
+  "k32_results": {
+    "status": "FAIL",
+    "mismatches": 16,
+    "max_abs_error": 394595,
+    "scaling_factor": 6.00
+  },
+  "k64_to_k1024": {
+    "status": "NOT_RUN",
+    "blocked_by": "K=32 correctness gate"
+  },
+  "accumulation_verification": "Not applicable — single K-tile at K=32 (TILE_K=32)"
+}

@@ -1,0 +1,58 @@
+{
+  "npu_then_gpu": [
+    {
+      "mode": "npu_then_gpu",
+      "gpu_h2d_ms": 11.808,
+      "gpu_compute_ms": 84.163,
+      "gpu_d2h_ms": 2.347,
+      "gpu_total_ms": 98.501,
+      "gpu_gops": 816.51,
+      "npu_host_ms": 66.6105,
+      "npu_exec_ms": 66.1763,
+      "npu_gops": 56.79,
+      "wall_start_ns": 0,
+      "wall_end_ns": 0,
+      "sequential_time_ms": 165.1115,
+      "concurrent_time_ms": 165.1115,
+      "overlap_ms": 0.0,
+      "speedup": 1.0,
+      "gpu_slowdown_pct": 0.0
+    },
+    {
+      "mode": "npu_then_gpu",
+      "gpu_h2d_ms": 12.398,
+      "gpu_compute_ms": 86.174,
+      "gpu_d2h_ms": 2.296,
+      "gpu_total_ms": 101.026,
+      "gpu_gops": 797.45,
+      "npu_host_ms": 66.49539999999999,
+      "npu_exec_ms": 66.0944,
+      "npu_gops": 56.86,
+      "wall_start_ns": 0,
+      "wall_end_ns": 0,
+      "sequential_time_ms": 167.52139999999997,
+      "concurrent_time_ms": 167.52139999999997,
+      "overlap_ms": 0.0,
+      "speedup": 1.0,
+      "gpu_slowdown_pct": 0.0
+    },
+    {
+      "mode": "npu_then_gpu",
+      "gpu_h2d_ms": 11.229,
+      "gpu_compute_ms": 89.566,
+      "gpu_d2h_ms": 2.436,
+      "gpu_total_ms": 103.396,
+      "gpu_gops": 767.25,
+      "npu_host_ms": 66.5322,
+      "npu_exec_ms": 66.1376,
+      "npu_gops": 56.82,
+      "wall_start_ns": 0,
+      "wall_end_ns": 0,
+      "sequential_time_ms": 169.9282,
+      "concurrent_time_ms": 169.9282,
+      "overlap_ms": 0.0,
+      "speedup": 1.0,
+      "gpu_slowdown_pct": 0.0
+    }
+  ]
+}

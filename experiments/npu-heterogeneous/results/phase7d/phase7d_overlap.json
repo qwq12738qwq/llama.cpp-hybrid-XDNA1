@@ -1,0 +1,72 @@
+{
+  "gpu_M": 512,
+  "gpu_K": 1024,
+  "gpu_N": 6144,
+  "npu_M": 128,
+  "npu_K": 512,
+  "npu_N": 4096,
+  "gpu_exec_ms": 21.919,
+  "gpu_wall_ms": 0,
+  "npu_exec_ms": 17.489528,
+  "npu_wall_ms": 17.961923,
+  "sequential_ms": 39.408528000000004,
+  "overlap_ms": 1275.024758,
+  "overlap_results": [
+    {
+      "overall_wall_ns": 1286079749,
+      "gpu_result": {
+        "wall_start_ns": 1173331349223,
+        "wall_end_ns": 1173397297795,
+        "gpu_exec_ns": 65495280,
+        "ts_period": 10.019036,
+        "ts_start": 118201286727,
+        "ts_end": 118207836255
+      },
+      "npu_result": {
+        "wall_start_ns": 1173334523378,
+        "wall_end_ns": 1173352477599,
+        "wall_us": 17954.221,
+        "npu_us": 17310.161,
+        "mismatches": 0
+      }
+    },
+    {
+      "overall_wall_ns": 1275024758,
+      "gpu_result": {
+        "wall_start_ns": 1175326254164,
+        "wall_end_ns": 1175390798192,
+        "gpu_exec_ns": 64136920,
+        "ts_period": 10.019036,
+        "ts_start": 118400408579,
+        "ts_end": 118406822271
+      },
+      "npu_result": {
+        "wall_start_ns": 1175328819273,
+        "wall_end_ns": 1175346659935,
+        "wall_us": 17840.662,
+        "npu_us": 17398.613,
+        "mismatches": 0
+      }
+    },
+    {
+      "overall_wall_ns": 1265734839,
+      "gpu_result": {
+        "wall_start_ns": 1177355354186,
+        "wall_end_ns": 1177421599480,
+        "gpu_exec_ns": 65834400,
+        "ts_period": 10.019036,
+        "ts_start": 118602945537,
+        "ts_end": 118609528977
+      },
+      "npu_result": {
+        "wall_start_ns": 1177357646034,
+        "wall_end_ns": 1177375446884,
+        "wall_us": 17800.85,
+        "npu_us": 17345.696,
+        "mismatches": 0
+      }
+    }
+  ],
+  "speedup": 0.030908049238052522,
+  "efficiency_pct": -7064.891802683297
+}

@@ -1,0 +1,5 @@
+RESULT,pp=512,batch=512,ubatch=512,mode=bench,pp_tps=18.24,pp_tps_sd=0.00,pp_ms=28075.325,pp_ms_sd=0.000,pp_tps_mean=18.24,n_warmup=0,n_measure=1,peak_rss_kb=376076,tag=
+RESULT,pp=512,batch=512,ubatch=512,mode=bench,pp_tps=18.18,pp_tps_sd=0.00,pp_ms=28167.033,pp_ms_sd=0.000,pp_tps_mean=18.18,n_warmup=0,n_measure=1,peak_rss_kb=376312,tag=
+RESULT,pp=512,batch=512,ubatch=512,mode=bench,pp_tps=18.13,pp_tps_sd=0.00,pp_ms=28237.910,pp_ms_sd=0.000,pp_tps_mean=18.13,n_warmup=0,n_measure=1,peak_rss_kb=374860,tag=
+RESULT,pp=512,batch=512,ubatch=512,mode=bench,pp_tps=18.18,pp_tps_sd=0.00,pp_ms=28156.308,pp_ms_sd=0.000,pp_tps_mean=18.18,n_warmup=0,n_measure=1,peak_rss_kb=374060,tag=
+RESULT,pp=512,batch=512,ubatch=512,mode=bench,pp_tps=18.15,pp_tps_sd=0.00,pp_ms=28212.814,pp_ms_sd=0.000,pp_tps_mean=18.15,n_warmup=0,n_measure=1,peak_rss_kb=376316,tag=

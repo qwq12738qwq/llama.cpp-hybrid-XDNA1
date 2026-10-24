@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/workspace/llama.cpp/tools/xdna-phase18/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

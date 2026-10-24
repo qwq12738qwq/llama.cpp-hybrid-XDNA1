@@ -1,0 +1,31 @@
+{
+  "status": "READY_TO_START",
+  "reason": "Stage 9 Qwen SSM validation PASSED - backend working with exact correctness",
+  "prerequisites_met": [
+    "M=1 K=32 N=16 kernel exact match (0 mismatches)",
+    "K=1024 via 32-chunk accumulation exact match",
+    "Q8_0 dequantization working",
+    "Persistent engine with chunked execute working",
+    "ggml-xdna backend integrated and passing test-qwen-ssm-beta"
+  ],
+  "planned_measurements": {
+    "modes": ["GPU-only", "GPU+XDNA synchronous", "GPU+XDNA asynchronous"],
+    "metrics": [
+      "end_to_end_latency_us",
+      "token_generation_rate",
+      "gpu_time_us",
+      "xdna_time_us", 
+      "host_dispatch_us",
+      "synchronization_us",
+      "copy_overhead_us",
+      "critical_path_reduction_pct"
+    ]
+  },
+  "integration_plan": [
+    "1. Build Qwen decode graph with GPU attention + XDNA SSM + GPU FFN",
+    "2. Use ggml_backend_sched for heterogeneous scheduling",
+    "3. Verify event dependencies: GPU→XDNA→GPU",
+    "4. Measure async overlap where dependencies permit",
+    "5. Compare end-to-end latency vs GPU-only"
+  ]
+}

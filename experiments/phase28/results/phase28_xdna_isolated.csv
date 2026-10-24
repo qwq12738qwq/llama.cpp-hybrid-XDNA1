@@ -1,0 +1,11 @@
+kv_len,vk_attn_ms_per_ubatch_6layer,xdna_qk_ms_per_ubatch_6layer_est,xdna_over_vk_ratio,note
+512,3.74,3058.7,818.3,xdna=measured_pertile(63.722ms@N4096)x_tilesx8headx6layer
+4096,33.55,3058.7,91.2,xdna=measured_pertile(63.722ms@N4096)x_tilesx8headx6layer
+16384,160.06,12234.6,76.4,xdna=measured_pertile(63.722ms@N4096)x_tilesx8headx6layer
+32768,374.93,24469.2,65.3,xdna=measured_pertile(63.722ms@N4096)x_tilesx8headx6layer
+65536,707.29,48938.5,69.2,xdna=measured_pertile(63.722ms@N4096)x_tilesx8headx6layer
+
+metric,value,unit,source
+xdna_gemm_pertile_M512_K256_N4096,63.722,ms,phase28 xdna_smoke measured
+xdna_gemm_pertile_M512_K256_N3072,47.860,ms,phase28 xdna_smoke measured
+vk_attn_slope_512_to_64k,10.820,us/token,phase28 vk perf logger

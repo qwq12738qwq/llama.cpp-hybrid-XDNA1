@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 590, in <module>
+    main()
+    ~~~~^^
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 548, in main
+    design.specialize(dummy=0).compile(xclbin_path=xp, inst_path=ip, pdi_path=pp)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/callabledesign.py", line 470, in compile
+    return self.compilable.compile(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        xclbin_path=xclbin_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        pdi_path=pdi_path,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 379, in compile
+    mlir_module = self._generate_mlir(ExternalFunction)
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 1035, in _generate_mlir
+    mlir_text, external_kernels = self._generated_for(full_elf=full_elf)
+                                  ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 930, in _generated_for
+    generated = self._generate_uncached(full_elf=full_elf)
+  File "/Storage/Cache/ironenv-v143/lib/python3.14/site-packages/mlir_aie/python/aie/utils/compile/jit/compilabledesign.py", line 1015, in _generate_uncached
+    result = self.mlir_generator(**_gen_call_kwargs)
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 543, in design
+    return build_design(a.M, a.K, a.N, a.wcols, a.wrows, a.m_tile,
+                        a.n_tile, a.k_chunk, a.variant, a.depth_a,
+                        a.depth_b, a.depth_c, not a.no_wait_c, a.kernel_reps, a.mmul)
+  File "/workspace/llama.cpp/experiments/phase60/kbench/kbench.py", line 338, in build_design
+    raise ValueError(f"L1 budget {l1} exceeds 64KB")
+ValueError: L1 budget 75776 exceeds 64KB

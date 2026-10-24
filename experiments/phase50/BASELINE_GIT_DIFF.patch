@@ -1,0 +1,1800 @@
+diff --git a/ggml/CMakeLists.txt b/ggml/CMakeLists.txt
+index d76ed8ab0..f6c652198 100644
+--- a/ggml/CMakeLists.txt
++++ b/ggml/CMakeLists.txt
+@@ -268,6 +268,7 @@ set   (GGML_OPENCL_TARGET_VERSION "300" CACHE STRING
+                                             "ggml: OpenCL API version to target")
+ 
+ option(GGML_HEXAGON                         "ggml: enable Hexagon backend"                    OFF)
++option(GGML_XDNA                            "ggml: enable XDNA backend"                       OFF)
+ 
+ # toolchain for vulkan-shaders-gen
+ set   (GGML_VULKAN_SHADERS_GEN_TOOLCHAIN "" CACHE FILEPATH "ggml: toolchain file for vulkan-shaders-gen")
+@@ -339,6 +340,7 @@ set(GGML_PUBLIC_HEADERS
+     include/ggml-webgpu.h
+     include/ggml-zendnn.h
+     include/ggml-openvino.h
++    include/ggml-xdna.h
+     include/gguf.h)
+ 
+ set_target_properties(ggml PROPERTIES PUBLIC_HEADER "${GGML_PUBLIC_HEADERS}")
+diff --git a/ggml/include/ggml-vulkan.h b/ggml/include/ggml-vulkan.h
+index ed5ea5f79..91ee3b1a7 100644
+--- a/ggml/include/ggml-vulkan.h
++++ b/ggml/include/ggml-vulkan.h
+@@ -21,6 +21,9 @@ GGML_BACKEND_API void ggml_backend_vk_get_device_memory(int device, size_t * fre
+ GGML_BACKEND_API ggml_backend_buffer_type_t ggml_backend_vk_buffer_type(size_t dev_num);
+ // pinned host buffer for use with the CPU backend for faster copies between CPU and GPU
+ GGML_BACKEND_API ggml_backend_buffer_type_t ggml_backend_vk_host_buffer_type(void);
++// Phase 27 experimental: buffer type backed by host-imported system memory (VK_EXT_external_memory_host).
++// Compute shaders write directly into memory the CPU can read, avoiding the VRAM readback tax.
++GGML_BACKEND_API ggml_backend_buffer_type_t ggml_backend_vk_host_output_buffer_type(size_t dev_num);
+ 
+ GGML_BACKEND_API ggml_backend_reg_t ggml_backend_vk_reg(void);
+ 
+diff --git a/ggml/src/CMakeLists.txt b/ggml/src/CMakeLists.txt
+index 947732000..3fb275513 100644
+--- a/ggml/src/CMakeLists.txt
++++ b/ggml/src/CMakeLists.txt
+@@ -193,6 +193,7 @@ add_library(ggml-base
+             ../include/ggml.h
+             ../include/ggml-alloc.h
+             ../include/ggml-backend.h
++            ../include/ggml-backend-profile.h
+             ../include/ggml-cpp.h
+             ../include/ggml-opt.h
+             ../include/gguf.h
+@@ -201,6 +202,7 @@ add_library(ggml-base
+             ggml-alloc.c
+             ggml-backend.cpp
+             ggml-backend-meta.cpp
++            ggml-backend-profile.cpp
+             ggml-opt.cpp
+             ggml-threading.cpp
+             ggml-threading.h
+@@ -603,6 +605,7 @@ ggml_add_backend(OpenCL)
+ ggml_add_backend(Hexagon)
+ ggml_add_backend(ZenDNN)
+ ggml_add_backend(OPENVINO)
++ggml_add_backend(XDNA)
+ 
+ foreach (target ggml-base ggml)
+     target_include_directories(${target} PUBLIC    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include> $<INSTALL_INTERFACE:include>)
+diff --git a/ggml/src/ggml-alloc.c b/ggml/src/ggml-alloc.c
+index a71838eaf..2ecc1b827 100644
+--- a/ggml/src/ggml-alloc.c
++++ b/ggml/src/ggml-alloc.c
+@@ -1075,15 +1075,21 @@ bool ggml_gallocr_alloc_graph(ggml_gallocr_t galloc, struct ggml_cgraph * graph)
+ 
+     // allocate the graph tensors from the previous assignments
+     // leafs
++    // Set GGML_ALLOC_TRACE for a per-tensor allocation log (one line per node).
++    const int trace = getenv("GGML_ALLOC_TRACE") != NULL;
++
+     for (int i = 0; i < graph->n_leafs; i++) {
+         struct ggml_tensor * leaf = graph->leafs[i];
+         struct leaf_alloc * leaf_alloc = &galloc->leaf_allocs[i];
++        if (trace) fprintf(stderr, "[GALLOCR] init leaf %d: %s data=%p buffer=%p\n", i, leaf->name ? leaf->name : "?", leaf->data, (void*)leaf->buffer);
+         ggml_gallocr_init_tensor(galloc, leaf, &leaf_alloc->leaf);
++        if (trace) fprintf(stderr, "[GALLOCR]   after init: data=%p buffer=%p\n", leaf->data, (void*)leaf->buffer);
+     }
+     // nodes
+     for (int i = 0; i < graph->n_nodes; i++) {
+         struct ggml_tensor * node = graph->nodes[i];
+         struct node_alloc * node_alloc = &galloc->node_allocs[i];
++        if (trace) fprintf(stderr, "[GALLOCR] init node %d: op=%s data=%p buffer=%p\n", i, ggml_op_name(node->op), node->data, (void*)node->buffer);
+         for (int j = 0; j < GGML_MAX_SRC; j++) {
+             struct ggml_tensor * src = node->src[j];
+             if (src == NULL) {
+@@ -1092,6 +1098,7 @@ bool ggml_gallocr_alloc_graph(ggml_gallocr_t galloc, struct ggml_cgraph * graph)
+             ggml_gallocr_init_tensor(galloc, src, &node_alloc->src[j]);
+         }
+         ggml_gallocr_init_tensor(galloc, node, &node_alloc->dst);
++        if (trace) fprintf(stderr, "[GALLOCR]   after init: data=%p buffer=%p\n", node->data, (void*)node->buffer);
+     }
+ 
+     return true;
+diff --git a/ggml/src/ggml-backend-reg.cpp b/ggml/src/ggml-backend-reg.cpp
+index 1c18b82cd..2487737af 100644
+--- a/ggml/src/ggml-backend-reg.cpp
++++ b/ggml/src/ggml-backend-reg.cpp
+@@ -30,6 +30,10 @@
+ #include "ggml-cpu.h"
+ #endif
+ 
++#ifdef GGML_USE_XDNA
++#include "ggml-xdna.h"
++#endif
++
+ #ifdef GGML_USE_CUDA
+ #include "ggml-cuda.h"
+ #endif
+@@ -170,6 +174,9 @@ struct ggml_backend_registry {
+ #endif
+ #ifdef GGML_USE_CPU
+         register_backend(ggml_backend_cpu_reg());
++#endif
++#ifdef GGML_USE_XDNA
++        register_backend(ggml_backend_xdna_reg());
+ #endif
+     }
+ 
+@@ -205,6 +212,7 @@ struct ggml_backend_registry {
+     }
+ 
+     void register_device(ggml_backend_dev_t device) {
++        fprintf(stderr, "[GGML_REG] register_device called for %s\n", ggml_backend_dev_name(device));
+         for (auto & dev : devices) {
+             if (dev == device) {
+                 return;
+@@ -214,7 +222,15 @@ struct ggml_backend_registry {
+ #ifndef NDEBUG
+         GGML_LOG_DEBUG("%s: registered device %s (%s)\n", __func__, ggml_backend_dev_name(device), ggml_backend_dev_description(device));
+ #endif
+-        devices.push_back(device);
++        const bool is_cpu = ggml_backend_dev_type(device) == GGML_BACKEND_DEVICE_TYPE_CPU;
++        auto cpu = std::find_if(devices.begin(), devices.end(), [](ggml_backend_dev_t dev) {
++            return ggml_backend_dev_type(dev) == GGML_BACKEND_DEVICE_TYPE_CPU;
++        });
++        if (!is_cpu && cpu != devices.end()) {
++            devices.insert(cpu, device);
++        } else {
++            devices.push_back(device);
++        }
+     }
+ 
+     ggml_backend_reg_t load_backend(const fs::path & path, bool silent) {
+@@ -596,6 +612,7 @@ void ggml_backend_load_all_from_path(const char * dir_path) {
+     ggml_backend_load_best("hexagon", silent, dir_path);
+     ggml_backend_load_best("musa", silent, dir_path);
+     ggml_backend_load_best("openvino", silent, dir_path);
++    ggml_backend_load_best("xdna", silent, dir_path);
+     ggml_backend_load_best("cpu", silent, dir_path);
+     // check the environment variable GGML_BACKEND_PATH to load an out-of-tree backend
+     const char * backend_path = std::getenv("GGML_BACKEND_PATH");
+diff --git a/ggml/src/ggml-backend.cpp b/ggml/src/ggml-backend.cpp
+index 6862128e6..a3df0f64a 100644
+--- a/ggml/src/ggml-backend.cpp
++++ b/ggml/src/ggml-backend.cpp
+@@ -12,6 +12,7 @@
+ #include "ggml-backend-impl.h"
+ #include "ggml-alloc.h"
+ #include "ggml-impl.h"
++#include "ggml-backend-profile.h"
+ 
+ #include <assert.h>
+ #include <limits.h>
+@@ -917,6 +918,93 @@ static char causes[GGML_DEFAULT_GRAPH_SIZE*16 + GGML_SCHED_MAX_SPLITS_DEBUG*GGML
+ #define GET_CAUSE(node) ""
+ #endif
+ 
++// Phase 49: report how every FFN GEMM ended up on a backend. The scheduler's
++// choice is a function of op support, the offload claim, the weight buffer and
++// the view source, so print all of them next to the final assignment.
++static void ggml_backend_sched_trace_ffn_assignment(ggml_backend_sched_t sched, struct ggml_cgraph * graph) {
++    if (getenv("GGML_SCHED_TRACE_FFN_ASSIGN") == nullptr) {
++        return;
++    }
++    for (int i = 0; i < graph->n_nodes; i++) {
++        struct ggml_tensor * node = graph->nodes[i];
++        if (node->op != GGML_OP_MUL_MAT || node->src[0] == nullptr) {
++            continue;
++        }
++        const char * wname = node->src[0]->name;
++        if (!strstr(wname, "ffn_gate") && !strstr(wname, "ffn_up") && !strstr(wname, "ffn_down")) {
++            continue;
++        }
++        const int layer_id = sched->hv_tensor_backend_ids[hash_id(node)];
++        const int w_id = sched->hv_tensor_backend_ids[hash_id(node->src[0])];
++        const int a_id = node->src[1] ? sched->hv_tensor_backend_ids[hash_id(node->src[1])] : -1;
++        const int v_id = node->view_src ? sched->hv_tensor_backend_ids[hash_id(node->view_src)] : -1;
++
++        auto name_of = [&](int id) -> const char * {
++            return id >= 0 && id < sched->n_backends ? ggml_backend_name(sched->backends[id]) : "(none)";
++        };
++        auto buft_of = [&](const struct ggml_tensor * t) -> const char * {
++            const struct ggml_tensor * r = t ? (t->view_src ? t->view_src : t) : nullptr;
++            if (!r || !r->buffer) return "(null)";
++            return ggml_backend_buffer_name(r->buffer);
++        };
++        auto usage_of = [&](const struct ggml_tensor * t) -> int {
++            const struct ggml_tensor * r = t ? (t->view_src ? t->view_src : t) : nullptr;
++            if (!r || !r->buffer) return -1;
++            return (int) ggml_backend_buffer_get_usage(r->buffer);
++        };
++        // same predicates the assignment consults, evaluated at report time
++        int layer = -1;
++        if (const char * blk = strstr(wname, "blk.")) {
++            sscanf(blk + 4, "%d", &layer);
++        }
++        // replicate the claim loop: first WEIGHTS src selects wbuft, backends
++        // owning it are skipped, first remaining supporter with offload wins
++        ggml_backend_buffer_type_t wbuft = NULL;
++        for (int i = 0; i < GGML_MAX_SRC; i++) {
++            const struct ggml_tensor * src = node->src[i];
++            if (src && src->buffer && src->buffer->usage == GGML_BACKEND_BUFFER_USAGE_WEIGHTS) {
++                wbuft = src->buffer->buft;
++                break;
++            }
++        }
++        int claim_winner = -1;
++        if (sched->op_offload) {
++            for (int b = 0; b < sched->n_backends - 1; b++) {
++                if (sched->bufts[b] == wbuft) {
++                    continue;
++                }
++                if (ggml_backend_supports_op(sched->backends[b], node) && ggml_backend_offload_op(sched->backends[b], node)) {
++                    claim_winner = b;
++                    break;
++                }
++            }
++        }
++        char supoff[GGML_SCHED_MAX_BACKENDS * 8 + 1] = {};
++        for (int b = 0; b < sched->n_backends && b < GGML_SCHED_MAX_BACKENDS; b++) {
++            const bool sup = ggml_backend_supports_op(sched->backends[b], node);
++            const bool off = sup && ggml_backend_offload_op(sched->backends[b], node);
++            char * p = supoff + strlen(supoff);
++            snprintf(p, sizeof(supoff) - strlen(supoff), "%d:%c%c ", b, sup ? 'S' : '-', off ? 'O' : '-');
++        }
++        const char * reason = "unassigned";
++        if (layer_id == claim_winner && claim_winner != -1) {
++            reason = "op_offload_claim";
++        } else if (w_id == layer_id && w_id != -1) {
++            reason = "weight_buffer";
++        } else if (layer_id != -1) {
++            reason = "first_supporting";
++        }
++        fprintf(stderr,
++                "[FFN-ASSIGN] layer=%d op=%s M=%lld K=%lld N=%lld weight=%s:%s wbuft=%s wusage=%d activation=%s:%s abuft=%s ausage=%d view=%s:%s "
++                "supoff={%s} claim=%d assigned=%s:%d reason=%s\n",
++                layer, wname, (long long) node->src[1]->ne[1], (long long) node->src[0]->ne[0], (long long) node->src[0]->ne[1],
++                wname, name_of(w_id), buft_of(node->src[0]), usage_of(node->src[0]),
++                node->src[1]->name, name_of(a_id), buft_of(node->src[1]), usage_of(node->src[1]),
++                node->view_src ? node->view_src->name : "(none)", name_of(v_id),
++                supoff, claim_winner, name_of(layer_id), layer_id, reason);
++    }
++}
++
+ // returns the backend that should be used for the node based on the current locations
+ static int ggml_backend_sched_backend_id_from_cur(ggml_backend_sched_t sched, struct ggml_tensor * tensor) {
+     // assign pre-allocated nodes to their backend
+@@ -948,6 +1036,81 @@ static int ggml_backend_sched_backend_id_from_cur(ggml_backend_sched_t sched, st
+         return cur_backend_id;
+     }
+ 
++    // A backend that reports offload_op claims the op even when its weights live in
++    // another backend's buffer. The claim outranks the weight-backend preference
++    // below, which is what makes heterogeneous routing an explicit decision
++    // instead of a side effect of where the weights were placed. Claims from a
++    // backend that already owns the weights are ignored: the default rules would
++    // pick that backend anyway, and backends such as Vulkan report offload_op
++    // for every op above a batch-size threshold.
++    if (sched->op_offload && tensor->op == GGML_OP_MUL_MAT) {
++        ggml_backend_buffer_type_t wbuft = NULL;
++        for (int i = 0; i < GGML_MAX_SRC; i++) {
++            const struct ggml_tensor * src = tensor->src[i];
++            if (src && src->buffer && src->buffer->usage == GGML_BACKEND_BUFFER_USAGE_WEIGHTS) {
++                wbuft = src->buffer->buft;
++                break;
++            }
++        }
++        // Phase 49 decision log: why an FFN GEMM was or was not claimed.
++        // Post-hoc traces see scheduler copies, so log here with the originals.
++        const char * tname = tensor->src[0] ? tensor->src[0]->name : "";
++        const bool is_ffn = strstr(tname, "ffn_gate") || strstr(tname, "ffn_up") || strstr(tname, "ffn_down");
++        const bool want_log = is_ffn && tensor->src[1] && tensor->src[1]->ne[1] == 512 && getenv("GGML_SCHED_TRACE_FFN_ASSIGN");
++        // An accel backend that already owns the weights keeps the op: the
++        // weight preference below picks it with zero copies. Without this the
++        // generic loop lets Vulkan claim XDNA-placed weights back, since it
++        // reports offload for every op above its batch threshold.
++        bool keep_owner = false;
++        if (is_ffn && wbuft != NULL) {
++            for (int b = 0; b < sched->n_backends - 1; b++) {
++                if (sched->bufts[b] != wbuft) {
++                    continue;
++                }
++                if (ggml_backend_dev_type(ggml_backend_get_device(sched->backends[b])) == GGML_BACKEND_DEVICE_TYPE_ACCEL &&
++                    ggml_backend_supports_op(sched->backends[b], tensor) &&
++                    ggml_backend_offload_op(sched->backends[b], tensor)) {
++                    keep_owner = true;
++                }
++                break;
++            }
++        }
++        if (want_log) {
++            fprintf(stderr, "[FFN-CLAIM] op=%s M=%lld wbuft=%s keep_owner=%d\n",
++                tname, (long long) (tensor->src[1] ? tensor->src[1]->ne[1] : -1),
++                wbuft ? ggml_backend_buft_name(wbuft) : "(null)", keep_owner);
++        }
++        if (!keep_owner) {
++        for (int b = 0; b < sched->n_backends - 1; b++) {
++            if (sched->bufts[b] == wbuft) {
++                if (want_log) {
++                    fprintf(stderr, "[FFN-CLAIM] op=%s M=%lld wbuft=%s skip_backend=%d\n",
++                        tname, (long long) tensor->src[1]->ne[1],
++                        wbuft ? ggml_backend_buft_name(wbuft) : "(null)", b);
++                }
++                continue;
++            }
++            const bool sup = ggml_backend_supports_op(sched->backends[b], tensor);
++            const bool off = sup && ggml_backend_offload_op(sched->backends[b], tensor);
++            if (want_log) {
++                fprintf(stderr, "[FFN-CLAIM] op=%s M=%lld wbuft=%s backend=%d(%s) sup=%d off=%d\n",
++                    tname, (long long) tensor->src[1]->ne[1],
++                    wbuft ? ggml_backend_buft_name(wbuft) : "(null)",
++                    b, ggml_backend_name(sched->backends[b]), sup, off);
++            }
++            if (sup && off) {
++                SET_CAUSE(tensor, "1.claim%d", b);
++                return b;
++            }
++        }
++        if (want_log) {
++            fprintf(stderr, "[FFN-CLAIM] op=%s M=%lld wbuft=%s winner=none\n",
++                tname, (long long) tensor->src[1]->ne[1],
++                wbuft ? ggml_backend_buft_name(wbuft) : "(null)");
++        }
++        }
++    }
++
+     // operations with weights are preferably run on the same backend as the weights
+     // TODO: there are exceptions (see below) - not an ideal solution
+     bool allow = true;
+@@ -966,15 +1129,6 @@ static int ggml_backend_sched_backend_id_from_cur(ggml_backend_sched_t sched, st
+             }
+             if (src->buffer != NULL && src->buffer->usage == GGML_BACKEND_BUFFER_USAGE_WEIGHTS) {
+                 int src_backend_id = ggml_backend_sched_backend_from_buffer(sched, src, tensor);
+-                // check if a backend with higher prio wants to offload the op
+-                if (sched->op_offload && src_backend_id == sched->n_backends - 1 && ggml_backend_buffer_is_host(src->buffer)) {
+-                    for (int b = 0; b < src_backend_id; b++) {
+-                        if (ggml_backend_supports_op(sched->backends[b], tensor) && ggml_backend_offload_op(sched->backends[b], tensor)) {
+-                            SET_CAUSE(tensor, "1.off");
+-                            return b;
+-                        }
+-                    }
+-                }
+                 SET_CAUSE(tensor, "1.wgt%d", i);
+                 return src_backend_id;
+             }
+@@ -984,6 +1138,86 @@ static int ggml_backend_sched_backend_id_from_cur(ggml_backend_sched_t sched, st
+     return -1;
+ }
+ 
++static void ggml_backend_sched_dump_tensor_ownership(ggml_backend_sched_t sched, const struct ggml_tensor * tensor, const struct ggml_tensor * operation, int current_node_backend_id, int current_leaf_backend_id) {
++    ggml_backend_buffer_t buffer = tensor->view_src ? tensor->view_src->buffer : tensor->buffer;
++    ggml_backend_buffer_type_t buft = buffer ? buffer->buft : NULL;
++    ggml_backend_dev_t device = buft ? ggml_backend_buft_get_device(buft) : NULL;
++
++    fprintf(stderr, "[SCHED-OWNERSHIP] BAD TENSOR: name=%s tensor=%p op=%s buffer=%p view_src=%p view_offs=%zu effective_buffer=%p buft=%s device=%s usage=%d\n",
++            tensor->name, (const void *) tensor, ggml_op_name(tensor->op),
++            (const void *) tensor->buffer, (const void *) tensor->view_src, tensor->view_offs,
++            (const void *) buffer, buft ? ggml_backend_buft_name(buft) : "(null)",
++            device ? ggml_backend_dev_name(device) : "(null)",
++            buffer ? (int) ggml_backend_buffer_get_usage(buffer) : -1);
++    fprintf(stderr, "[SCHED-OWNERSHIP] operation=%s name=%s current_node_backend_id=%d current_leaf_backend_id=%d\n",
++            operation ? ggml_op_name(operation->op) : "(null)",
++            operation ? operation->name : "?", current_node_backend_id, current_leaf_backend_id);
++
++    for (int b = 0; b < sched->n_backends; b++) {
++        const bool supports_buft = buffer && ggml_backend_supports_buft(sched->backends[b], buft);
++        const bool supports_op = operation && ggml_backend_supports_op(sched->backends[b], operation);
++        fprintf(stderr, "[SCHED-OWNERSHIP] BACKEND %d name=%s supports_buft=%d supports_op=%d\n",
++                b, ggml_backend_name(sched->backends[b]), supports_buft, supports_op);
++    }
++}
++
++static void ggml_backend_sched_dump_assignments(ggml_backend_sched_t sched, struct ggml_cgraph * graph) {
++    fprintf(stderr, "[SCHED-OWNERSHIP] graph=%p n_nodes=%d n_leafs=%d n_backends=%d\n",
++            (void *) graph, graph->n_nodes, graph->n_leafs, sched->n_backends);
++    for (int b = 0; b < sched->n_backends; b++) {
++        fprintf(stderr, "[SCHED-OWNERSHIP] backend[%d]=%s buft=%s\n", b, ggml_backend_name(sched->backends[b]), ggml_backend_buft_name(sched->bufts[b]));
++    }
++    for (int i = 0; i < graph->n_nodes; i++) {
++        struct ggml_tensor * node = graph->nodes[i];
++        ggml_backend_buffer_t node_buffer = node->view_src ? node->view_src->buffer : node->buffer;
++        ggml_backend_buffer_type_t node_buft = node_buffer ? node_buffer->buft : NULL;
++        fprintf(stderr, "[SCHED-OWNERSHIP] node[%d] name=%s op=%s tensor=%p data=%p buffer=%p view_src=%p buft=%s usage=%d assigned=%d prev=%d\n",
++                i, node->name, ggml_op_name(node->op), (const void *) node, (const void *) node->data,
++                (const void *) node->buffer, (const void *) node->view_src,
++                node_buft ? ggml_backend_buft_name(node_buft) : "(null)",
++                node_buffer ? (int) ggml_backend_buffer_get_usage(node_buffer) : -1,
++                sched->hv_tensor_backend_ids[hash_id(node)], sched->prev_node_backend_ids[i]);
++        for (int j = 0; j < GGML_MAX_SRC; j++) {
++            struct ggml_tensor * src = node->src[j];
++            if (src == NULL) {
++                continue;
++            }
++            int src_id = sched->hv_tensor_backend_ids[hash_id(src)];
++            int root = src_id;
++            struct ggml_tensor * root_tensor = src;
++            while (root_tensor->view_src != NULL && root == -1) {
++                root_tensor = root_tensor->view_src;
++                root = sched->hv_tensor_backend_ids[hash_id(root_tensor)];
++            }
++            ggml_backend_buffer_t src_buffer = src->view_src ? src->view_src->buffer : src->buffer;
++            ggml_backend_buffer_type_t src_buft = src_buffer ? src_buffer->buft : NULL;
++            fprintf(stderr, "[SCHED-OWNERSHIP] node[%d] src[%d] name=%s tensor=%p data=%p buffer=%p view_src=%p buft=%s usage=%d assigned=%d root=%d\n",
++                    i, j, src->name, (const void *) src, (const void *) src->data, (const void *) src->buffer,
++                    (const void *) src->view_src, src_buft ? ggml_backend_buft_name(src_buft) : "(null)",
++                    src_buffer ? (int) ggml_backend_buffer_get_usage(src_buffer) : -1, src_id, root);
++        }
++    }
++    for (int i = 0; i < graph->n_leafs; i++) {
++        struct ggml_tensor * leaf = graph->leafs[i];
++        ggml_backend_buffer_t leaf_buffer = leaf->view_src ? leaf->view_src->buffer : leaf->buffer;
++        ggml_backend_buffer_type_t leaf_buft = leaf_buffer ? leaf_buffer->buft : NULL;
++        fprintf(stderr, "[SCHED-OWNERSHIP] leaf[%d] name=%s tensor=%p data=%p buffer=%p view_src=%p buft=%s usage=%d assigned=%d prev=%d\n",
++                i, leaf->name, (const void *) leaf, (const void *) leaf->data, (const void *) leaf->buffer,
++                (const void *) leaf->view_src, leaf_buft ? ggml_backend_buft_name(leaf_buft) : "(null)",
++                leaf_buffer ? (int) ggml_backend_buffer_get_usage(leaf_buffer) : -1,
++                sched->hv_tensor_backend_ids[hash_id(leaf)], sched->prev_leaf_backend_ids[i]);
++    }
++    fprintf(stderr, "[SCHED-OWNERSHIP] node_backend_ids:");
++    for (int i = 0; i < graph->n_nodes; i++) {
++        fprintf(stderr, " %d", sched->node_backend_ids[i]);
++    }
++    fprintf(stderr, "\n[SCHED-OWNERSHIP] leaf_backend_ids:");
++    for (int i = 0; i < graph->n_leafs; i++) {
++        fprintf(stderr, " %d", sched->leaf_backend_ids[i]);
++    }
++    fprintf(stderr, "\n");
++}
++
+ static char * fmt_size(size_t size) {
+     static char buffer[128];
+     if (size >= 1024*1024) {
+@@ -994,6 +1228,198 @@ static char * fmt_size(size_t size) {
+     return buffer;
+ }
+ 
++// Phase 48: aggregate scheduler metrics for one graph compute, printed as a
++// single machine-readable line from ggml_backend_sched_synchronize(). Enabled
++// with GGML_SCHED_TRACE_STATS.
++//
++// Backend busy time is the interval from a backend's first outstanding submit
++// to the point where that backend is actually synchronized, so it includes
++// real GPU/NPU execution and not just command recording.
++#define GGML_SCHED_TRACE_MAX_IV 512
++
++struct ggml_sched_trace_iv {
++    uint64_t start;
++    uint64_t end;
++};
++
++struct ggml_sched_trace {
++    bool enabled;
++    bool dirty;
++    int  seq;
++
++    int  n_nodes;
++    int  n_nodes_gpu;
++    int  n_nodes_xdna;
++    int  n_nodes_cpu;
++    int  n_mm_gpu;
++    int  n_mm_xdna;
++    int  n_mm_cpu;
++
++    int    n_splits;
++    int    n_transitions;
++    int    n_copy_bufs;
++    int    n_copies;
++    size_t copy_bytes;
++
++    int    n_v2x; size_t b_v2x; double t_v2x;
++    int    n_x2v; size_t b_x2v; double t_x2v;
++    int    n_c2x; size_t b_c2x; double t_c2x;
++    int    n_x2c; size_t b_x2c; double t_x2c;
++
++    double t_alloc;
++    double t_submit;
++    double t_sync;
++    double t_wall;
++
++    int       n_iv[GGML_SCHED_MAX_BACKENDS];
++    uint64_t  iv_open[GGML_SCHED_MAX_BACKENDS];
++    double    busy_ms[GGML_SCHED_MAX_BACKENDS];
++    struct ggml_sched_trace_iv iv[GGML_SCHED_MAX_BACKENDS][GGML_SCHED_TRACE_MAX_IV];
++};
++
++static struct ggml_sched_trace g_sched_trace;
++
++static bool ggml_sched_trace_enabled() {
++    return getenv("GGML_SCHED_TRACE_STATS") != nullptr;
++}
++
++static void ggml_sched_trace_begin() {
++    if (!ggml_sched_trace_enabled()) {
++        g_sched_trace.enabled = false;
++        return;
++    }
++    g_sched_trace.enabled = true;
++    g_sched_trace.dirty   = true;
++    g_sched_trace.seq++;
++    g_sched_trace.n_nodes = 0;
++    g_sched_trace.n_nodes_gpu   = 0;
++    g_sched_trace.n_nodes_xdna = 0;
++    g_sched_trace.n_nodes_cpu  = 0;
++    g_sched_trace.n_mm_gpu   = 0;
++    g_sched_trace.n_mm_xdna  = 0;
++    g_sched_trace.n_mm_cpu   = 0;
++    g_sched_trace.n_splits   = 0;
++    g_sched_trace.n_transitions = 0;
++    g_sched_trace.n_copies   = 0;
++    g_sched_trace.n_copy_bufs = 0;
++    g_sched_trace.copy_bytes = 0;
++    g_sched_trace.n_v2x = 0; g_sched_trace.b_v2x = 0; g_sched_trace.t_v2x = 0;
++    g_sched_trace.n_x2v = 0; g_sched_trace.b_x2v = 0; g_sched_trace.t_x2v = 0;
++    g_sched_trace.n_c2x = 0; g_sched_trace.b_c2x = 0; g_sched_trace.t_c2x = 0;
++    g_sched_trace.n_x2c = 0; g_sched_trace.b_x2c = 0; g_sched_trace.t_x2c = 0;
++    g_sched_trace.t_alloc  = 0;
++    g_sched_trace.t_submit = 0;
++    g_sched_trace.t_sync   = 0;
++    g_sched_trace.t_wall   = 0;
++    for (int b = 0; b < GGML_SCHED_MAX_BACKENDS; b++) {
++        g_sched_trace.n_iv[b]    = 0;
++        g_sched_trace.iv_open[b] = 0;
++        g_sched_trace.busy_ms[b] = 0;
++    }
++}
++
++static void ggml_sched_trace_busy_open(int backend_id, uint64_t now) {
++    if (!g_sched_trace.enabled || backend_id < 0 || backend_id >= GGML_SCHED_MAX_BACKENDS) {
++        return;
++    }
++    if (g_sched_trace.iv_open[backend_id] == 0) {
++        g_sched_trace.iv_open[backend_id] = now;
++    }
++}
++
++static void ggml_sched_trace_busy_close(int backend_id, uint64_t now) {
++    if (!g_sched_trace.enabled || backend_id < 0 || backend_id >= GGML_SCHED_MAX_BACKENDS) {
++        return;
++    }
++    const uint64_t start = g_sched_trace.iv_open[backend_id];
++    g_sched_trace.iv_open[backend_id] = 0;
++    if (start == 0 || now <= start) {
++        return;
++    }
++    const double ms = (now - start) / 1e6;
++    g_sched_trace.busy_ms[backend_id] += ms;
++    if (g_sched_trace.n_iv[backend_id] < GGML_SCHED_TRACE_MAX_IV) {
++        g_sched_trace.iv[backend_id][g_sched_trace.n_iv[backend_id]++] = { start, now };
++    }
++}
++
++// intersection of two sorted disjoint interval lists
++static double ggml_sched_trace_overlap(int a, int b) {
++    double total = 0;
++    int i = 0, j = 0;
++    while (i < g_sched_trace.n_iv[a] && j < g_sched_trace.n_iv[b]) {
++        const uint64_t lo = g_sched_trace.iv[a][i].start > g_sched_trace.iv[b][j].start ? g_sched_trace.iv[a][i].start : g_sched_trace.iv[b][j].start;
++        const uint64_t hi = g_sched_trace.iv[a][i].end   < g_sched_trace.iv[b][j].end   ? g_sched_trace.iv[a][i].end   : g_sched_trace.iv[b][j].end;
++        if (hi > lo) {
++            total += (hi - lo) / 1e6;
++        }
++        if (g_sched_trace.iv[a][i].end < g_sched_trace.iv[b][j].end) {
++            i++;
++        } else {
++            j++;
++        }
++    }
++    return total;
++}
++
++static void ggml_sched_trace_end(ggml_backend_sched_t sched, uint64_t now) {
++    if (!g_sched_trace.enabled || !g_sched_trace.dirty) {
++        return;
++    }
++    for (int b = 0; b < GGML_SCHED_MAX_BACKENDS; b++) {
++        ggml_sched_trace_busy_close(b, now);
++    }
++    g_sched_trace.dirty = false;
++
++    double acc_busy = 0;
++    for (int b = 0; b < sched->n_backends; b++) {
++        acc_busy += g_sched_trace.busy_ms[b];
++    }
++
++    // Only one pair of backends can be active at a time here, so the largest
++    // pairwise intersection is the honest overlap figure.
++    double best_pair = 0;
++    double pair_sum = 0;
++    int best_a = -1, best_b = -1;
++    for (int a = 0; a < sched->n_backends; a++) {
++        for (int b = a + 1; b < sched->n_backends; b++) {
++            if (g_sched_trace.n_iv[a] == 0 || g_sched_trace.n_iv[b] == 0) {
++                continue;
++            }
++            const double o = ggml_sched_trace_overlap(a, b);
++            pair_sum += o;
++            if (o > best_pair) {
++                best_pair = o;
++                best_a = a;
++                best_b = b;
++            }
++        }
++    }
++
++    fprintf(stderr,
++            "[SCHED-SUMMARY] seq=%d n_nodes=%d n_nodes_gpu=%d n_nodes_xdna=%d n_nodes_cpu=%d "
++            "n_mm_gpu=%d n_mm_xdna=%d n_mm_cpu=%d "
++            "n_splits=%d n_transitions=%d n_copies=%d n_copy_bufs=%d copy_bytes=%zu "
++            "v2x_n=%d v2x_bytes=%zu v2x_ms=%.3f x2v_n=%d x2v_bytes=%zu x2v_ms=%.3f "
++            "c2x_n=%d c2x_bytes=%zu c2x_ms=%.3f x2c_n=%d x2c_bytes=%zu x2c_ms=%.3f "
++            "alloc_ms=%.3f submit_ms=%.3f sync_ms=%.3f wall_ms=%.3f "
++            "acc_busy_ms=%.3f overlap_ms=%.3f overlap_pair_sum_ms=%.3f overlap_pair=%s/%s "
++            "acc_busy_pct=%.1f\n",
++            g_sched_trace.seq, g_sched_trace.n_nodes, g_sched_trace.n_nodes_gpu, g_sched_trace.n_nodes_xdna,
++            g_sched_trace.n_nodes_cpu, g_sched_trace.n_mm_gpu, g_sched_trace.n_mm_xdna, g_sched_trace.n_mm_cpu,
++            g_sched_trace.n_splits, g_sched_trace.n_transitions, g_sched_trace.n_copies,
++            g_sched_trace.n_copy_bufs, g_sched_trace.copy_bytes,
++            g_sched_trace.n_v2x, g_sched_trace.b_v2x, g_sched_trace.t_v2x,
++            g_sched_trace.n_x2v, g_sched_trace.b_x2v, g_sched_trace.t_x2v,
++            g_sched_trace.n_c2x, g_sched_trace.b_c2x, g_sched_trace.t_c2x,
++            g_sched_trace.n_x2c, g_sched_trace.b_x2c, g_sched_trace.t_x2c,
++            g_sched_trace.t_alloc, g_sched_trace.t_submit, g_sched_trace.t_sync, g_sched_trace.t_wall,
++            acc_busy, best_pair, pair_sum,
++            best_a >= 0 ? ggml_backend_name(sched->backends[best_a]) : "-",
++            best_b >= 0 ? ggml_backend_name(sched->backends[best_b]) : "-",
++            g_sched_trace.t_wall > 0 ? 100.0 * acc_busy / g_sched_trace.t_wall : 0.0);
++}
++
+ static void ggml_backend_sched_print_assignments(ggml_backend_sched_t sched, struct ggml_cgraph * graph) {
+     int cur_split = 0;
+     for (int i = 0; i < graph->n_nodes; i++) {
+@@ -1084,6 +1510,10 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+ 
+     graph->uid = ggml_graph_next_uid();
+ 
++    if (getenv("GGML_SCHED_TRACE_OWNERSHIP")) {
++        ggml_backend_sched_dump_assignments(sched, graph);
++    }
++
+     // pass 1: assign backends to ops with pre-allocated inputs
+     for (int i = 0; i < graph->n_leafs; i++) {
+         struct ggml_tensor * leaf = graph->leafs[i];
+@@ -1267,8 +1697,31 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+         struct ggml_tensor * node = graph->nodes[i];
+         int * cur_backend_id = &tensor_backend_id(node);
+         if (node->view_src != NULL && *cur_backend_id == -1) {
+-            *cur_backend_id = tensor_backend_id(node->view_src);
+-            SET_CAUSE(node, "4.vsrc");
++            struct ggml_tensor * root = node;
++            while (root->view_src != NULL) {
++                root = root->view_src;
++            }
++            *cur_backend_id = tensor_backend_id(root);
++            if (*cur_backend_id == -1) {
++                *cur_backend_id = ggml_backend_sched_backend_id_from_cur(sched, root);
++                if (*cur_backend_id != -1) {
++                    tensor_backend_id(root) = *cur_backend_id;
++                }
++            }
++            if (*cur_backend_id != -1) {
++                for (struct ggml_tensor * view = node; view != root; view = view->view_src) {
++                    tensor_backend_id(view) = *cur_backend_id;
++                }
++                SET_CAUSE(node, "4.vsrc");
++            }
++        }
++        // if the node is still unassigned, assign it to the first backend that supports it
++        for (int b = 0; b < sched->n_backends && *cur_backend_id == -1; b++) {
++            ggml_backend_sched_set_if_supported(sched, node, b, cur_backend_id);
++        }
++        if (*cur_backend_id == -1) {
++            ggml_backend_sched_dump_tensor_ownership(sched, node, node, *cur_backend_id, -1);
++            GGML_ASSERT(*cur_backend_id != -1);
+         }
+         for (int j = 0; j < GGML_MAX_SRC; j++) {
+             struct ggml_tensor * src = node->src[j];
+@@ -1278,8 +1731,22 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+             int * src_backend_id = &tensor_backend_id(src);
+             if (*src_backend_id == -1) {
+                 if (src->view_src != NULL) {
+-                    // views are always on the same backend as the source
+-                    *src_backend_id = tensor_backend_id(src->view_src);
++                    struct ggml_tensor * root = src;
++                    while (root->view_src != NULL) {
++                        root = root->view_src;
++                    }
++                    int * root_backend_id = &tensor_backend_id(root);
++                    if (*root_backend_id == -1) {
++                        *root_backend_id = ggml_backend_sched_backend_id_from_cur(sched, root);
++                        if (*root_backend_id == -1) {
++                            ggml_backend_sched_dump_tensor_ownership(sched, src, node, *cur_backend_id, *src_backend_id);
++                            GGML_ASSERT(*root_backend_id != -1);
++                        }
++                    }
++                    for (struct ggml_tensor * view = src; view != root; view = view->view_src) {
++                        tensor_backend_id(view) = *root_backend_id;
++                    }
++                    *src_backend_id = *root_backend_id;
+                     SET_CAUSE(src, "4.vsrc");
+                 } else {
+                     *src_backend_id = *cur_backend_id;
+@@ -1287,11 +1754,6 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+                 }
+             }
+         }
+-        // if the node is still unassigned, assign it to the first backend that supports it
+-        for (int b = 0; b < sched->n_backends && *cur_backend_id == -1; b++) {
+-            ggml_backend_sched_set_if_supported(sched, node, b, cur_backend_id);
+-        }
+-        GGML_ASSERT(*cur_backend_id != -1);
+     }
+ 
+     // pass 5: split graph, find tensors that need to be copied
+@@ -1381,6 +1843,9 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+ 
+                 size_t src_id = hash_id(src);
+                 const int src_backend_id = sched->hv_tensor_backend_ids[src_id];
++                if (src_backend_id == -1) {
++                    ggml_backend_sched_dump_tensor_ownership(sched, src, node, node_backend_id, cur_backend_id);
++                }
+                 GGML_ASSERT(src_backend_id != -1); // all inputs should be assigned by now
+ 
+                 if (src->flags & GGML_TENSOR_FLAG_INPUT && sched->n_copies > 1) {
+@@ -1435,6 +1900,90 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
+         sched->n_splits = i_split + 1;
+     }
+ 
++    ggml_backend_sched_trace_ffn_assignment(sched, graph);
++
++    if (getenv("GGML_SCHED_TRACE_STATS")) {
++        int n_split_inputs = 0;
++        size_t copy_bytes = 0;
++        size_t vk_to_xdna_bytes = 0;
++        size_t xdna_to_vk_bytes = 0;
++        int vk_to_xdna_count = 0;
++        int xdna_to_vk_count = 0;
++        int n_backend_transitions = 0;
++        int previous_backend_id = -1;
++        for (int i = 0; i < sched->n_splits; i++) {
++            if (i > 0 && sched->splits[i].backend_id != previous_backend_id) {
++                n_backend_transitions++;
++            }
++            previous_backend_id = sched->splits[i].backend_id;
++            n_split_inputs += sched->splits[i].n_inputs;
++            for (int j = 0; j < sched->splits[i].n_inputs; j++) {
++                struct ggml_tensor * input = sched->splits[i].inputs[j];
++                size_t input_bytes = ggml_nbytes(input);
++                copy_bytes += input_bytes;
++                int input_backend_id = tensor_backend_id(input);
++                const bool split_is_vk = strstr(ggml_backend_name(sched->backends[sched->splits[i].backend_id]), "Vulkan") != NULL;
++                const bool split_is_xdna = strcmp(ggml_backend_name(sched->backends[sched->splits[i].backend_id]), "XDNA") == 0;
++                const bool input_is_vk = input_backend_id >= 0 && strstr(ggml_backend_name(sched->backends[input_backend_id]), "Vulkan") != NULL;
++                const bool input_is_xdna = input_backend_id >= 0 && strcmp(ggml_backend_name(sched->backends[input_backend_id]), "XDNA") == 0;
++                if (input_is_vk && split_is_xdna) {
++                    vk_to_xdna_count++;
++                    vk_to_xdna_bytes += input_bytes;
++                } else if (input_is_xdna && split_is_vk) {
++                    xdna_to_vk_count++;
++                    xdna_to_vk_bytes += input_bytes;
++                }
++            }
++        }
++        fprintf(stderr, "[SCHED-STATS] n_splits=%d n_graph_inputs=%d n_split_inputs=%d n_backend_transitions=%d copy_bytes=%zu vk_to_xdna_count=%d vk_to_xdna_bytes=%zu xdna_to_vk_count=%d xdna_to_vk_bytes=%zu\n",
++                sched->n_splits, sched->n_graph_inputs, n_split_inputs, n_backend_transitions, copy_bytes,
++                vk_to_xdna_count, vk_to_xdna_bytes, xdna_to_vk_count, xdna_to_vk_bytes);
++        if (getenv("GGML_SCHED_TRACE_SPLITS")) {
++            int xdna_backend_id = -1;
++            for (int b = 0; b < sched->n_backends; b++) {
++                if (strcmp(ggml_backend_name(sched->backends[b]), "XDNA") == 0) {
++                    xdna_backend_id = b;
++                    break;
++                }
++            }
++            for (int i = 0; i < sched->n_splits; i++) {
++                const struct ggml_backend_sched_split * split = &sched->splits[i];
++                const char * backend_name = ggml_backend_name(sched->backends[split->backend_id]);
++                int xdna_nodes = 0;
++                for (int j = split->i_start; j < split->i_end; j++) {
++                    if (tensor_backend_id(graph->nodes[j]) == xdna_backend_id) {
++                        xdna_nodes++;
++                    }
++                }
++                int vk_inputs = 0;
++                int xdna_inputs = 0;
++                size_t input_bytes = 0;
++                for (int j = 0; j < split->n_inputs; j++) {
++                    ggml_tensor * input = split->inputs[j];
++                    const int input_backend = tensor_backend_id(input);
++                    const char * input_name = input_backend >= 0 ? ggml_backend_name(sched->backends[input_backend]) : "";
++                    input_bytes += ggml_nbytes(input);
++                    vk_inputs += strstr(input_name, "Vulkan") != nullptr;
++                    xdna_inputs += strcmp(input_name, "XDNA") == 0;
++                }
++                const char * split_class = "backend-only";
++                if (xdna_nodes > 0 && vk_inputs > 0) {
++                    split_class = "Vulkan->XDNA-boundary";
++                } else if (xdna_nodes > 0 && xdna_inputs > 0) {
++                    split_class = "XDNA-only";
++                } else if (xdna_nodes == 0 && xdna_inputs > 0) {
++                    split_class = "XDNA->Vulkan-boundary";
++                }
++                const char * first_name = split->i_start < graph->n_nodes ? graph->nodes[split->i_start]->name : "(none)";
++                const char * last_name = split->i_end > split->i_start ? graph->nodes[split->i_end - 1]->name : "(none)";
++                fprintf(stderr, "[SCHED-SPLIT] id=%d backend=%s first=%d last=%d nodes=%d xdna_nodes=%d inputs=%d input_bytes=%zu class=%s first_node=%s last_node=%s\n",
++                        i, backend_name, split->i_start, split->i_end > split->i_start ? split->i_end - 1 : split->i_start,
++                        split->i_end - split->i_start, xdna_nodes, split->n_inputs, input_bytes, split_class,
++                        first_name, last_name);
++            }
++        }
++    }
++
+     if (sched->debug) {
+         ggml_backend_sched_print_assignments(sched, graph);
+     }
+@@ -1661,6 +2210,48 @@ static enum ggml_status ggml_backend_sched_compute_splits(ggml_backend_sched_t s
+ 
+     int prev_backend_id = -1;
+ 
++    const bool trace_stats = ggml_sched_trace_enabled();
++    const bool trace_copy  = getenv("GGML_SCHED_TRACE_COPY") != nullptr;
++    const bool trace_compute = trace_copy;
++    const uint64_t trace_wall_begin = trace_stats ? ggml_time_ns() : 0;
++    if (trace_stats) {
++        ggml_sched_trace_begin();
++
++        int xdna_id = -1;
++        for (int b = 0; b < sched->n_backends; b++) {
++            if (strcmp(ggml_backend_name(sched->backends[b]), "XDNA") == 0) {
++                xdna_id = b;
++                break;
++            }
++        }
++        for (int i = 0; i < sched->graph.n_nodes; i++) {
++            struct ggml_tensor * node = sched->graph.nodes[i];
++            const int backend_id = tensor_backend_id(node);
++            g_sched_trace.n_nodes++;
++            if (xdna_id >= 0 && backend_id == xdna_id) {
++                g_sched_trace.n_nodes_xdna++;
++            } else if (backend_id == sched->n_backends - 1) {
++                g_sched_trace.n_nodes_cpu++;
++            } else {
++                g_sched_trace.n_nodes_gpu++;
++            }
++            if (node->op == GGML_OP_MUL_MAT) {
++                if (xdna_id >= 0 && backend_id == xdna_id) {
++                    g_sched_trace.n_mm_xdna++;
++                } else if (backend_id == sched->n_backends - 1) {
++                    g_sched_trace.n_mm_cpu++;
++                } else {
++                    g_sched_trace.n_mm_gpu++;
++                }
++            }
++        }
++        g_sched_trace.n_splits = sched->n_splits;
++        for (int i = 1; i < sched->n_splits; i++) {
++            g_sched_trace.n_transitions += splits[i].backend_id != splits[i - 1].backend_id;
++        }
++        g_sched_trace.n_copy_bufs = sched->n_copies;
++    }
++
+     for (int split_id = 0; split_id < sched->n_splits; split_id++) {
+         struct ggml_backend_sched_split * split = &splits[split_id];
+         int split_backend_id = split->backend_id;
+@@ -1669,34 +2260,53 @@ static enum ggml_status ggml_backend_sched_compute_splits(ggml_backend_sched_t s
+         // ensure the previous split's async work has completed before we start
+         // this split, the allocator may have reused buffer regions across splits
+         if (split->n_inputs == 0 && prev_backend_id >= 0 && prev_backend_id != split_backend_id) {
++            const uint64_t sync_begin = trace_stats ? ggml_time_ns() : 0;
+             if (sched->events[prev_backend_id][sched->cur_copy] != NULL) {
+                 ggml_backend_event_synchronize(sched->events[prev_backend_id][sched->cur_copy]);
+             } else {
+                 ggml_backend_synchronize(sched->backends[prev_backend_id]);
+             }
++            if (trace_stats) {
++                const uint64_t sync_end = ggml_time_ns();
++                g_sched_trace.t_sync += (sync_end - sync_begin) / 1e6;
++                ggml_sched_trace_busy_close(prev_backend_id, sync_end);
++            }
+         }
+ 
+         // copy the input tensors to the split backend
+         for (int input_id = 0; input_id < split->n_inputs; input_id++) {
++            const uint64_t copy_start_ns = trace_copy ? ggml_time_ns() : 0;
+             ggml_backend_t input_backend = ggml_backend_sched_get_tensor_backend(sched, split->inputs[input_id]);
+             struct ggml_tensor * input = split->inputs[input_id];
+             struct ggml_tensor * input_cpy = tensor_copy(input, split_backend_id, sched->cur_copy);
+ 
+             if (input->flags & GGML_TENSOR_FLAG_INPUT) {
+                 // inputs from the user must be copied immediately to prevent the user overwriting the data before the copy is done
++                const uint64_t sync_begin = trace_stats ? ggml_time_ns() : 0;
+                 if (sched->events[split_backend_id][sched->cur_copy] != NULL) {
+                     ggml_backend_event_synchronize(sched->events[split_backend_id][sched->cur_copy]);
+                 } else {
+                     ggml_backend_synchronize(split_backend);
+                 }
++                if (trace_stats) {
++                    const uint64_t sync_end = ggml_time_ns();
++                    g_sched_trace.t_sync += (sync_end - sync_begin) / 1e6;
++                    ggml_sched_trace_busy_close(split_backend_id, sync_end);
++                }
+                 ggml_backend_tensor_copy(input, input_cpy);
+             } else {
+                 // wait for the split backend to finish using the input before overwriting it
++                const uint64_t sync_begin = trace_stats ? ggml_time_ns() : 0;
+                 if (sched->events[split_backend_id][sched->cur_copy] != NULL) {
+                     ggml_backend_event_wait(split_backend, sched->events[split_backend_id][sched->cur_copy]);
+                 } else {
+                     ggml_backend_synchronize(split_backend);
+                 }
++                if (trace_stats) {
++                    const uint64_t sync_end = ggml_time_ns();
++                    g_sched_trace.t_sync += (sync_end - sync_begin) / 1e6;
++                    ggml_sched_trace_busy_close(split_backend_id, sync_end);
++                }
+ 
+                 // when offloading MoE weights, we can reduce the amount of data copied by copying only the experts that are used
+                 ggml_tensor * node = split->graph.nodes[0];
+@@ -1797,8 +2407,39 @@ static enum ggml_status ggml_backend_sched_compute_splits(ggml_backend_sched_t s
+                     }
+                 }
+             }
++            if (trace_copy) {
++                const uint64_t copy_end_ns = ggml_time_ns();
++                fprintf(stderr,
++                        "[SCHED-COPY] split=%d input=%s input_backend=%s split_backend=%s bytes=%zu time_ms=%.3f\n",
++                        split_id, input->name, ggml_backend_name(input_backend), ggml_backend_name(split_backend),
++                        ggml_nbytes(input), (copy_end_ns - copy_start_ns) / 1e6);
++            }
++            if (trace_stats) {
++                const double copy_ms = trace_copy ? (ggml_time_ns() - copy_start_ns) / 1e6 : 0.0;
++                g_sched_trace.n_copies++;
++                g_sched_trace.copy_bytes += ggml_nbytes(input);
++                const char * src_name = ggml_backend_name(input_backend);
++                const char * dst_name = ggml_backend_name(split_backend);
++                const bool src_is_gpu = strstr(src_name, "Vulkan") != nullptr;
++                const bool src_is_xdna = strcmp(src_name, "XDNA") == 0;
++                const bool src_is_cpu  = strncmp(src_name, "CPU", 3) == 0;
++                const bool dst_is_xdna = strcmp(dst_name, "XDNA") == 0;
++                if (src_is_gpu && dst_is_xdna) {
++                    g_sched_trace.n_v2x++; g_sched_trace.b_v2x += ggml_nbytes(input); g_sched_trace.t_v2x += copy_ms;
++                } else if (src_is_xdna && dst_is_xdna) {
++                    g_sched_trace.n_x2c++; g_sched_trace.b_x2c += ggml_nbytes(input); g_sched_trace.t_x2c += copy_ms;
++                } else if (src_is_xdna) {
++                    g_sched_trace.n_x2v++; g_sched_trace.b_x2v += ggml_nbytes(input); g_sched_trace.t_x2v += copy_ms;
++                } else if (src_is_cpu && dst_is_xdna) {
++                    g_sched_trace.n_c2x++; g_sched_trace.b_c2x += ggml_nbytes(input); g_sched_trace.t_c2x += copy_ms;
++                }
++            }
+         }
+ 
++        const uint64_t split_compute_start_ns = trace_stats ? ggml_time_ns() : 0;
++        if (trace_stats) {
++            ggml_sched_trace_busy_open(split_backend_id, split_compute_start_ns);
++        }
+         if (!sched->callback_eval) {
+             enum ggml_status ec = ggml_backend_graph_compute_async(split_backend, &split->graph);
+             if (ec != GGML_STATUS_SUCCESS) {
+@@ -1838,6 +2479,16 @@ static enum ggml_status ggml_backend_sched_compute_splits(ggml_backend_sched_t s
+             }
+         }
+ 
++        if (trace_compute) {
++            const uint64_t split_compute_end_ns = ggml_time_ns();
++            g_sched_trace.t_submit += (split_compute_end_ns - split_compute_start_ns) / 1e6;
++            if (getenv("GGML_SCHED_TRACE_COPY")) {
++                fprintf(stderr, "[SCHED-COMPUTE] split=%d backend=%s nodes=%d submit_ms=%.3f\n",
++                        split_id, ggml_backend_name(split_backend), split->graph.n_nodes,
++                        (split_compute_end_ns - split_compute_start_ns) / 1e6);
++            }
++        }
++
+         // record the event of this split
+         if (sched->events[split_backend_id][sched->cur_copy] != NULL) {
+             ggml_backend_event_record(sched->events[split_backend_id][sched->cur_copy], split_backend);
+@@ -1846,6 +2497,14 @@ static enum ggml_status ggml_backend_sched_compute_splits(ggml_backend_sched_t s
+         prev_backend_id = split_backend_id;
+     }
+ 
++    if (trace_stats) {
++        g_sched_trace.t_wall = (ggml_time_ns() - trace_wall_begin) / 1e6;
++        // Vulkan runs asynchronously, so its true busy time (and the overlap
++        // with the NPU) comes from [VK-SUMMARY]; here the intervals only span
++        // the submit loop, where both backends are known to be running.
++        ggml_sched_trace_end(sched, ggml_time_ns());
++    }
++
+     return GGML_STATUS_SUCCESS;
+ }
+ 
+@@ -1952,6 +2611,7 @@ void ggml_backend_sched_free(ggml_backend_sched_t sched) {
+ 
+ void ggml_backend_sched_reset(ggml_backend_sched_t sched) {
+     GGML_ASSERT(sched);
++    ggml_backend_sched_synchronize(sched);
+     // reset state for the next run
+     if (!sched->is_reset) {
+         ggml_hash_set_reset(&sched->hash_set);
+@@ -1998,6 +2658,8 @@ bool ggml_backend_sched_alloc_graph(ggml_backend_sched_t sched, struct ggml_cgra
+     GGML_ASSERT((int)sched->hash_set.size >= graph->n_nodes + graph->n_leafs);
+     GGML_ASSERT(!sched->is_alloc);
+ 
++    const uint64_t alloc_begin_ns = ggml_sched_trace_enabled() ? ggml_time_ns() : 0;
++
+     sched->cur_copy = sched->next_copy;
+     sched->next_copy = (sched->next_copy + 1) % sched->n_copies;
+ 
+@@ -2007,6 +2669,10 @@ bool ggml_backend_sched_alloc_graph(ggml_backend_sched_t sched, struct ggml_cgra
+         return false;
+     }
+ 
++    if (alloc_begin_ns != 0) {
++        g_sched_trace.t_alloc += (ggml_time_ns() - alloc_begin_ns) / 1e6;
++    }
++
+     sched->is_alloc = true;
+ 
+     return true;
+diff --git a/ggml/src/ggml-cpu/ggml-cpu.c b/ggml/src/ggml-cpu/ggml-cpu.c
+index 87a329f26..86ed6f27e 100644
+--- a/ggml/src/ggml-cpu/ggml-cpu.c
++++ b/ggml/src/ggml-cpu/ggml-cpu.c
+@@ -3,6 +3,7 @@
+ 
+ #include "ggml-backend-impl.h"
+ #include "ggml-backend.h"
++#include "ggml-backend-profile.h"
+ #include "traits.h"
+ #include "iqp.h"
+ #include "ggml-cpu-impl.h"
+@@ -1253,12 +1254,20 @@ static void ggml_compute_forward_mul_mat_one_chunk(
+ }
+ 
+ void ggml_compute_forward_mul_mat(
+-        const struct ggml_compute_params * params,
+-              struct ggml_tensor * dst) {
++         const struct ggml_compute_params * params,
++               struct ggml_tensor * dst) {
++
++    fprintf(stderr, "[MUL_MAT] dst=%p data=%p ne=[%ld,%ld,%ld,%ld]\n", (void*)dst, dst->data, dst->ne[0], dst->ne[1], dst->ne[2], dst->ne[3]);
++    fprintf(stderr, "[MUL_MAT]   dst name: %s\n", dst->name ? dst->name : "unnamed");
++    fflush(stderr);
+ 
+     const struct ggml_tensor * src0 = dst->src[0];
+     const struct ggml_tensor * src1 = dst->src[1];
+ 
++    fprintf(stderr, "[MUL_MAT] src0=%p data=%p ne=[%ld,%ld,%ld,%ld]\n", (void*)src0, src0->data, src0->ne[0], src0->ne[1], src0->ne[2], src0->ne[3]);
++    fprintf(stderr, "[MUL_MAT] src1=%p data=%p ne=[%ld,%ld,%ld,%ld]\n", (void*)src1, src1->data, src1->ne[0], src1->ne[1], src1->ne[2], src1->ne[3]);
++    fflush(stderr);
++
+     const int32_t hint = ggml_get_op_params_i32(dst, 1);
+     if (hint == GGML_HINT_SRC0_IS_HADAMARD && !params->use_ref) {
+         ggml_compute_forward_fwht(params, dst);
+@@ -3395,6 +3404,12 @@ enum ggml_status ggml_graph_compute(struct ggml_cgraph * cgraph, struct ggml_cpl
+     GGML_ASSERT(cplan->n_threads > 0);
+     GGML_ASSERT(cplan->work_size == 0 || cplan->work_data != NULL);
+ 
++    // Profiling: record graph start
++    uint64_t graph_start_ns = 0;
++    if (ggml_profile_is_enabled()) {
++        graph_start_ns = ggml_time_ns();
++    }
++
+     int n_threads                               = cplan->n_threads;
+     struct ggml_threadpool * threadpool = cplan->threadpool;
+ 
+@@ -3462,6 +3477,35 @@ enum ggml_status ggml_graph_compute(struct ggml_cgraph * cgraph, struct ggml_cpl
+         ggml_threadpool_free(threadpool);
+     }
+ 
++    // Profiling: record graph end
++    if (ggml_profile_is_enabled() && graph_start_ns > 0) {
++        uint64_t graph_end_ns = ggml_time_ns();
++
++        ggml_profile_event_t start_event = {};
++        start_event.type = GGML_PROFILE_EVENT_OP_START;
++        start_event.timestamp_ns = graph_start_ns;
++        start_event.backend_name = "CPU";
++        start_event.op_name = "GRAPH_COMPUTE";
++        start_event.op_type = -1;
++        start_event.graph_index = 0;
++        start_event.layer = -1;
++        start_event.M = 0;
++        start_event.K = 0;
++        start_event.N = 0;
++        start_event.dtype_a = 0;
++        start_event.dtype_b = 0;
++        start_event.dtype_c = 0;
++        start_event.tensor_size = 0;
++        start_event.xdna_compatible = false;
++
++        ggml_profile_event_t end_event = start_event;
++        end_event.type = GGML_PROFILE_EVENT_OP_END;
++        end_event.timestamp_ns = graph_end_ns;
++
++        ggml_profile_record_event(&start_event);
++        ggml_profile_record_event(&end_event);
++    }
++
+     return ret;
+ }
+ 
+diff --git a/ggml/src/ggml-vulkan/ggml-vulkan.cpp b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+index a04a6b27a..7f9d143eb 100644
+--- a/ggml/src/ggml-vulkan/ggml-vulkan.cpp
++++ b/ggml/src/ggml-vulkan/ggml-vulkan.cpp
+@@ -92,7 +92,7 @@ typedef struct VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV {
+ 
+ #include "ggml-impl.h"
+ #include "ggml-backend-impl.h"
+-
++#include "ggml-backend-profile.h"
+ #include "ggml-vulkan-shaders.hpp"
+ 
+ // remove this once it's more widely available in the SDK
+@@ -2579,6 +2579,8 @@ struct ggml_backend_vk_buffer_context {
+     vk_device_ref device;
+     vk_buffer dev_buffer;
+     std::string name;
++    // Phase 27: host-imported buffers own this host allocation (freed in free_buffer).
++    void * host_ptr = nullptr;
+ 
+     ggml_backend_vk_buffer_context(vk_device_ref device, vk_buffer&& dev_buffer, std::string& name) :
+         device(device),
+@@ -11101,6 +11103,16 @@ static void ggml_vk_flash_attn(ggml_backend_vk_context * ctx, vk_context& subctx
+         split_k = CEIL_DIV(KV, split_kv);
+     }
+ 
++    // Phase 31 experimental: force a fixed KV-range split_k so the partition + merge
++    // path can be exercised/measured explicitly. Default off.
++    if (const char * fsk = getenv("GGML_VK_FORCE_SPLIT_K")) {
++        const uint32_t forced = (uint32_t) atoi(fsk);
++        if (forced > 1) {
++            split_kv = ROUNDUP_POW2(std::max(1u, KV / forced), alignment);
++            split_k = CEIL_DIV(KV, split_kv);
++        }
++    }
++
+     // Reserve space for split_k temporaries. For each split x batch, we need to store the O matrix (D x ne1)
+     // and the per-row m and L values (ne1 rows). We store all the matrices first, followed by the rows.
+     // For matrices, the order is (inner to outer) [HSV, ne1, k, ne2, ne3].
+@@ -11117,6 +11129,29 @@ static void ggml_vk_flash_attn(ggml_backend_vk_context * ctx, vk_context& subctx
+     const uint32_t mask_opt_num_dwords = CEIL_DIV(nem0, 16 * Bc);
+     const uint64_t mask_opt_size = sizeof(uint32_t) * mask_opt_num_dwords * CEIL_DIV(nem1, Br) * nem2 * nem3;
+ 
++    // Phase 29/30: env-gated trace of attention dispatch structure (default off).
++    if (getenv("GGML_VK_TRACE_ATTENTION") != nullptr) {
++        fprintf(stderr, "[VK-TRACE-ATTN] name=%s N=%u KV=%u HSK=%u HSV=%u Br=%u Bc=%u gqa=%u split_k=%u split_kv=%u use_mask_opt=%d mask_opt_grid=%llu wg=(%u,%u,%u)\n",
++                k->name, N, KV, (uint32_t)HSK, (uint32_t)HSV, Br, Bc, gqa_ratio, split_k, split_kv,
++                use_mask_opt ? 1 : 0,
++                (unsigned long long)mask_opt_num_dwords * CEIL_DIV(nem1, Br) * nem2 * nem3,
++                workgroups_x, workgroups_y, workgroups_z);
++        fprintf(stderr, "[VK-TRACE-KV] qt=%s kt=%s vt=%s kte=%s vte=%s dequant=%d dense_k=%d dense_v=%d kquant=%d vquant=%d nhq=%u nhk=%u ratio=%u\n",
++                ggml_type_name(q->type), ggml_type_name(k->type), ggml_type_name(v->type),
++                ggml_type_name(k_type_eff), ggml_type_name(v_type_eff),
++                use_dequant_kv ? 1 : 0, is_dense_kv_cache(k) ? 1 : 0, is_dense_kv_cache(v) ? 1 : 0,
++                k_quant ? 1 : 0, v_quant ? 1 : 0, (uint32_t)neq2, (uint32_t)nek2, qk_ratio);
++        fprintf(stderr, "[VK-TRACE-K] ne=[%lld,%lld,%lld,%lld] nb=[%lld,%lld,%lld,%lld]\n",
++                (long long)nek0, (long long)nek1, (long long)nek2, (long long)nek3,
++                (long long)nbk0, (long long)nbk1, (long long)nbk2, (long long)nbk3);
++        fprintf(stderr, "[VK-TRACE-V] ne=[%lld,%lld,%lld,%lld] nb=[%lld,%lld,%lld,%lld]\n",
++                (long long)nev0, (long long)nev1, (long long)nev2, (long long)nev3,
++                (long long)nbv0, (long long)nbv1, (long long)nbv2, (long long)nbv3);
++        fprintf(stderr, "[VK-TRACE-Q] ne=[%lld,%lld,%lld,%lld] nb=[%lld,%lld,%lld,%lld]\n",
++                (long long)neq0, (long long)neq1, (long long)neq2, (long long)neq3,
++                (long long)nbq0, (long long)nbq1, (long long)nbq2, (long long)nbq3);
++    }
++
+     vk_pipeline pipeline_fa_mask_opt = nullptr;
+     if (use_mask_opt) {
+         {
+@@ -16221,6 +16256,12 @@ static void ggml_vk_compute_forward(ggml_backend_vk_context * ctx, ggml_cgraph *
+ 
+     VK_LOG_DEBUG("ggml_vk_compute_forward(" << tensor << ", name=" << tensor->name << ", op=" << ggml_op_name(tensor->op) << ", type=" << tensor->type << ", ne0=" << tensor->ne[0] << ", ne1=" << tensor->ne[1] << ", ne2=" << tensor->ne[2] << ", ne3=" << tensor->ne[3] << ", nb0=" << tensor->nb[0] << ", nb1=" << tensor->nb[1] << ", nb2=" << tensor->nb[2] << ", nb3=" << tensor->nb[3] << ", view_src=" << tensor->view_src << ", view_offs=" << tensor->view_offs << ")");
+ 
++    // Profiling: record operation start
++    uint64_t op_start_ns = 0;
++    if (ggml_profile_is_enabled()) {
++        op_start_ns = ggml_time_ns();
++    }
++
+     vk_context subctx = ctx->tensor_ctxs[tensor_idx].lock();
+ 
+     // Only run if ctx hasn't been submitted yet
+@@ -16263,6 +16304,35 @@ static void ggml_vk_compute_forward(ggml_backend_vk_context * ctx, ggml_cgraph *
+         subctx->out_memcpys.clear();
+         subctx->memsets.clear();
+     }
++
++    // Profiling: record operation end
++    if (ggml_profile_is_enabled() && op_start_ns > 0) {
++        uint64_t op_end_ns = ggml_time_ns();
++
++        ggml_profile_event_t start_event = {};
++        start_event.type = GGML_PROFILE_EVENT_OP_START;
++        start_event.timestamp_ns = op_start_ns;
++        start_event.backend_name = "Vulkan";
++        start_event.op_name = ggml_op_name(tensor->op);
++        start_event.op_type = tensor->op;
++        start_event.graph_index = tensor_idx;
++        start_event.layer = -1;
++        start_event.M = tensor->ne[1];
++        start_event.K = tensor->ne[0];
++        start_event.N = tensor->ne[2];
++        start_event.dtype_a = tensor->src[0] ? tensor->src[0]->type : 0;
++        start_event.dtype_b = tensor->src[1] ? tensor->src[1]->type : 0;
++        start_event.dtype_c = tensor->type;
++        start_event.tensor_size = ggml_nbytes(tensor);
++        start_event.xdna_compatible = false; // Will be determined by scheduler
++
++        ggml_profile_event_t end_event = start_event;
++        end_event.type = GGML_PROFILE_EVENT_OP_END;
++        end_event.timestamp_ns = op_end_ns;
++
++        ggml_profile_record_event(&start_event);
++        ggml_profile_record_event(&end_event);
++    }
+ }
+ 
+ // Clean up after graph processing is done
+@@ -16384,6 +16454,10 @@ static void ggml_backend_vk_buffer_free_buffer(ggml_backend_buffer_t buffer) {
+     VK_LOG_MEMORY("ggml_backend_vk_buffer_free_buffer()");
+     ggml_backend_vk_buffer_context * ctx = (ggml_backend_vk_buffer_context *)buffer->context;
+     ggml_vk_destroy_buffer(ctx->dev_buffer);
++    if (ctx->host_ptr != nullptr) {
++        free(ctx->host_ptr);
++        ctx->host_ptr = nullptr;
++    }
+     delete ctx;
+ }
+ 
+@@ -16558,6 +16632,153 @@ ggml_backend_buffer_type_t ggml_backend_vk_buffer_type(size_t dev_num) {
+     return &dev->buffer_type;
+ }
+ 
++// Phase 27: experimental host-output buffer type.
++// Tensors allocated here live in system memory imported into Vulkan through
++// VK_EXT_external_memory_host, so a compute shader writes straight into memory
++// the CPU can read. This removes the VRAM-host-mapping readback tax.
++static void ggml_backend_vk_host_output_buffer_memset_tensor(ggml_backend_buffer_t buffer, ggml_tensor * tensor, uint8_t value, size_t offset, size_t size) {
++    ggml_backend_vk_buffer_context * buf_ctx = (ggml_backend_vk_buffer_context *) buffer->context;
++    if (size == 0) {
++        return;
++    }
++    uint8_t * base = (uint8_t *) buf_ctx->host_ptr;
++    memset(base + vk_tensor_offset(tensor) + tensor->view_offs + offset, value, size);
++}
++
++static void ggml_backend_vk_host_output_buffer_set_tensor(ggml_backend_buffer_t buffer, ggml_tensor * tensor, const void * data, size_t offset, size_t size) {
++    ggml_backend_vk_buffer_context * buf_ctx = (ggml_backend_vk_buffer_context *) buffer->context;
++    if (size == 0) {
++        return;
++    }
++    uint8_t * base = (uint8_t *) buf_ctx->host_ptr;
++    memcpy(base + vk_tensor_offset(tensor) + tensor->view_offs + offset, data, size);
++}
++
++static void ggml_backend_vk_host_output_buffer_get_tensor(ggml_backend_buffer_t buffer, const ggml_tensor * tensor, void * data, size_t offset, size_t size) {
++    ggml_backend_vk_buffer_context * buf_ctx = (ggml_backend_vk_buffer_context *) buffer->context;
++    if (size == 0) {
++        return;
++    }
++    const uint8_t * base = (const uint8_t *) buf_ctx->host_ptr;
++    memcpy(data, base + vk_tensor_offset(tensor) + tensor->view_offs + offset, size);
++}
++
++static void ggml_backend_vk_host_output_buffer_clear(ggml_backend_buffer_t buffer, uint8_t value) {
++    ggml_backend_vk_buffer_context * ctx = (ggml_backend_vk_buffer_context *) buffer->context;
++    memset(ctx->host_ptr, value, buffer->size);
++}
++
++static ggml_backend_buffer_i ggml_backend_vk_host_output_buffer_interface = {
++    /* .free_buffer     = */ ggml_backend_vk_buffer_free_buffer,
++    /* .get_base        = */ ggml_backend_vk_buffer_get_base,
++    /* .init_tensor     = */ ggml_backend_vk_buffer_init_tensor,
++    /* .memset_tensor   = */ ggml_backend_vk_host_output_buffer_memset_tensor,
++    /* .set_tensor      = */ ggml_backend_vk_host_output_buffer_set_tensor,
++    /* .get_tensor      = */ ggml_backend_vk_host_output_buffer_get_tensor,
++    /* .set_tensor_2d   = */ NULL,
++    /* .get_tensor_2d   = */ NULL,
++    /* .cpy_tensor      = */ NULL,
++    /* .clear           = */ ggml_backend_vk_host_output_buffer_clear,
++    /* .reset           = */ NULL,
++};
++
++static ggml_backend_buffer_t ggml_backend_vk_host_output_buffer_type_alloc_buffer(ggml_backend_buffer_type_t buft, size_t size) {
++    ggml_backend_vk_buffer_type_context * ctx = (ggml_backend_vk_buffer_type_context *) buft->context;
++    vk_device & device = ctx->device;
++
++    if (!device->external_memory_host) {
++        GGML_LOG_ERROR("ggml_vulkan: host-output buffer type requires VK_EXT_external_memory_host\n");
++        return nullptr;
++    }
++    if (size == 0) {
++        return nullptr;
++    }
++
++    size_t align = device->min_imported_host_pointer_alignment;
++    if (align == 0) {
++        align = 4096;
++    }
++    size_t alloc_size = (size + align - 1) & ~(align - 1);
++
++    void * host_ptr = nullptr;
++    if (posix_memalign(&host_ptr, align, alloc_size) != 0) {
++        return nullptr;
++    }
++    memset(host_ptr, 0, alloc_size);
++
++    vk_buffer buf;
++    try {
++        buf = ggml_vk_create_buffer(device, alloc_size,
++            { vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent | vk::MemoryPropertyFlagBits::eHostCached,
++              vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent },
++            host_ptr);
++    } catch (const vk::SystemError & e) {
++        GGML_LOG_WARN("ggml_vulkan: host-output import failed (%s)\n", e.what());
++        free(host_ptr);
++        return nullptr;
++    }
++    if (!buf) {
++        free(host_ptr);
++        return nullptr;
++    }
++
++    ggml_backend_vk_buffer_context * bufctx = new ggml_backend_vk_buffer_context(device, std::move(buf), ctx->name);
++    bufctx->host_ptr = host_ptr;
++
++    return ggml_backend_buffer_init(buft, ggml_backend_vk_host_output_buffer_interface, bufctx, size);
++}
++
++static const char * ggml_backend_vk_host_output_buffer_type_name(ggml_backend_buffer_type_t buft) {
++    GGML_UNUSED(buft);
++    return GGML_VK_NAME "_HostOutput";
++}
++
++static size_t ggml_backend_vk_host_output_buffer_type_get_alignment(ggml_backend_buffer_type_t buft) {
++    ggml_backend_vk_buffer_type_context * ctx = (ggml_backend_vk_buffer_type_context *) buft->context;
++    return ctx->device->properties.limits.minStorageBufferOffsetAlignment;
++}
++
++static size_t ggml_backend_vk_host_output_buffer_type_get_max_size(ggml_backend_buffer_type_t buft) {
++    ggml_backend_vk_buffer_type_context * ctx = (ggml_backend_vk_buffer_type_context *) buft->context;
++    return ctx->device->suballocation_block_size;
++}
++
++static size_t ggml_backend_vk_host_output_buffer_type_get_alloc_size(ggml_backend_buffer_type_t buft, const ggml_tensor * tensor) {
++    GGML_UNUSED(buft);
++    return ggml_nbytes(tensor);
++}
++
++ggml_backend_buffer_type_t ggml_backend_vk_host_output_buffer_type(size_t dev_num) {
++    ggml_vk_instance_init();
++
++    vk_device dev = ggml_vk_get_device(dev_num);
++
++    static std::mutex host_output_mutex;
++    static std::unordered_map<vk_device, ggml_backend_buffer_type *> host_output_types;
++
++    std::lock_guard<std::mutex> lock(host_output_mutex);
++    auto it = host_output_types.find(dev);
++    if (it != host_output_types.end()) {
++        return it->second;
++    }
++
++    ggml_backend_buffer_type * bt = new ggml_backend_buffer_type{
++        /* .iface    = */ {
++            /* .get_name         = */ ggml_backend_vk_host_output_buffer_type_name,
++            /* .alloc_buffer     = */ ggml_backend_vk_host_output_buffer_type_alloc_buffer,
++            /* .get_alignment    = */ ggml_backend_vk_host_output_buffer_type_get_alignment,
++            /* .get_max_size     = */ ggml_backend_vk_host_output_buffer_type_get_max_size,
++            /* .get_alloc_size   = */ ggml_backend_vk_host_output_buffer_type_get_alloc_size,
++            /* .is_host          = */ NULL,
++        },
++        /* .device   = */ ggml_backend_reg_dev_get(ggml_backend_vk_reg(), dev_num),
++        /* .context  = */ new ggml_backend_vk_buffer_type_context{ dev->name + "_HostOutput", dev },
++    };
++
++    host_output_types[dev] = bt;
++    return bt;
++}
++
+ // host buffer type
+ 
+ static const char * ggml_backend_vk_host_buffer_type_name(ggml_backend_buffer_type_t buft) {
+@@ -16899,13 +17120,37 @@ static void ggml_vk_synchronize(ggml_backend_vk_context * ctx) {
+     }
+ }
+ 
++// Phase 48: exact GPU busy accounting. Vulkan submits asynchronously, so busy
++// runs from the first graph_compute until the synchronize that retires it.
++struct ggml_vk_busy {
++    uint64_t open_ns = 0;
++    double busy_ms = 0;
++    double submit_ms = 0;
++    int n_submit = 0;
++    int n_sync = 0;
++};
++
++static ggml_vk_busy vk_busy;
++
+ static void ggml_backend_vk_synchronize(ggml_backend_t backend) {
+     VK_LOG_DEBUG("ggml_backend_vk_synchronize()");
+     ggml_backend_vk_context * ctx = (ggml_backend_vk_context *)backend->context;
+ 
++    const bool trace = getenv("GGML_SCHED_TRACE_STATS") != nullptr;
++    const uint64_t sync_begin = trace ? ggml_time_ns() : 0;
++
+     ggml_vk_synchronize(ctx);
+ 
+     ggml_vk_graph_cleanup(ctx);
++
++    if (trace && vk_busy.open_ns != 0) {
++        const uint64_t sync_end = ggml_time_ns();
++        vk_busy.busy_ms += (sync_end - vk_busy.open_ns) / 1e6;
++        vk_busy.n_sync++;
++        fprintf(stderr, "[VK-SUMMARY] busy_ms=%.3f submit_ms=%.3f sync_ms=%.3f n_submit=%d n_sync=%d\n",
++                vk_busy.busy_ms, vk_busy.submit_ms, (sync_end - sync_begin) / 1e6, vk_busy.n_submit, vk_busy.n_sync);
++        vk_busy = {};
++    }
+ }
+ 
+ static bool ggml_vk_is_empty(ggml_tensor * node) {
+@@ -17541,6 +17786,13 @@ static ggml_status ggml_backend_vk_graph_compute(ggml_backend_t backend, ggml_cg
+     VK_LOG_DEBUG("ggml_backend_vk_graph_compute(" << cgraph->n_nodes << " nodes)");
+     ggml_backend_vk_context * ctx = (ggml_backend_vk_context *)backend->context;
+ 
++    const bool trace_busy = getenv("GGML_SCHED_TRACE_STATS") != nullptr;
++    const uint64_t gc_begin_ns = trace_busy ? ggml_time_ns() : 0;
++    if (trace_busy && vk_busy.open_ns == 0) {
++        vk_busy.open_ns = gc_begin_ns;
++    }
++    vk_busy.n_submit++;
++
+     ctx->device->diag_cgraph = nullptr;
+     ctx->device->diag_prev_start = -1;
+     ctx->device->diag_prev_end = -1;
+@@ -18003,6 +18255,10 @@ static ggml_status ggml_backend_vk_graph_compute(ggml_backend_t backend, ggml_cg
+         ggml_vk_synchronize(ctx);
+     }
+ 
++    if (trace_busy) {
++        vk_busy.submit_ms += (ggml_time_ns() - gc_begin_ns) / 1e6;
++    }
++
+     return GGML_STATUS_SUCCESS;
+ 
+     UNUSED(backend);
+diff --git a/src/llama-context.cpp b/src/llama-context.cpp
+index c1ef12f56..54fbac011 100644
+--- a/src/llama-context.cpp
++++ b/src/llama-context.cpp
+@@ -1,6 +1,7 @@
+ #include "llama-context.h"
+ 
+ #include "ggml.h"
++#include "ggml-backend-profile.h"
+ #include "llama-arch.h"
+ #include "llama-graph.h"
+ #include "llama-impl.h"
+@@ -1332,6 +1333,13 @@ bool llama_context::set_adapter_cvec(
+ }
+ 
+ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, llm_graph_type gtype, llama_memory_context_i * mctx, ggml_status & ret) {
++    const bool trace_ubatch = getenv("GGML_SCHED_TRACE_STATS") != nullptr;
++    const uint64_t t_ubatch_begin_ns = trace_ubatch ? ggml_time_ns() : 0;
++    double t_graph_build_ms = 0;
++    double t_alloc_ms = 0;
++    double t_set_inputs_ms = 0;
++    bool reused = false;
++
+     if (mctx && !mctx->apply()) {
+         LLAMA_LOG_ERROR("%s: failed to apply memory context\n", __func__);
+         ret = GGML_STATUS_FAILED;
+@@ -1355,6 +1363,7 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+             ggml_backend_sched_synchronize(sched.get());
+         }
+ 
++        reused = true;
+         n_reused++;
+     } else {
+         res->reset();
+@@ -1362,11 +1371,13 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+         ggml_backend_sched_reset(sched.get());
+         ggml_backend_sched_set_eval_callback(sched.get(), cparams.cb_eval, cparams.cb_eval_user_data);
+ 
+-        //const auto t_start_us = ggml_time_us();
++        const uint64_t t_build_begin_ns = trace_ubatch ? ggml_time_ns() : 0;
+ 
+         gf = model.build_graph(gparams);
+ 
+-        //LLAMA_LOG_INFO("graph build time: %.3f ms\n", (ggml_time_us() - t_start_us)/1000.0);
++        if (trace_ubatch) {
++            t_graph_build_ms = (ggml_time_ns() - t_build_begin_ns) / 1e6;
++        }
+ 
+         if (!gf) {
+             LLAMA_LOG_ERROR("%s: failed to initialize graph\n", __func__);
+@@ -1374,21 +1385,29 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+             return nullptr;
+         }
+ 
++        const uint64_t t_alloc_begin_ns = trace_ubatch ? ggml_time_ns() : 0;
++
+         if (!ggml_backend_sched_alloc_graph(sched.get(), gf)) {
+             LLAMA_LOG_ERROR("%s: failed to allocate graph\n", __func__);
+             ret = GGML_STATUS_ALLOC_FAILED;
+             return nullptr;
+         }
++
++        if (trace_ubatch) {
++            t_alloc_ms = (ggml_time_ns() - t_alloc_begin_ns) / 1e6;
++        }
+     }
+ 
+     // set the input data for the input tensors
+     {
+-        //const auto t_start_us = ggml_time_us();
++        const uint64_t t_set_begin_ns = trace_ubatch ? ggml_time_ns() : 0;
+ 
+         // FIXME this call causes a crash if any model inputs were not used in the graph and were therefore not allocated
+         res->set_inputs(&ubatch);
+ 
+-        //LLAMA_LOG_INFO("graph set inputs time: %.3f ms\n", (ggml_time_us() - t_start_us)/1000.0);
++        if (trace_ubatch) {
++            t_set_inputs_ms = (ggml_time_ns() - t_set_begin_ns) / 1e6;
++        }
+     }
+ 
+     const auto status = graph_compute(res->get_gf(), ubatch.n_tokens > 1);
+@@ -1400,6 +1419,15 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch & ubatch, ll
+ 
+     ret = GGML_STATUS_SUCCESS;
+ 
++    if (trace_ubatch) {
++        fprintf(stderr,
++                "[LLAMA-UBATCH] n_tokens=%d reused=%d "
++                "graph_build_ms=%.3f sched_alloc_ms=%.3f set_inputs_ms=%.3f submit_wall_ms=%.3f\n",
++                ubatch.n_tokens, reused ? 1 : 0,
++                t_graph_build_ms, t_alloc_ms, t_set_inputs_ms,
++                (ggml_time_ns() - t_ubatch_begin_ns) / 1e6);
++    }
++
+     return res;
+ }
+ 
+diff --git a/src/llama-kv-cache.cpp b/src/llama-kv-cache.cpp
+index a342ee119..abaecf45e 100644
+--- a/src/llama-kv-cache.cpp
++++ b/src/llama-kv-cache.cpp
+@@ -215,9 +215,12 @@ llama_kv_cache::llama_kv_cache(
+ 
+         if (offload) {
+             auto * dev = model.dev_layer(il);
+-            buft = ggml_backend_dev_buffer_type(dev);
+-
+-            dev_name = ggml_backend_dev_name(dev);
++            if (ggml_backend_dev_type(dev) != GGML_BACKEND_DEVICE_TYPE_ACCEL) {
++                buft = ggml_backend_dev_buffer_type(dev);
++                dev_name = ggml_backend_dev_name(dev);
++            } else {
++                dev_name = "CPU (XDNA skipped for KV cache)";
++            }
+         }
+ 
+         LLAMA_LOG_DEBUG("%s: layer %3d: dev = %s\n", __func__, il, dev_name);
+diff --git a/src/llama-memory-recurrent.cpp b/src/llama-memory-recurrent.cpp
+index 57919accf..18b1edcd0 100644
+--- a/src/llama-memory-recurrent.cpp
++++ b/src/llama-memory-recurrent.cpp
+@@ -86,9 +86,12 @@ llama_memory_recurrent::llama_memory_recurrent(
+ 
+         if (offload) {
+             auto * dev = model.dev_layer(i);
+-            buft = ggml_backend_dev_buffer_type(dev);
+-
+-            dev_name = ggml_backend_dev_name(dev);
++            if (ggml_backend_dev_type(dev) != GGML_BACKEND_DEVICE_TYPE_ACCEL) {
++                buft = ggml_backend_dev_buffer_type(dev);
++                dev_name = ggml_backend_dev_name(dev);
++            } else {
++                dev_name = "CPU (XDNA skipped for RS cache)";
++            }
+         }
+ 
+         LLAMA_LOG_DEBUG("%s, layer %3d: dev = %s\n", __func__, i, dev_name);
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index c46377c76..f712f566c 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -377,3 +377,138 @@ if (TARGET gguf-model-data)
+     target_link_libraries(test-export-graph-ops PRIVATE gguf-model-data)
+     target_compile_definitions(test-export-graph-ops PRIVATE LLAMA_HF_FETCH)
+ endif()
++
++if (GGML_XDNA)
++    add_executable(test_xdna_q8 ../test_xdna_q8.cpp)
++    set_target_properties(test_xdna_q8 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(test_xdna_q8 PRIVATE ggml)
++
++    # Phase 38C: Q8 execution path instrumentation benchmark
++    add_executable(bench_phase38c ../experiments/phase38/bench_phase38c.cpp)
++    set_target_properties(bench_phase38c PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    # ggml-cpu/ggml-xdna are MODULE when GGML_BACKEND_DL=ON: link by path
++    target_link_libraries(bench_phase38c PRIVATE ggml ggml-base llama-common
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_link_options(bench_phase38c PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(bench_phase38c PRIVATE
++        -Wno-error=missing-field-initializers
++        -Wno-error=unused-parameter
++        -Wno-error=missing-declarations
++        -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable
++        -Wno-error=missing-braces
++        -Wno-missing-field-initializers
++        -Wno-missing-declarations
++        -Wno-unused-parameter
++    )
++
++    # Phase 42: XDNA C++ Performance Audit + Real Qwen FFN Shape Coverage
++    add_executable(phase42_audit ../experiments/phase42/phase42_audit.cpp)
++    set_target_properties(phase42_audit PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(phase42_audit PRIVATE ggml ggml-base llama-common xrt_coreutil
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_include_directories(phase42_audit PRIVATE ${CMAKE_SOURCE_DIR}/ggml/src ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna/stub)
++    target_link_options(phase42_audit PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(phase42_audit PRIVATE
++        -Wno-error=missing-field-initializers
++        -Wno-error=unused-parameter
++        -Wno-error=missing-declarations
++        -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable
++        -Wno-error=missing-braces
++        -Wno-missing-field-initializers
++        -Wno-missing-declarations
++        -Wno-unused-parameter
++    )
++
++    # Phase 47B: Level 0 kernel-only benchmark (XDNA engine timing split)
++    add_executable(bench_level0 ../experiments/phase47b/bench_level0.cpp)
++    set_target_properties(bench_level0 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(bench_level0 PRIVATE ggml ggml-base
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_include_directories(bench_level0 PRIVATE
++        ${CMAKE_SOURCE_DIR}/ggml/include
++        ${CMAKE_SOURCE_DIR}/ggml/src
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna/stub)
++    target_link_options(bench_level0 PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(bench_level0 PRIVATE
++        -Wno-error=missing-field-initializers -Wno-error=unused-parameter
++        -Wno-error=missing-declarations -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable -Wno-error=missing-braces
++        -Wno-missing-field-initializers -Wno-missing-declarations
++        -Wno-unused-parameter)
++
++    # Phase 47B: Level 2 Vulkan <-> XDNA micrograph
++    add_executable(bench_level2 ../experiments/phase47b/bench_level2.cpp)
++    set_target_properties(bench_level2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(bench_level2 PRIVATE ggml ggml-base
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-vulkan.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_include_directories(bench_level2 PRIVATE
++        ${CMAKE_SOURCE_DIR}/ggml/include
++        ${CMAKE_SOURCE_DIR}/ggml/src)
++    target_link_options(bench_level2 PRIVATE "-Wl,--no-as-needed")
++
++    # Phase 47B: Level 1 XDNA FFN execution model (sequential vs pipelined submit)
++    add_executable(bench_level1 ../experiments/phase47b/bench_level1.cpp)
++    set_target_properties(bench_level1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(bench_level1 PRIVATE ggml ggml-base
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_include_directories(bench_level1 PRIVATE
++        ${CMAKE_SOURCE_DIR}/ggml/include
++        ${CMAKE_SOURCE_DIR}/ggml/src
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna/stub)
++    target_link_options(bench_level1 PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(bench_level1 PRIVATE
++        -Wno-error=missing-field-initializers -Wno-error=unused-parameter
++        -Wno-error=missing-declarations -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable -Wno-error=missing-braces
++        -Wno-missing-field-initializers -Wno-missing-declarations
++        -Wno-unused-parameter)
++
++    # Phase 44B: minimal Vulkan -> XDNA -> Vulkan scheduler repro
++    add_executable(phase44_hetero_sched ../experiments/phase44/phase44_hetero_sched.cpp)
++    set_target_properties(phase44_hetero_sched PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(phase44_hetero_sched PRIVATE ggml ggml-base llama-common xrt_coreutil
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_include_directories(phase44_hetero_sched PRIVATE
++        ${CMAKE_SOURCE_DIR}/ggml/include
++        ${CMAKE_SOURCE_DIR}/ggml/src
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna
++        ${CMAKE_SOURCE_DIR}/ggml/src/ggml-xdna/stub)
++    target_link_options(phase44_hetero_sched PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(phase44_hetero_sched PRIVATE
++        -Wno-error=missing-field-initializers
++        -Wno-error=unused-parameter
++        -Wno-error=missing-declarations
++        -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable
++        -Wno-error=missing-braces
++        -Wno-missing-field-initializers
++        -Wno-missing-declarations
++        -Wno-unused-parameter
++    )
++
++    # Phase 48: heterogeneous PP scaling benchmark harness
++    add_executable(bench_pp_scaling ../experiments/phase48/bench_pp_scaling.cpp)
++    set_target_properties(bench_pp_scaling PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
++    target_link_libraries(bench_pp_scaling PRIVATE ggml-base llama-common
++        ${CMAKE_BINARY_DIR}/bin/libggml-vulkan.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-xdna.so
++        ${CMAKE_BINARY_DIR}/bin/libggml-cpu.so)
++    target_link_options(bench_pp_scaling PRIVATE "-Wl,--no-as-needed")
++    target_compile_options(bench_pp_scaling PRIVATE
++        -Wno-error=missing-field-initializers -Wno-error=unused-parameter
++        -Wno-error=missing-declarations -Wno-error=unused-variable
++        -Wno-error=unused-but-set-variable -Wno-error=missing-braces
++        -Wno-missing-field-initializers -Wno-missing-declarations
++        -Wno-unused-parameter)
++endif()
+diff --git a/tests/test-llama-archs.cpp b/tests/test-llama-archs.cpp
+index 0f3d1c79a..4544c69ac 100644
+--- a/tests/test-llama-archs.cpp
++++ b/tests/test-llama-archs.cpp
+@@ -14,6 +14,7 @@
+ #include <cinttypes>
+ #include <cstddef>
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ #include <cstdint>
+ #include <random>
+@@ -673,16 +674,21 @@ static int test_backends(const llm_arch target_arch, const size_t seed, const in
+     std::vector<device_config> dev_configs;
+     size_t max_device_label_length = 4;
+     {
++        const bool include_accel = std::getenv("LLAMA_TEST_ACCEL") != nullptr;
+         std::vector<ggml_backend_dev_t> devices_meta;
+         {
+             const size_t device_count = ggml_backend_dev_count();
+             for (size_t i = 0; i < device_count; i++) {
+                 ggml_backend_dev_t dev = ggml_backend_dev_get(i);
++                if (!include_accel && ggml_backend_dev_type(dev) == GGML_BACKEND_DEVICE_TYPE_ACCEL) {
++                    continue;
++                }
+                 dev_configs.emplace_back(std::vector<ggml_backend_dev_t>{dev}, ggml_backend_dev_description(dev), LLAMA_SPLIT_MODE_LAYER);
+                 max_device_label_length = std::max(max_device_label_length, dev_configs.back().label.length());
+ 
+                 // cpu-based devices cannot be used in tensor split mode
+-                if (ggml_backend_dev_buffer_type(dev) != ggml_backend_cpu_buffer_type()) {
++                if (ggml_backend_dev_buffer_type(dev) != ggml_backend_cpu_buffer_type() &&
++                    ggml_backend_dev_type(dev) != GGML_BACKEND_DEVICE_TYPE_ACCEL) {
+                     devices_meta.push_back(dev);
+                 }
+             }
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index c8ad1db43..2a2637310 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -42,4 +42,19 @@ else()
+         add_subdirectory(tuning)
+     endif()
+     add_subdirectory(results)
++    # add_subdirectory(qwen-pp-trace)
++    # Experimental XDNA tools (isolated from production build)
++    # add_subdirectory(hetero-mul-mat-test)
++    # add_subdirectory(simple-xdna-test)
++    # add_subdirectory(n-dim-split-test)
++    # add_subdirectory(qwen-hetero-pp)
++    # add_subdirectory(../experiments/phase17/hetero-vulkan-xdna-test)
++    # add_subdirectory(xdna-raw-int8-oracle)
++    #add_subdirectory(xdna-q8_0-scaling-test)
++    #add_subdirectory(xdna-kchunk-test)
++    #add_subdirectory(xdna-q8_0-m512-test)
++    #add_subdirectory(xdna-shape-regression)
++    #add_subdirectory(xdna-q8_0-q8_0-test)
++    ##add_subdirectory(xdna-phase17-harness)
++    ##add_subdirectory(xdna-phase17b-harness)
+ endif()

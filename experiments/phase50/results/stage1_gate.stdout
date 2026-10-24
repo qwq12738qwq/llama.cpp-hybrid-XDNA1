@@ -1,0 +1,15 @@
+[stage1] M=512 K=1024 N=3584 cols=4 iters=5 pattern=realistic
+[stage1] DMA unique=12.06MB actual=106.43MB redundancy=8.83x (A 56.0x B 16.0x) groups=896
+[stage1] FLOPs=3.758 GFLOP
+[stage1] numpy ref_q8_gemm: 6302.5ms C[0,0]=-3.8158
+[stage1] pack_A=11.8ms (0.59MB) pack_B=44.5ms (4.13MB)
+[stage1] using cached /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache/M512_K1024_N3584_C4_Q8SCALEV_MMUL/design.xclbin
+[stage1] BO alloc+write A=4.5ms B=0.4ms sync_TO(A+B)=0.2ms
+[stage1] warmup 2 done
+[stage1] iter=0 c_zero_sync_ms=0.360 run_ctor_arg_ms=0.042 submit_ms=0.026 wait_ms=432.955 sync_from_ms=0.099 copyback_ms=0.857 gflops_wait=8.680 max_err=3.8147e-05 gflops(wait)=8.68
+[stage1] iter=1 c_zero_sync_ms=0.333 run_ctor_arg_ms=0.031 submit_ms=0.022 wait_ms=432.962 sync_from_ms=0.106 copyback_ms=1.003 gflops_wait=8.680 max_err=3.8147e-05 gflops(wait)=8.68
+[stage1] iter=2 c_zero_sync_ms=0.302 run_ctor_arg_ms=0.033 submit_ms=0.035 wait_ms=432.985 sync_from_ms=0.146 copyback_ms=1.057 gflops_wait=8.680 max_err=3.8147e-05 gflops(wait)=8.68
+[stage1] iter=3 c_zero_sync_ms=0.325 run_ctor_arg_ms=0.031 submit_ms=0.020 wait_ms=433.091 sync_from_ms=0.211 copyback_ms=0.804 gflops_wait=8.677 max_err=3.8147e-05 gflops(wait)=8.68
+[stage1] iter=4 c_zero_sync_ms=0.279 run_ctor_arg_ms=0.040 submit_ms=0.030 wait_ms=433.091 sync_from_ms=0.250 copyback_ms=0.901 gflops_wait=8.677 max_err=3.8147e-05 gflops(wait)=8.68
+[stage1] WAIT median=433.0ms min=433.0 max=433.1 GFLOP/s(wait)=8.68 DMA_BW(actual)=245.8MB/s
+[stage1] wrote experiments/phase50/results/stage1_gate.json

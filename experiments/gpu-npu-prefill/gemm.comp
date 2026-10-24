@@ -1,0 +1,28 @@
+#version 450
+// FP32 row-major GEMM: C = A x B
+// A[height x kdim], B[kdim x width], C[height x width]
+// Each compute shader invocation computes one element of C.
+layout (local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+
+layout (std430, binding = 0) readonly buffer BufA { float a_data[]; };
+layout (std430, binding = 1) readonly buffer BufB { float b_data[]; };
+layout (std430, binding = 2) writeonly buffer BufC { float c_data[]; };
+
+layout (push_constant) uniform PushBlock {
+    uint width;
+    uint height;
+    uint k_dim;
+};
+
+void main() {
+    uint x = gl_GlobalInvocationID.x;
+    uint y = gl_GlobalInvocationID.y;
+    if (x >= width || y >= height) {
+        return;
+    }
+    float sum = 0.0;
+    for (uint k = 0; k < k_dim; k++) {
+        sum += a_data[y * k_dim + k] * b_data[k * width + x];
+    }
+    c_data[y * width + x] = sum;
+}

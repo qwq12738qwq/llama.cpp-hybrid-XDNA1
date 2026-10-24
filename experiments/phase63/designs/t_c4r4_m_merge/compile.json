@@ -1,0 +1,14 @@
+{
+ "tag": "",
+ "cols": 4,
+ "rows": 4,
+ "split": "m",
+ "merge": true,
+ "workers": 16,
+ "m_tile": 64,
+ "n_tile": 64,
+ "k_chunk": 256,
+ "compile_ok": false,
+ "compile_s": 0.08,
+ "error": "Cons endpoint not set for ObjectFifo(numpy.ndarray[(16640,), numpy.dtype[numpy.int8]], depth=1, name='b0_fwd', prod=<aie.iron.dataflow.objectfifo.ObjectFifoLink object at 0x72ef53619310>, cons=[None, None, None, None])"
+}

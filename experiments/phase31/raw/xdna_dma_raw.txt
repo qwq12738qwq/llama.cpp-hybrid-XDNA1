@@ -1,0 +1,5 @@
+device=RyzenAI-npu1
+DMA,host_only,size_mb=1.0,to_dev_ms=0.0117,to_dev_GBps=89.61,from_dev_ms=0.0117,from_dev_GBps=89.61
+DMA,host_only,size_mb=4.0,to_dev_ms=0.0469,to_dev_GBps=89.48,from_dev_ms=0.0469,from_dev_GBps=89.48
+DMA,host_only,size_mb=16.0,to_dev_ms=0.1876,to_dev_GBps=89.44,from_dev_ms=0.1876,from_dev_GBps=89.44
+DMA,host_only,size_mb=33.0,to_dev_ms=0.3897,to_dev_GBps=88.80,from_dev_ms=0.3895,from_dev_GBps=88.85

@@ -1,0 +1,76 @@
+{
+  "phase": "9-G",
+  "description": "Performance gate for GPU+XDNA cooperative execution",
+  "test_configuration": {
+    "graph_type": "Minimal cooperative graph: GPU op -> XDNA SSM -> GPU op",
+    "iterations": 100,
+    "warmup": 20,
+    "precision": "INT8 weights/input, INT32 accumulation"
+  },
+  "metrics_to_collect": {
+    "e2e_latency": {
+      "description": "End-to-end graph execution time",
+      "unit": "microseconds",
+      "statistics": ["median", "p95", "p99", "min", "max"]
+    },
+    "gpu_kernel_time": {
+      "description": "GPU device execution time",
+      "unit": "microseconds",
+      "statistics": ["median", "p95", "p99"]
+    },
+    "xdn_execution_time": {
+      "description": "XDNA NPU device execution time", 
+      "unit": "microseconds",
+      "statistics": ["median", "p95", "p99"]
+    },
+    "host_submission_time": {
+      "description": "Host submission overhead for both backends",
+      "unit": "microseconds",
+      "statistics": ["median", "p95"]
+    },
+    "event_wait_time": {
+      "description": "Cross-backend synchronization wait time",
+      "unit": "microseconds", 
+      "statistics": ["median", "p95"]
+    },
+    "tensor_copy_time": {
+      "description": "Inter-backend tensor copy time",
+      "unit": "microseconds",
+      "statistics": ["median", "p95"]
+    },
+    "gpu_slowdown": {
+      "description": "GPU slowdown in cooperative mode vs solo",
+      "unit": "percent",
+      "threshold": "<= 20%"
+    },
+    "npu_utilization": {
+      "description": "NPU device utilization during cooperative execution",
+      "unit": "percent",
+      "target": ">= 20%"
+    }
+  },
+  "decision_criteria": {
+    "strong_positive": {
+      "speedup": ">= 1.20x",
+      "description": "Clear benefit, proceed to Phase 9-H"
+    },
+    "positive": {
+      "speedup": "1.10x - 1.20x",
+      "description": "Moderate benefit, proceed with optimization"
+    },
+    "conditional": {
+      "speedup": "1.05x - 1.10x", 
+      "description": "Marginal benefit, require further optimization"
+    },
+    "no_practical_benefit": {
+      "speedup": "< 1.05x",
+      "description": "STOP - do not proceed to Phase 9-H"
+    }
+  },
+  "phase8_baseline": {
+    "concurrent_speedup": 1.65,
+    "pipeline_speedup": 1.69,
+    "gpu_slowdown": -21.7,
+    "mismatches": 0
+  }
+}

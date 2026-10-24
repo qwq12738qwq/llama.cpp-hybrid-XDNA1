@@ -1,0 +1,3 @@
+VERDICT: XDNA_SWEET_SPOT_FOUND
+MAX_EFF_UTIL: 32.70%
+RATIONALE: Found shapes achieving 32.7% compute utilization. XDNA has a valid high-throughput regime for large resident workloads.

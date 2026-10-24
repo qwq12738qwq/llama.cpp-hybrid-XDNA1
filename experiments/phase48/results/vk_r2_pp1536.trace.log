@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0
+RESULT,pp=1536,batch=1536,ubatch=512,mode=bench,pp_tps=1172.69,pp_tps_sd=0.00,pp_ms=1309.809,pp_ms_sd=0.000,pp_tps_mean=1172.69,n_warmup=1,n_measure=1,peak_rss_kb=175044,tag=vk_r2_trace

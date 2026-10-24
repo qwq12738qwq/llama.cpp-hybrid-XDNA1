@@ -1,0 +1,7 @@
+host a=0x77a96d140000 b=0x77a96cf70000 c=0x77a96cbe0000  (a=524288 b=1835008 c=3670016 bytes)
+userptr bo create: 0.83ms  a.map=0x77a96d140000(=0x77a96d140000) c.map=0x77a96cbe0000(=0x77a96cbe0000)
+it0 sync_in=0.03 start=0.04 wait=4.15 sync_out=0.10 total=4.32ms
+it1 sync_in=0.10 start=0.05 wait=1.49 sync_out=0.10 total=1.74ms
+it2 sync_in=0.06 start=0.05 wait=2.45 sync_out=0.05 total=2.61ms
+verify: 18/18 checked, 0 mismatches
+RESULT: XRT userptr host BO feeds XDNA kernel IN PLACE (correct)

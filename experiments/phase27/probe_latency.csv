@@ -1,0 +1,6 @@
+metric,baseline_vk_device,sysmem_host_output,note
+alloc_ms,0.08,2.92,host pointer import + posix_memalign per op
+set_ms,0.64,0.38,input upload
+compute_ms,2.32,2.76,mul_mat Q8_0 x F32 (K1024 M512 N1792)
+get_ms,12.93,1.36,the readback tax: VRAM host-map read vs plain host read
+correctness_vs_vk_device,,,bitwise identical (diff=0, maxrel=0)

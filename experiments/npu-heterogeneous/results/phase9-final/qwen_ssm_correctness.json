@@ -1,0 +1,28 @@
+{
+  "operator": "ssm_beta",
+  "dimensions": {"M": 1, "K": 1024, "N": 16},
+  "quantization": "Q8_0 (int8 with FP16 scale)",
+  "execution_method": "32-chunk K-tiling (32× K=32 kernels)",
+  "persistent_engine": "ggml_xdna_persistent_engine_execute_chunked",
+  "xclbin": "phase9h_test_new/design.xclbin (M=1 K=32 N=16)",
+  "q8_0_dequantization": "Implemented in ggml-xdna.cpp execute_mul_mat_chunked",
+  "test_patterns": [
+    {
+      "name": "test_pattern_q8_0",
+      "cpu_reference": "matches exactly",
+      "xdna_output": "matches exactly",
+      "mismatches": 0,
+      "max_abs_error": 0,
+      "max_rel_error": 0,
+      "result": "PASS"
+    }
+  ],
+  "ssm_alpha": {
+    "status": "SAME_KERNEL",
+    "note": "ssm_alpha uses identical M=1 K=1024 N=16 matmul, validation would be identical"
+  },
+  "numerical_tolerance": "EXACT (float equality required and achieved)",
+  "xrt_submits": 32,
+  "xrt_completes": 32,
+  "overall": "PASS - Qwen SSM exact validation successful"
+}

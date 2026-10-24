@@ -1,0 +1,27 @@
+{
+  "V1_current_runtime_kernel": {
+    "name": "CURRENT_RUNTIME_KERNEL",
+    "device": "npu1_1col",
+    "tile": "Tm64_Tk64_Tn64",
+    "compute": "scalar matmul_i8_i32",
+    "GOPS_M512_K1024": 53.96,
+    "GOPS_M512_K4096": 116.71,
+    "correctness": "PASS (bit-exact)",
+    "submission_count_per_M512_K1024": "1 (single XRT submit)"
+  },
+  "V2_double_buffer_host_tiled": {
+    "status": "NOT_YET_BUILT",
+    "note": "Requires MLIR kernel modification for true DMA/compute overlap"
+  },
+  "V3_persistent_bd_chain": {
+    "status": "NOT_YET_BUILT",
+    "note": "Requires MLIR kernel modification for BD chaining"
+  },
+  "phase19_V4_ncols4": {
+    "device": "npu1_4col",
+    "tile": "Tm64_Tk32_Tn64",
+    "GOPS_M512_K1024": 49.42,
+    "vs_V1": "8.4% SLOWER",
+    "conclusion": "More columns increase DMA contention without proportional compute gain"
+  }
+}

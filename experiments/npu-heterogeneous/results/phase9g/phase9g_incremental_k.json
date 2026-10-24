@@ -1,0 +1,73 @@
+{
+  "phase": "9g",
+  "test": "incremental_k_plan",
+  "timestamp": "2026-09-12",
+  "status": "BLOCKED at K=32",
+  "blocking_issue": "Scalar kernel compilation fails in aiecc pipeline",
+  "plan": [
+    {
+      "stage": 1,
+      "config": {"M": 1, "K": 32, "N": 16, "TILE_K": 32, "k_chunks": 1},
+      "description": "Minimal flat design, no K-tiling",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "BLOCKED - compilation fails",
+      "artifact": "gen_m1_k32_n16.py"
+    },
+    {
+      "stage": 2,
+      "config": {"M": 1, "K": 64, "N": 16, "TILE_K": 32, "k_chunks": 2},
+      "description": "2 K-tiles",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "NOT TESTED",
+      "depends_on": "Stage 1 PASS"
+    },
+    {
+      "stage": 3,
+      "config": {"M": 1, "K": 128, "N": 16, "TILE_K": 32, "k_chunks": 4},
+      "description": "4 K-tiles",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "NOT TESTED",
+      "depends_on": "Stage 2 PASS"
+    },
+    {
+      "stage": 4,
+      "config": {"M": 1, "K": 256, "N": 16, "TILE_K": 32, "k_chunks": 8},
+      "description": "8 K-tiles",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "NOT TESTED",
+      "depends_on": "Stage 3 PASS"
+    },
+    {
+      "stage": 5,
+      "config": {"M": 1, "K": 512, "N": 16, "TILE_K": 32, "k_chunks": 16},
+      "description": "16 K-tiles",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "NOT TESTED",
+      "depends_on": "Stage 4 PASS"
+    },
+    {
+      "stage": 6,
+      "config": {"M": 1, "K": 1024, "N": 16, "TILE_K": 32, "k_chunks": 32},
+      "description": "Full Qwen SSM decode shape (32 K-tiles)",
+      "expected": "0 mismatches, 100 iterations",
+      "status": "FAIL (pre-built xclbin: 100/100 mismatches)",
+      "depends_on": "Stage 5 PASS"
+    }
+  ],
+  "acceptance_criteria_per_stage": {
+    "iterations": 100,
+    "mismatches": 0,
+    "deterministic_test": true,
+    "random_test": true,
+    "max_abs_error": 0,
+    "heap_corruption": "none",
+    "host_overwrite": "none",
+    "diagnostic_patterns_verified": true
+  },
+  "diagnostic_patterns": {
+    "A_pattern": "A[0][k] = k for k in 0..K-1",
+    "B_pattern": "B[k][n] = k*16 + n for k in 0..K-1, n in 0..15",
+    "C_expected": "C[0][n] = sum_k A[0][k] * B[k][n]",
+    "kernel_output_verification": "C[n] should equal expected dot product"
+  }
+}

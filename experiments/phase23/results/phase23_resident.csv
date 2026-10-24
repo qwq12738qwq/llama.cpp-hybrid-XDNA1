@@ -1,0 +1,16 @@
+== per-op staging vs resident, M=512 K=1024 N=3584 ==
+mode,K,per_gemm_ms,total_ms
+perop,1,6.6139,6.6139
+resident,1,6.5867,6.5867
+shared_resident,1,6.7404,6.7404
+perop,2,6.5975,13.1950
+resident,2,6.6554,13.3108
+shared_resident,2,6.7234,13.4468
+perop,3,6.6276,19.8828
+resident,3,6.6670,20.0011
+shared_resident,3,6.6981,20.0942
+perop,4,6.6227,26.4909
+resident,4,6.6232,26.4929
+shared_resident,4,6.6136,26.4545
+CORRECTNESS,shared_activation,mismatches=0,PASS
+DONE

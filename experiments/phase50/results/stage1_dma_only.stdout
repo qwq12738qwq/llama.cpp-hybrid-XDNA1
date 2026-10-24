@@ -1,0 +1,15 @@
+[stage1] M=512 K=1024 N=3584 cols=4 iters=5 pattern=realistic
+[stage1] DMA unique=12.06MB actual=106.43MB redundancy=8.83x (A 56.0x B 16.0x) groups=896
+[stage1] FLOPs=3.758 GFLOP
+[stage1] numpy ref_q8_gemm: 6177.7ms C[0,0]=-3.8158
+[stage1] pack_A=13.5ms (0.59MB) pack_B=46.0ms (4.13MB)
+[stage1] using cached /tmp/p50_dma_only/design.xclbin
+[stage1] BO alloc+write A=5.2ms B=0.5ms sync_TO(A+B)=0.2ms
+[stage1] warmup 2 done
+[stage1] iter=0 c_zero_sync_ms=0.249 run_ctor_arg_ms=0.040 submit_ms=0.025 wait_ms=57.674 sync_from_ms=0.130 copyback_ms=0.905 zeros_ok=1.000 gflops_wait=65.162 max_err=0.0000e+00 gflops(wait)=65.16
+[stage1] iter=1 c_zero_sync_ms=0.205 run_ctor_arg_ms=0.031 submit_ms=0.020 wait_ms=57.668 sync_from_ms=0.119 copyback_ms=1.048 zeros_ok=1.000 gflops_wait=65.168 max_err=0.0000e+00 gflops(wait)=65.17
+[stage1] iter=2 c_zero_sync_ms=0.248 run_ctor_arg_ms=0.041 submit_ms=0.024 wait_ms=57.675 sync_from_ms=0.130 copyback_ms=0.912 zeros_ok=1.000 gflops_wait=65.160 max_err=0.0000e+00 gflops(wait)=65.16
+[stage1] iter=3 c_zero_sync_ms=0.246 run_ctor_arg_ms=0.042 submit_ms=0.026 wait_ms=57.672 sync_from_ms=0.147 copyback_ms=0.893 zeros_ok=1.000 gflops_wait=65.164 max_err=0.0000e+00 gflops(wait)=65.16
+[stage1] iter=4 c_zero_sync_ms=0.238 run_ctor_arg_ms=0.045 submit_ms=0.028 wait_ms=57.681 sync_from_ms=0.142 copyback_ms=0.894 zeros_ok=1.000 gflops_wait=65.153 max_err=0.0000e+00 gflops(wait)=65.15
+[stage1] WAIT median=57.7ms min=57.7 max=57.7 GFLOP/s(wait)=65.16 DMA_BW(actual)=1845.4MB/s
+[stage1] wrote experiments/phase50/results/stage1_dma_only.json

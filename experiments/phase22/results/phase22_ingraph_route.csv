@@ -1,0 +1,18 @@
+config,pp,reps,median_ts,avg_ms_per_run,xdna_ops,xdna_path,note
+vulkan_only,512,5,1400.610,365.615,0,none,frozen baseline (results/phase22_baseline_vulkan.csv)
+ffn_gate_blk0_xdna,512,1,222.362,2302.548,2,chunked_k32,"-ot blk.0.ffn_gate.weight=CPU; Phase20D 1.het offload; engine k=32, 32 submits/op, 54.1ms/op"
+ffn_gate_blk0_xdna,512,1,521.699,981.408,2,q8scale_wholek,"-ot blk.0.ffn_gate.weight=CPU; whole-K Q8SCALEV single submit, ~300ms/op"
+ffn_gate_blk0_xdna_wa,512,1,1297.584,394.600,2,whole_array_4col,"-ot blk.0.ffn_gate.weight=CPU + XDNA_WA=1; gen_gemm 4-col int8 kernel; run->wait 4.7ms; first op 189.8ms(engine init), second 20.9ms"
+ffn_gate_blk0_xdna_wasplit,512,1,1277.090,400.911,2,whole_array_4col_nsplit,"XDNA_WA=1 XDNA_WA_NGPU=1792; NPU N1=1792 + concurrent Vulkan N0=1792; op 28.5ms (CPU pack/merge dominates); kernel N1792 ready"
+ffn_gate_blk0_xdna_wa_res,512,1,1319.892,387.905,2,whole_array_4col_residency,"XDNA_WA=1; cached int8 B (scale folded); op 12.3ms"
+ffn_gate_blk0_xdna_wasplit_res,512,1,1284.607,398.563,2,whole_array_4col_nsplit_residency,"XDNA_WA=1 XDNA_WA_NGPU=1792; cached B; op 23.0ms (Vulkan slice build dominates)"
+ffn_gate_blk0_wa_frac25,512,1,1263.578,405.201,2,whole_array_4col_nsplit_residency,"n_gpu=2688 NPU 25%; op 33.4ms"
+ffn_gate_blk0_wa_frac75,512,1,1325.601,386.236,2,whole_array_4col_nsplit_residency,"n_gpu=896 NPU 75%; op 16.1ms"
+ffn_gate_blk0_wa_pp2048,2048,1,1338.622,1530.091,2,whole_array_4col_residency,"n_gpu=0 whole-op; op 9.3ms; baseline 1407.4"
+ffn_gate_blk0_wa_pp2048_split,2048,1,1284.720,1594.109,2,whole_array_4col_nsplit_residency,"n_gpu=896 NPU 75%; baseline 1407.4"
+ffn_gate_blk0_wa_pp8192,8192,1,1206.197,6791.563,2,whole_array_4col_residency,"n_gpu=0 whole-op; op 12.4ms; baseline 1281.0"
+ffn_gate_blk0_wa_pp8192_split,8192,1,1221.462,6706.641,2,whole_array_4col_nsplit_residency,"n_gpu=896 NPU 75%; baseline 1281.0"
+ffn_gate_blk0_wa_async,512,1,1361.149,376.155,2,whole_array_4col_async,"XDNA_WA=1 XDNA_WA_ASYNC=1; submit->pending, merge in synchronize; op submit 2.47ms; baseline 1400.6 (0.972x)"
+ffn_gate_blk0_wa_async,2048,1,1346.335,1521.169,2,whole_array_4col_async,"async; baseline 1407.4 (0.957x)"
+ffn_gate_all24_wa_async,512,1,648.629,789.358,48,whole_array_4col_async,"-ot all 24 ffn_gate layers; 48 ops; staging accumulates => much worse than baseline"
+ffn_gate_blk0_wa_async,512,1,1390.530,368.203,2,whole_array_4col_async,"final verify rerun; 0.993x vs baseline 1400.6"

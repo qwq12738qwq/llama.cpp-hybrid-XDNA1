@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0,AMD Phoenix XDNA1 NPU
+RESULT,pp=2048,batch=2048,ubatch=512,mode=bench,pp_tps=1262.95,pp_tps_sd=0.00,pp_ms=1621.600,pp_ms_sd=0.000,pp_tps_mean=1262.95,n_warmup=1,n_measure=1,peak_rss_kb=237084,tag=hybrid_r2_trace

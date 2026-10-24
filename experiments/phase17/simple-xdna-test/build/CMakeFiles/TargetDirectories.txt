@@ -1,0 +1,3 @@
+/workspace/llama.cpp/experiments/phase17/simple-xdna-test/build/CMakeFiles/simple-xdna-test.dir
+/workspace/llama.cpp/experiments/phase17/simple-xdna-test/build/CMakeFiles/edit_cache.dir
+/workspace/llama.cpp/experiments/phase17/simple-xdna-test/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,6 @@
+tag,pp,prompt_tokens,tokens_per_s,retention_vs_512,source
+vulkan_only,512,512,1362.09,1.0000,phase28_llama-bench
+vulkan_only,4096,4096,1259.43,0.9246,phase28_llama-bench
+vulkan_only,16384,16384,1096.43,0.8050,phase28_llama-bench
+vulkan_only,32768,32768,896.81,0.6584,phase28_llama-bench
+vulkan_only,65536,65536,665.79,0.4888,phase28_llama-bench

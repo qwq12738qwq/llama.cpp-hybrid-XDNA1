@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0,AMD Phoenix XDNA1 NPU
+RESULT,pp=5120,batch=5120,ubatch=512,mode=bench,pp_tps=1308.21,pp_tps_sd=0.83,pp_ms=3913.759,pp_ms_sd=2.497,pp_tps_mean=1308.27,n_warmup=2,n_measure=9,peak_rss_kb=234976,tag=hybrid_r4

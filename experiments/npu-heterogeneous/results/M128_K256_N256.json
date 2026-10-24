@@ -1,0 +1,126 @@
+{
+  "M": 128,
+  "K": 256,
+  "N": 256,
+  "label": "M128_K256_N256",
+  "cpu": {
+    "status": "OK",
+    "backend": "CPU",
+    "op": "GEMM",
+    "M": 128,
+    "K": 256,
+    "N": 256,
+    "dtype": "<class 'numpy.float32'>",
+    "iters": 5,
+    "warmup": 2,
+    "compute_us": {
+      "min": 38.041,
+      "mean": 38.9862,
+      "median": 38.601,
+      "p95": 41.025,
+      "p99": 41.025,
+      "max": 41.025
+    },
+    "total_us": {
+      "min": 38.041,
+      "mean": 38.9862,
+      "median": 38.601,
+      "p95": 41.025,
+      "p99": 41.025,
+      "max": 41.025
+    },
+    "compute_ms_median": 0.038600999999999996,
+    "total_ms_median": 0.038600999999999996,
+    "gops": 434.63164166731434,
+    "total_ops": 16777216.0,
+    "gmac": 0.016777216
+  },
+  "gpu": {
+    "status": "ERROR",
+    "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=128 K=256 N=256\nradv/amdgpu: The CS has been cancelled because the context is lost. This context is guilty of a hard recovery.\nradv: GPUVM fault detected at address 0x800100138000.\nGCVM_L2_PROTECTION_FAULT_STATUS: 0x741041\n\t CLIENT_ID: (TCP) 0x8\n\t MORE_FAULTS: 1\n\t WALKER_ERROR: 0\n\t PERMISSION_FAULTS: 4\n\t MAPPING_ERROR: 0\n\t RW: 1\nVK error -4 at line 291\n"
+  },
+  "npu": {
+    "status": "OK",
+    "backend": "NPU",
+    "op": "GEMM",
+    "M": 128,
+    "K": 256,
+    "N": 256,
+    "tile_m": 64,
+    "tile_k": 64,
+    "tile_n": 64,
+    "dtype": "int8/int32",
+    "iters": 5,
+    "warmup": 2,
+    "init_ms": 1668.3016970018798,
+    "cold_npu_us": null,
+    "mismatches": 0,
+    "wall_us": {
+      "min": 1312.831,
+      "mean": 1367.8856,
+      "median": 1378.844,
+      "p95": 1448.592,
+      "p99": 1448.592,
+      "max": 1448.592
+    },
+    "npu_us": {
+      "min": 1087.847,
+      "mean": 1166.518,
+      "median": 1183.423,
+      "p95": 1254.193,
+      "p99": 1254.193,
+      "max": 1254.193
+    },
+    "host_overhead_us": {
+      "min": 192.125,
+      "mean": 201.36759999999998,
+      "median": 195.42100000000005,
+      "p95": 225.64699999999993,
+      "p99": 225.64699999999993,
+      "max": 225.64699999999993
+    },
+    "wall_ms_median": 1.378844,
+    "npu_ms_median": 1.183423,
+    "overhead_ms_median": 0.19542100000000004,
+    "gops_npu": 14.17685476790632,
+    "gops_wall": 12.167595464026387
+  },
+  "transfer": {
+    "status": "OK",
+    "backend": "NPU_TRANSFER",
+    "M": 128,
+    "K": 256,
+    "N": 256,
+    "bytes_A": 32768,
+    "bytes_B": 65536,
+    "bytes_total": 98304,
+    "iters": 10,
+    "h2d_A_us": {
+      "min": 1.393,
+      "mean": 1.5239,
+      "median": 1.533,
+      "p95": 1.683,
+      "p99": 1.683,
+      "max": 1.683
+    },
+    "d2h_A_us": {
+      "min": 0.912,
+      "mean": 1.1212,
+      "median": 1.012,
+      "p95": 1.553,
+      "p99": 1.553,
+      "max": 1.553
+    },
+    "e2e_A_us": {
+      "min": 2.324,
+      "mean": 2.4966999999999997,
+      "median": 2.415,
+      "p95": 2.935,
+      "p99": 2.935,
+      "max": 2.935
+    },
+    "h2d_A_bw_gbps": 21.375081539465103,
+    "d2h_A_bw_gbps": 32.37944664031621
+  },
+  "gpu_status": "ERROR"
+}

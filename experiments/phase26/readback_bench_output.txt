@@ -1,0 +1,15 @@
+device: AMD Radeon 780M Graphics (RADV PHOENIX)
+
+(A) device-local host-visible, type=3 flags=0x7
+  it0 submit+wait+invalidate=0.53ms touch=2.57ms (sum=1927954432)
+  it1 submit+wait+invalidate=0.41ms touch=2.66ms (sum=1927954432)
+  it2 submit+wait+invalidate=0.44ms touch=2.64ms (sum=1927954432)
+  it3 submit+wait+invalidate=0.42ms touch=1.76ms (sum=1927954432)
+  it4 submit+wait+invalidate=0.43ms touch=1.79ms (sum=1927954432)
+
+(B) host-imported, hostptr result=0 memoryTypeBits=0x20
+  it0 submit+wait=1.23ms touch=0.12ms (sum=1927954432)
+  it1 submit+wait=0.39ms touch=0.12ms (sum=1927954432)
+  it2 submit+wait=0.46ms touch=0.12ms (sum=1927954432)
+  it3 submit+wait=0.59ms touch=0.12ms (sum=1927954432)
+  it4 submit+wait=0.44ms touch=0.07ms (sum=1927954432)

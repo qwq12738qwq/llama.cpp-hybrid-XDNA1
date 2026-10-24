@@ -1,0 +1,95 @@
+// gemm_i8.comp -- INT8 GEMM compute shader for Radeon 780M (Vulkan)
+// A[M][K] and B[K][N] stored packed 4 int8s per uint (std430).
+// C[M][N] output is int32. All arithmetic in int.
+
+#version 450
+
+layout(local_size_x = 8, local_size_y = 8) in;
+
+layout(constant_id = 0) const uint TM = 64;
+layout(constant_id = 1) const uint TN = 64;
+layout(constant_id = 2) const uint TS = 8;
+
+layout(std430, binding = 0) restrict readonly  buffer BufA { uint A[]; };
+layout(std430, binding = 1) restrict readonly  buffer BufB { uint B[]; };
+layout(std430, binding = 2) restrict writeonly buffer BufC { int C[]; };
+
+layout(push_constant) uniform PC {
+    uint M;       // full M dimension
+    uint K;       // full K dimension
+    uint N;       // full N dimension
+    uint m_start; // M offset for this chunk
+} pc;
+
+shared int As[TM][TS];
+shared int Bs[TS][TN];
+
+// Sign-extend 8-bit value
+int s8(uint u, uint idx) {
+    uint v = (u >> (idx * 8)) & 0xFF;
+    int s = int(v);
+    return s - ((s >> 7) << 8);
+}
+
+void main() {
+    uint tx = gl_LocalInvocationID.x;
+    uint ty = gl_LocalInvocationID.y;
+    uint wm = gl_WorkGroupID.x;
+    uint wn = gl_WorkGroupID.y;
+
+    uint m0 = pc.m_start + wm * TM;
+    uint n0 = wn * TN;
+
+    uint k4 = (pc.K + 3) / 4;   // uints per K-row in packed A/B
+    uint n4 = (pc.N + 3) / 4;   // uints per N-column in packed B
+
+    int acc[TS][TS];
+    for (int i = 0; i < TS; i++)
+        for (int j = 0; j < TS; j++)
+            acc[i][j] = 0;
+
+    for (uint kt = 0; kt < pc.K; kt += TS) {
+        for (int i = 0; i < TS; i++) {
+            uint mi = m0 + tx * TS + i;
+            for (int p = 0; p < TS; p++) {
+                uint ki = kt + p;
+                int val = 0;
+                if (mi < pc.M && ki < pc.K) {
+                    val = s8(A[mi * k4 + ki / 4], ki % 4);
+                }
+                As[tx * TS + i][p] = val;
+            }
+        }
+        for (int j = 0; j < TS; j++) {
+            uint nj = n0 + ty * TS + j;
+            for (int p = 0; p < TS; p++) {
+                uint ki = kt + p;
+                int val = 0;
+                if (ki < pc.K && nj < pc.N) {
+                    val = s8(B[ki * n4 + nj / 4], nj % 4);
+                }
+                Bs[p][ty * TS + j] = val;
+            }
+        }
+        barrier();
+
+        for (int p = 0; p < TS; p++) {
+            for (int i = 0; i < TS; i++) {
+                for (int j = 0; j < TS; j++) {
+                    acc[i][j] += As[tx * TS + i][p] * Bs[p][ty * TS + j];
+                }
+            }
+        }
+        barrier();
+    }
+
+    for (int i = 0; i < TS; i++) {
+        uint mi = m0 + tx * TS + i;
+        for (int j = 0; j < TS; j++) {
+            uint nj = n0 + ty * TS + j;
+            if (mi < pc.M && nj < pc.N) {
+                C[mi * pc.N + nj] = acc[i][j];
+            }
+        }
+    }
+}

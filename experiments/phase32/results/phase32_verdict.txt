@@ -1,0 +1,6 @@
+VERDICT: XDNA_LLAMA_CPP_STOP
+SHAPES_TESTED: 10
+BEST_RATIO: 7.586
+BEST_SHAPE: M=64 K=1024 N=512 ratio=7.586
+CHAIN_MAX_SPEEDUP: 1.088
+RATIONALE: XDNA single-GEMM latency is >=5x Vulkan across ALL tested shapes. Persistent chain amortization is negligible (<=1.09x). No crossover found. XDNA cannot win as a callable GEMM library for Qwen3.5-0.8B PP operators.

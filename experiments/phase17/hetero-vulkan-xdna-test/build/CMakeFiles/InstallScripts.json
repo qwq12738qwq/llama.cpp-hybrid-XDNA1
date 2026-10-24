@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/workspace/llama.cpp/experiments/phase17/hetero-vulkan-xdna-test/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

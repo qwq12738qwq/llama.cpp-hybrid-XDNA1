@@ -1,0 +1,16 @@
+
+(A) DEVICE_LOCAL|HOST_VISIBLE shader write, mem type=3 flags=0x7
+  it0 submit+wait+invalidate=0.50ms full_read=98.77ms correct=1
+  it1 submit+wait+invalidate=0.57ms full_read=96.34ms correct=1
+  it2 submit+wait+invalidate=1.95ms full_read=96.02ms correct=1
+  it3 submit+wait+invalidate=2.22ms full_read=96.12ms correct=1
+  it4 submit+wait+invalidate=1.87ms full_read=96.46ms correct=1
+
+(B) host-imported shader write, mem type=5 flags=0xe
+  it0 submit+wait+invalidate=4.55ms full_read=3.28ms correct=1
+  it1 submit+wait+invalidate=0.42ms full_read=2.25ms correct=1
+  it2 submit+wait+invalidate=0.38ms full_read=2.24ms correct=1
+  it3 submit+wait+invalidate=0.35ms full_read=2.24ms correct=1
+  it4 submit+wait+invalidate=0.41ms full_read=2.25ms correct=1
+
+DONE

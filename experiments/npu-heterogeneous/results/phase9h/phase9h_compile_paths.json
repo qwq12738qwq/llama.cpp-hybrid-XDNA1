@@ -1,0 +1,23 @@
+{
+  "path_A_external_function": {
+    "status": "PASS",
+    "description": "ExternalFunction via CompilableDesign.compile()",
+    "steps": [
+      "mm(vectorized=False) creates ExternalFunction with -DSCALAR_ONLY",
+      "CompilableDesign.compile() invokes compile_external_kernel()",
+      "Object file matmul_scalar_i8_i32_<hash>.o generated in design.prj/",
+      "aiecc links .o successfully",
+      "XCLBIN produced"
+    ],
+    "compile_time_seconds": 1.5,
+    "xclbin_generated": true,
+    "object_file_generated": true,
+    "object_file_path": "design.prj/matmul_scalar_i8_i32_16bf3877.o"
+  },
+  "path_B_precompiled_kernel": {
+    "status": "NOT_TESTED",
+    "description": "Precompiled .o via Kernel() mechanism",
+    "reason": "Path A succeeded for compilation; Path B not needed"
+  },
+  "compilation_failure_root_cause": "Historical: scalar external-kernel compilation path not reproducibly producing required object file. Fixed by: (1) mm() patch adding -DSCALAR_ONLY for vectorized=False, (2) using CompilableDesign.compile() which invokes compile_external_kernel() automatically"
+}

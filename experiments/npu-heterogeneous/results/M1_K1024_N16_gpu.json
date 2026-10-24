@@ -1,0 +1,4 @@
+{
+  "status": "ERROR",
+  "error": "GPU: AMD Radeon 780M Graphics (RADV PHOENIX)  M=1 K=1024 N=16\nradv/amdgpu: The CS has been cancelled because the context is lost. This context is guilty of a hard recovery.\nradv: GPUVM fault detected at address 0x800100102000.\nGCVM_L2_PROTECTION_FAULT_STATUS: 0x701031\n\t CLIENT_ID: (TCP) 0x8\n\t MORE_FAULTS: 1\n\t WALKER_ERROR: 0\n\t PERMISSION_FAULTS: 3\n\t MAPPING_ERROR: 0\n\t RW: 0\nVK error -4 at line 291\n"
+}

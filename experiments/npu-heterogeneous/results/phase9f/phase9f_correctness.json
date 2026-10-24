@@ -1,0 +1,32 @@
+{
+  "phase": "9f",
+  "test": "standalone_correctness",
+  "kernel": "m1_k1024_n16_matmul_i8_i32",
+  "M": 1,
+  "K": 1024,
+  "N": 16,
+  "iterations": 100,
+  "mismatches": 100,
+  "mismatch_rate": 1.0,
+  "max_abs_error": 687811,
+  "max_rel_error": "inf",
+  "cpu_reference": "int8 @ int8 -> int32 accumulation",
+  "npu_execution": "NPUKernel with pre-compiled XCLBIN",
+  "status": "FAILED",
+  "latency_stats_us": {
+    "mean": 1591.33,
+    "median": 361.73,
+    "min": 324.96,
+    "max": 120737.10
+  },
+  "failure_analysis": {
+    "root_cause": "Tensor tiling/signature mismatch between MLIR design and scalar matmul kernel",
+    "details": "MLIR tensor tiling patterns (tap_A, tap_B, tap_C) and DMA BD sizes/strides do not match scalar kernel's expected buffer layout. The MLIR design uses 4D tiled access patterns while scalar kernel expects flat 1D buffer layout.",
+    "mismatches": 100,
+    "mismatch_rate": 1.0,
+    "max_abs_error": 687811,
+    "first_mismatch_iter": 0,
+    "last_mismatch_iter": 99
+  },
+  "status": "FAILED"
+}

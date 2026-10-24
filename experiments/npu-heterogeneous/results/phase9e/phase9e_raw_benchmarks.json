@@ -1,0 +1,38 @@
+{
+  "shape": {"M": 1, "K": 1024, "N": 16},
+  "iterations": 100,
+  "warmup": 10,
+  "has_gpu": false,
+  "correctness": {
+    "pass": false,
+    "mismatches": 16,
+    "max_abs_error": 689.596802,
+    "max_rel_error": 1.970534,
+    "note": "Kernel/XCLBIN mismatch: xclbin built for M=16, test requires M=1 for Qwen3.5 SSM"
+  },
+  "timing_us": {
+    "min": 135.5,
+    "mean": 186.8,
+    "median": 169.0,
+    "p95": 271.5,
+    "max": 288.75,
+    "note": "Measured with M=16 to match xclbin; scheduler overhead only"
+  },
+  "xdna_counters": {
+    "supports_op": 110,
+    "scheduler_assigned": 110,
+    "graph_compute": 110,
+    "persistent_execute": 110,
+    "xrt_submit": 220,
+    "xrt_complete": 220,
+    "decode_token": 0
+  },
+  "scheduler": {
+    "n_backends": 2,
+    "n_splits": 3,
+    "n_copies": 4,
+    "split_0_backend": "CPU",
+    "split_1_backend": "XDNA",
+    "split_2_backend": "CPU"
+  }
+}

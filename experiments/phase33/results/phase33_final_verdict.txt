@@ -1,0 +1,4 @@
+VERDICT: XDNA_CAPABILITY_STOP
+BEST_EFF_GOPS: 83.7
+BEST_VK_RATIO: 0.1x
+RATIONALE: All Phase 33 workload transformations tested (large M/N/K, batched, fused, tile sweep, multi-column) show XDNA effective throughput capped at 50-85 GOPS per tile (20-33% utilization). Vulkan achieves 1000-3000 GOPS for equivalent shapes (12-27x faster). Fixed overhead is already negligible (<1%). Batched GEMM shows no amortization. Fused chain shows no speedup. Multi-column kernels are slower. No transformation within current XRT/MLIR-AIE stack can close this gap. The bottleneck is XDNA1 Phoenix single-tile throughput: ~256 GOPS theoretical, ~85 GOPS measured. This is a hardware capability boundary, not a workload mismatch.

@@ -1,0 +1,64 @@
+{
+  "experiment": "Phase 8-D Concurrent Validation",
+  "date": "2026-09-11",
+  "hardware": "Phoenix XDNA1 NPU + Radeon 780M GPU",
+  "workload": "INT8 GEMM M=1 K=1024 N=16",
+  "xclbin": "k1024_m16_n16_tile",
+  "iterations": 100,
+  "warmup": 20,
+  "timeline": {
+    "gpu_solo": {
+      "device_us_median": 386.98,
+      "wait_us_median": 410.92,
+      "total_us_median": 798.33,
+      "device_us_p95": 428.41,
+      "wait_us_p95": 467.41,
+      "total_us_p95": 886.55
+    },
+    "npu_solo": {
+      "submit_us_median": 4.45,
+      "wait_us_median": 148.45,
+      "total_us_median": 153.11,
+      "submit_us_p95": 8.89,
+      "wait_us_p95": 180.15,
+      "total_us_p95": 185.88
+    },
+    "sequential_gpu_then_npu": {
+      "total_us_median": 1031.81,
+      "total_us_p95": 1126.66
+    },
+    "sequential_npu_then_gpu": {
+      "total_us_median": 1001.53,
+      "total_us_p95": 1098.10
+    },
+    "concurrent": {
+      "concurrent_us_median": 625.06,
+      "concurrent_us_p95": 656.40,
+      "gpu_us_median": 625.06,
+      "gpu_us_p95": 656.40,
+      "npu_us_median": 149.08,
+      "npu_us_p95": 175.71
+    },
+    "pipeline_depth2": {
+      "pipeline_us_median": 634.60,
+      "pipeline_us_p95": 663.45,
+      "gpu_us_median": 634.60,
+      "gpu_us_p95": 663.45,
+      "npu_us_median": 145.09,
+      "npu_us_p95": 170.04
+    }
+  },
+  "speedup_analysis": {
+    "speedup_concurrent_vs_sequential": 1.651,
+    "speedup_pipeline_vs_sequential": 1.626,
+    "gpu_slowdown_concurrent": -0.217,
+    "gpu_slowdown_pipeline": -0.205
+  },
+  "verdict": "PASS",
+  "pass_criteria": {
+    "speedup_ge_1_10x": true,
+    "gpu_slowdown_le_20_percent": true,
+    "iterations_ge_100": true,
+    "zero_mismatches": true
+  }
+}

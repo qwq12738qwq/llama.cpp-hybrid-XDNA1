@@ -1,0 +1,3 @@
+#version 450
+#extension GL_EXT_8bit_storage : enable
+void main(){}

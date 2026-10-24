@@ -1,0 +1,1428 @@
+[GGML_REG] register_device called for Vulkan0
+[GGML_REG] register_device called for CPU
+[XDNA] Device buffer type initialized
+[GGML_REG] register_device called for AMD Phoenix XDNA1 NPU
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-BUFFER] Shared XRT device created
+[XDNA-Q8-C4-MMUL-V2] engine ready M=512 K=1024 N=3584 cols=4 a=589824 b=4128768 c=7340032
+[XDNA-REGISTRY] Loaded Q8-C4 mmul-v2 kernel: M=512 K=1024 N=3584 cols=4
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-Q8-C4-MMUL-V2] engine ready M=512 K=3584 N=1024 cols=4 a=2064384 b=4128768 c=2097152
+[XDNA-REGISTRY] Loaded Q8-C4 mmul-v2 kernel: M=512 K=3584 N=1024 cols=4
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+....................................................................
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (2):
+  M=512 K=3584 N=1024 C=4 engine=(nil)
+  M=512 K=1024 N=3584 C=4 engine=(nil)
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+
+=== XDNA Kernel Registry Status ===
+Cache directory: /workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache
+Compiled kernels (2):
+  M=512 K=3584 N=1024 C=4 engine=(nil)
+  M=512 K=1024 N=3584 C=4 engine=(nil)
+===================================
+
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Shared XRT device initialized for buffer type
+[XDNA] Backend initialized with kernel registry
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=6144 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=16 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=2048 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=4096 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=512 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=2048 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=3584 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=3584 N=1024 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=0 n_nodes=2
+[XDNA-TRACE] graph=0 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=0 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.96ms
+[XDNA-TRACE] graph=0 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.59ms
+[XDNA-TRACE] graph_compute END id=0
+[XDNA-TRACE] graph=0 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=2 completed_seq=0
+[XDNA-TRACE] drain_ms=862.809
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=1 n_nodes=1
+[XDNA-TRACE] graph=1 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.43ms
+[XDNA-TRACE] graph_compute END id=1
+[XDNA-TRACE] graph=1 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=3 completed_seq=2
+[XDNA-TRACE] drain_ms=396.973
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=2 n_nodes=2
+[XDNA-TRACE] graph=2 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=2 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.02ms
+[XDNA-TRACE] graph=2 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.38ms
+[XDNA-TRACE] graph_compute END id=2
+[XDNA-TRACE] graph=2 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=5 completed_seq=3
+[XDNA-TRACE] drain_ms=861.369
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=3 n_nodes=1
+[XDNA-TRACE] graph=3 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.41ms
+[XDNA-TRACE] graph_compute END id=3
+[XDNA-TRACE] graph=3 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=6 completed_seq=5
+[XDNA-TRACE] drain_ms=397.090
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=4 n_nodes=2
+[XDNA-TRACE] graph=4 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=4 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.84ms
+[XDNA-TRACE] graph=4 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.87ms
+[XDNA-TRACE] graph_compute END id=4
+[XDNA-TRACE] graph=4 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=8 completed_seq=6
+[XDNA-TRACE] drain_ms=858.642
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=5 n_nodes=1
+[XDNA-TRACE] graph=5 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.95ms
+[XDNA-TRACE] graph_compute END id=5
+[XDNA-TRACE] graph=5 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=9 completed_seq=8
+[XDNA-TRACE] drain_ms=396.836
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=6 n_nodes=2
+[XDNA-TRACE] graph=6 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=6 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.84ms
+[XDNA-TRACE] graph=6 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.28ms
+[XDNA-TRACE] graph_compute END id=6
+[XDNA-TRACE] graph=6 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=11 completed_seq=9
+[XDNA-TRACE] drain_ms=859.552
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=7 n_nodes=1
+[XDNA-TRACE] graph=7 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=28.45ms
+[XDNA-TRACE] graph_compute END id=7
+[XDNA-TRACE] graph=7 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=12 completed_seq=11
+[XDNA-TRACE] drain_ms=397.335
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=8 n_nodes=2
+[XDNA-TRACE] graph=8 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=8 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.90ms
+[XDNA-TRACE] graph=8 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.10ms
+[XDNA-TRACE] graph_compute END id=8
+[XDNA-TRACE] graph=8 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=14 completed_seq=12
+[XDNA-TRACE] drain_ms=859.639
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=9 n_nodes=1
+[XDNA-TRACE] graph=9 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=28.82ms
+[XDNA-TRACE] graph_compute END id=9
+[XDNA-TRACE] graph=9 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=15 completed_seq=14
+[XDNA-TRACE] drain_ms=397.133
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=10 n_nodes=2
+[XDNA-TRACE] graph=10 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=10 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.41ms
+[XDNA-TRACE] graph=10 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.04ms
+[XDNA-TRACE] graph_compute END id=10
+[XDNA-TRACE] graph=10 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=17 completed_seq=15
+[XDNA-TRACE] drain_ms=858.704
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=11 n_nodes=1
+[XDNA-TRACE] graph=11 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.22ms
+[XDNA-TRACE] graph_compute END id=11
+[XDNA-TRACE] graph=11 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=18 completed_seq=17
+[XDNA-TRACE] drain_ms=397.005
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=12 n_nodes=2
+[XDNA-TRACE] graph=12 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=12 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.43ms
+[XDNA-TRACE] graph=12 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=6.86ms
+[XDNA-TRACE] graph_compute END id=12
+[XDNA-TRACE] graph=12 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=20 completed_seq=18
+[XDNA-TRACE] drain_ms=860.720
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=13 n_nodes=1
+[XDNA-TRACE] graph=13 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.73ms
+[XDNA-TRACE] graph_compute END id=13
+[XDNA-TRACE] graph=13 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=21 completed_seq=20
+[XDNA-TRACE] drain_ms=397.011
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=14 n_nodes=2
+[XDNA-TRACE] graph=14 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=14 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.84ms
+[XDNA-TRACE] graph=14 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.65ms
+[XDNA-TRACE] graph_compute END id=14
+[XDNA-TRACE] graph=14 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=23 completed_seq=21
+[XDNA-TRACE] drain_ms=859.167
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=15 n_nodes=1
+[XDNA-TRACE] graph=15 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.09ms
+[XDNA-TRACE] graph_compute END id=15
+[XDNA-TRACE] graph=15 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=24 completed_seq=23
+[XDNA-TRACE] drain_ms=396.916
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=16 n_nodes=2
+[XDNA-TRACE] graph=16 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=16 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.91ms
+[XDNA-TRACE] graph=16 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.38ms
+[XDNA-TRACE] graph_compute END id=16
+[XDNA-TRACE] graph=16 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=26 completed_seq=24
+[XDNA-TRACE] drain_ms=860.576
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=17 n_nodes=1
+[XDNA-TRACE] graph=17 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=28.35ms
+[XDNA-TRACE] graph_compute END id=17
+[XDNA-TRACE] graph=17 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=27 completed_seq=26
+[XDNA-TRACE] drain_ms=397.335
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=18 n_nodes=2
+[XDNA-TRACE] graph=18 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=18 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.48ms
+[XDNA-TRACE] graph=18 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.40ms
+[XDNA-TRACE] graph_compute END id=18
+[XDNA-TRACE] graph=18 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=29 completed_seq=27
+[XDNA-TRACE] drain_ms=859.013
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=19 n_nodes=1
+[XDNA-TRACE] graph=19 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=29.50ms
+[XDNA-TRACE] graph_compute END id=19
+[XDNA-TRACE] graph=19 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=30 completed_seq=29
+[XDNA-TRACE] drain_ms=397.052
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=20 n_nodes=2
+[XDNA-TRACE] graph=20 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=20 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=11.00ms
+[XDNA-TRACE] graph=20 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.91ms
+[XDNA-TRACE] graph_compute END id=20
+[XDNA-TRACE] graph=20 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=32 completed_seq=30
+[XDNA-TRACE] drain_ms=859.250
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=21 n_nodes=1
+[XDNA-TRACE] graph=21 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=30.05ms
+[XDNA-TRACE] graph_compute END id=21
+[XDNA-TRACE] graph=21 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=33 completed_seq=32
+[XDNA-TRACE] drain_ms=397.001
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=22 n_nodes=2
+[XDNA-TRACE] graph=22 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=22 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.85ms
+[XDNA-TRACE] graph=22 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.34ms
+[XDNA-TRACE] graph_compute END id=22
+[XDNA-TRACE] graph=22 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=35 completed_seq=33
+[XDNA-TRACE] drain_ms=857.393
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=23 n_nodes=1
+[XDNA-TRACE] graph=23 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.61ms
+[XDNA-TRACE] graph_compute END id=23
+[XDNA-TRACE] graph=23 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=36 completed_seq=35
+[XDNA-TRACE] drain_ms=396.986
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=24 n_nodes=2
+[XDNA-TRACE] graph=24 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=24 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.22ms
+[XDNA-TRACE] graph=24 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.69ms
+[XDNA-TRACE] graph_compute END id=24
+[XDNA-TRACE] graph=24 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=38 completed_seq=36
+[XDNA-TRACE] drain_ms=860.670
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=25 n_nodes=1
+[XDNA-TRACE] graph=25 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=21.41ms
+[XDNA-TRACE] graph_compute END id=25
+[XDNA-TRACE] graph=25 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=39 completed_seq=38
+[XDNA-TRACE] drain_ms=396.976
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=26 n_nodes=2
+[XDNA-TRACE] graph=26 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=26 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.51ms
+[XDNA-TRACE] graph=26 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.52ms
+[XDNA-TRACE] graph_compute END id=26
+[XDNA-TRACE] graph=26 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=41 completed_seq=39
+[XDNA-TRACE] drain_ms=859.252
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=27 n_nodes=1
+[XDNA-TRACE] graph=27 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.09ms
+[XDNA-TRACE] graph_compute END id=27
+[XDNA-TRACE] graph=27 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=42 completed_seq=41
+[XDNA-TRACE] drain_ms=396.724
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=28 n_nodes=2
+[XDNA-TRACE] graph=28 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=28 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.63ms
+[XDNA-TRACE] graph=28 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.47ms
+[XDNA-TRACE] graph_compute END id=28
+[XDNA-TRACE] graph=28 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=44 completed_seq=42
+[XDNA-TRACE] drain_ms=859.315
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=29 n_nodes=1
+[XDNA-TRACE] graph=29 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=20.15ms
+[XDNA-TRACE] graph_compute END id=29
+[XDNA-TRACE] graph=29 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=45 completed_seq=44
+[XDNA-TRACE] drain_ms=396.970
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=30 n_nodes=2
+[XDNA-TRACE] graph=30 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=30 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.15ms
+[XDNA-TRACE] graph=30 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.22ms
+[XDNA-TRACE] graph_compute END id=30
+[XDNA-TRACE] graph=30 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=47 completed_seq=45
+[XDNA-TRACE] drain_ms=859.840
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=31 n_nodes=1
+[XDNA-TRACE] graph=31 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=28.89ms
+[XDNA-TRACE] graph_compute END id=31
+[XDNA-TRACE] graph=31 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=48 completed_seq=47
+[XDNA-TRACE] drain_ms=396.957
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=32 n_nodes=2
+[XDNA-TRACE] graph=32 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=32 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.00ms
+[XDNA-TRACE] graph=32 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.38ms
+[XDNA-TRACE] graph_compute END id=32
+[XDNA-TRACE] graph=32 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=50 completed_seq=48
+[XDNA-TRACE] drain_ms=860.576
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=33 n_nodes=1
+[XDNA-TRACE] graph=33 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=29.56ms
+[XDNA-TRACE] graph_compute END id=33
+[XDNA-TRACE] graph=33 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=51 completed_seq=50
+[XDNA-TRACE] drain_ms=397.617
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=34 n_nodes=2
+[XDNA-TRACE] graph=34 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=34 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.66ms
+[XDNA-TRACE] graph=34 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=11.28ms
+[XDNA-TRACE] graph_compute END id=34
+[XDNA-TRACE] graph=34 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=53 completed_seq=51
+[XDNA-TRACE] drain_ms=857.061
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=35 n_nodes=1
+[XDNA-TRACE] graph=35 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.09ms
+[XDNA-TRACE] graph_compute END id=35
+[XDNA-TRACE] graph=35 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=54 completed_seq=53
+[XDNA-TRACE] drain_ms=396.939
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=36 n_nodes=2
+[XDNA-TRACE] graph=36 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=36 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.32ms
+[XDNA-TRACE] graph=36 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.18ms
+[XDNA-TRACE] graph_compute END id=36
+[XDNA-TRACE] graph=36 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=56 completed_seq=54
+[XDNA-TRACE] drain_ms=857.546
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=37 n_nodes=1
+[XDNA-TRACE] graph=37 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.80ms
+[XDNA-TRACE] graph_compute END id=37
+[XDNA-TRACE] graph=37 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=57 completed_seq=56
+[XDNA-TRACE] drain_ms=396.806
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=38 n_nodes=2
+[XDNA-TRACE] graph=38 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=38 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.77ms
+[XDNA-TRACE] graph=38 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.93ms
+[XDNA-TRACE] graph_compute END id=38
+[XDNA-TRACE] graph=38 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=59 completed_seq=57
+[XDNA-TRACE] drain_ms=857.502
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=39 n_nodes=1
+[XDNA-TRACE] graph=39 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=18.08ms
+[XDNA-TRACE] graph_compute END id=39
+[XDNA-TRACE] graph=39 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=60 completed_seq=59
+[XDNA-TRACE] drain_ms=396.953
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=40 n_nodes=2
+[XDNA-TRACE] graph=40 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=40 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.97ms
+[XDNA-TRACE] graph=40 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.76ms
+[XDNA-TRACE] graph_compute END id=40
+[XDNA-TRACE] graph=40 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=62 completed_seq=60
+[XDNA-TRACE] drain_ms=860.125
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=41 n_nodes=1
+[XDNA-TRACE] graph=41 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=19.13ms
+[XDNA-TRACE] graph_compute END id=41
+[XDNA-TRACE] graph=41 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=63 completed_seq=62
+[XDNA-TRACE] drain_ms=397.082
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=42 n_nodes=2
+[XDNA-TRACE] graph=42 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=42 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=12.39ms
+[XDNA-TRACE] graph=42 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=15.82ms
+[XDNA-TRACE] graph_compute END id=42
+[XDNA-TRACE] graph=42 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=65 completed_seq=63
+[XDNA-TRACE] drain_ms=851.953
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=43 n_nodes=1
+[XDNA-TRACE] graph=43 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=19.53ms
+[XDNA-TRACE] graph_compute END id=43
+[XDNA-TRACE] graph=43 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=66 completed_seq=65
+[XDNA-TRACE] drain_ms=397.059
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=44 n_nodes=2
+[XDNA-TRACE] graph=44 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=44 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.86ms
+[XDNA-TRACE] graph=44 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=11.00ms
+[XDNA-TRACE] graph_compute END id=44
+[XDNA-TRACE] graph=44 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=68 completed_seq=66
+[XDNA-TRACE] drain_ms=856.684
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=45 n_nodes=1
+[XDNA-TRACE] graph=45 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=25.84ms
+[XDNA-TRACE] graph_compute END id=45
+[XDNA-TRACE] graph=45 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=69 completed_seq=68
+[XDNA-TRACE] drain_ms=396.976
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=46 n_nodes=2
+[XDNA-TRACE] graph=46 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=46 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.52ms
+[XDNA-TRACE] graph=46 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.39ms
+[XDNA-TRACE] graph_compute END id=46
+[XDNA-TRACE] graph=46 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=71 completed_seq=69
+[XDNA-TRACE] drain_ms=859.410
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=47 n_nodes=1
+[XDNA-TRACE] graph=47 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.02ms
+[XDNA-TRACE] graph_compute END id=47
+[XDNA-TRACE] graph=47 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=72 completed_seq=71
+[XDNA-TRACE] drain_ms=397.047
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=48 n_nodes=2
+[XDNA-TRACE] graph=48 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=48 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.63ms
+[XDNA-TRACE] graph=48 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.94ms
+[XDNA-TRACE] graph_compute END id=48
+[XDNA-TRACE] graph=48 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=74 completed_seq=72
+[XDNA-TRACE] drain_ms=859.115
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=49 n_nodes=1
+[XDNA-TRACE] graph=49 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.24ms
+[XDNA-TRACE] graph_compute END id=49
+[XDNA-TRACE] graph=49 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=75 completed_seq=74
+[XDNA-TRACE] drain_ms=396.907
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=50 n_nodes=2
+[XDNA-TRACE] graph=50 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=50 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.26ms
+[XDNA-TRACE] graph=50 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.84ms
+[XDNA-TRACE] graph_compute END id=50
+[XDNA-TRACE] graph=50 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=77 completed_seq=75
+[XDNA-TRACE] drain_ms=859.902
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=51 n_nodes=1
+[XDNA-TRACE] graph=51 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.20ms
+[XDNA-TRACE] graph_compute END id=51
+[XDNA-TRACE] graph=51 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=78 completed_seq=77
+[XDNA-TRACE] drain_ms=396.951
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=52 n_nodes=2
+[XDNA-TRACE] graph=52 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=52 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.89ms
+[XDNA-TRACE] graph=52 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.20ms
+[XDNA-TRACE] graph_compute END id=52
+[XDNA-TRACE] graph=52 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=80 completed_seq=78
+[XDNA-TRACE] drain_ms=858.906
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=53 n_nodes=1
+[XDNA-TRACE] graph=53 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=29.08ms
+[XDNA-TRACE] graph_compute END id=53
+[XDNA-TRACE] graph=53 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=81 completed_seq=80
+[XDNA-TRACE] drain_ms=396.984
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=54 n_nodes=2
+[XDNA-TRACE] graph=54 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=54 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.98ms
+[XDNA-TRACE] graph=54 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.09ms
+[XDNA-TRACE] graph_compute END id=54
+[XDNA-TRACE] graph=54 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=83 completed_seq=81
+[XDNA-TRACE] drain_ms=857.985
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=55 n_nodes=1
+[XDNA-TRACE] graph=55 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=31.42ms
+[XDNA-TRACE] graph_compute END id=55
+[XDNA-TRACE] graph=55 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=84 completed_seq=83
+[XDNA-TRACE] drain_ms=397.067
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=56 n_nodes=2
+[XDNA-TRACE] graph=56 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=56 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.64ms
+[XDNA-TRACE] graph=56 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.23ms
+[XDNA-TRACE] graph_compute END id=56
+[XDNA-TRACE] graph=56 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=86 completed_seq=84
+[XDNA-TRACE] drain_ms=859.366
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=57 n_nodes=1
+[XDNA-TRACE] graph=57 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=29.08ms
+[XDNA-TRACE] graph_compute END id=57
+[XDNA-TRACE] graph=57 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=87 completed_seq=86
+[XDNA-TRACE] drain_ms=396.992
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=58 n_nodes=2
+[XDNA-TRACE] graph=58 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=58 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=12.29ms
+[XDNA-TRACE] graph=58 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.69ms
+[XDNA-TRACE] graph_compute END id=58
+[XDNA-TRACE] graph=58 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=89 completed_seq=87
+[XDNA-TRACE] drain_ms=857.165
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=59 n_nodes=1
+[XDNA-TRACE] graph=59 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=22.39ms
+[XDNA-TRACE] graph_compute END id=59
+[XDNA-TRACE] graph=59 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=90 completed_seq=89
+[XDNA-TRACE] drain_ms=397.134
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=60 n_nodes=2
+[XDNA-TRACE] graph=60 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=60 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.50ms
+[XDNA-TRACE] graph=60 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.59ms
+[XDNA-TRACE] graph_compute END id=60
+[XDNA-TRACE] graph=60 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=92 completed_seq=90
+[XDNA-TRACE] drain_ms=860.124
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=61 n_nodes=1
+[XDNA-TRACE] graph=61 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.35ms
+[XDNA-TRACE] graph_compute END id=61
+[XDNA-TRACE] graph=61 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=93 completed_seq=92
+[XDNA-TRACE] drain_ms=397.387
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=62 n_nodes=2
+[XDNA-TRACE] graph=62 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=62 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.02ms
+[XDNA-TRACE] graph=62 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.43ms
+[XDNA-TRACE] graph_compute END id=62
+[XDNA-TRACE] graph=62 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=95 completed_seq=93
+[XDNA-TRACE] drain_ms=860.347
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=63 n_nodes=1
+[XDNA-TRACE] graph=63 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.24ms
+[XDNA-TRACE] graph_compute END id=63
+[XDNA-TRACE] graph=63 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=96 completed_seq=95
+[XDNA-TRACE] drain_ms=396.964
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=64 n_nodes=2
+[XDNA-TRACE] graph=64 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=64 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.56ms
+[XDNA-TRACE] graph=64 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.87ms
+[XDNA-TRACE] graph_compute END id=64
+[XDNA-TRACE] graph=64 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=98 completed_seq=96
+[XDNA-TRACE] drain_ms=858.281
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=65 n_nodes=1
+[XDNA-TRACE] graph=65 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=28.89ms
+[XDNA-TRACE] graph_compute END id=65
+[XDNA-TRACE] graph=65 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=99 completed_seq=98
+[XDNA-TRACE] drain_ms=396.992
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=66 n_nodes=2
+[XDNA-TRACE] graph=66 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=66 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=11.88ms
+[XDNA-TRACE] graph=66 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=11.59ms
+[XDNA-TRACE] graph_compute END id=66
+[XDNA-TRACE] graph=66 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=101 completed_seq=99
+[XDNA-TRACE] drain_ms=855.985
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=67 n_nodes=1
+[XDNA-TRACE] graph=67 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=29.82ms
+[XDNA-TRACE] graph_compute END id=67
+[XDNA-TRACE] graph=67 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=102 completed_seq=101
+[XDNA-TRACE] drain_ms=397.019
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=68 n_nodes=2
+[XDNA-TRACE] graph=68 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=68 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.46ms
+[XDNA-TRACE] graph=68 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.27ms
+[XDNA-TRACE] graph_compute END id=68
+[XDNA-TRACE] graph=68 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=104 completed_seq=102
+[XDNA-TRACE] drain_ms=859.476
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=69 n_nodes=1
+[XDNA-TRACE] graph=69 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=30.66ms
+[XDNA-TRACE] graph_compute END id=69
+[XDNA-TRACE] graph=69 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=105 completed_seq=104
+[XDNA-TRACE] drain_ms=397.055
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=70 n_nodes=2
+[XDNA-TRACE] graph=70 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=70 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=13.02ms
+[XDNA-TRACE] graph=70 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=10.78ms
+[XDNA-TRACE] graph_compute END id=70
+[XDNA-TRACE] graph=70 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=107 completed_seq=105
+[XDNA-TRACE] drain_ms=857.597
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=71 n_nodes=1
+[XDNA-TRACE] graph=71 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.18ms
+[XDNA-TRACE] graph_compute END id=71
+[XDNA-TRACE] graph=71 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=108 completed_seq=107
+[XDNA-TRACE] drain_ms=397.044
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=72 n_nodes=2
+[XDNA-TRACE] graph=72 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=72 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.58ms
+[XDNA-TRACE] graph=72 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.70ms
+[XDNA-TRACE] graph_compute END id=72
+[XDNA-TRACE] graph=72 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=110 completed_seq=108
+[XDNA-TRACE] drain_ms=859.967
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=73 n_nodes=1
+[XDNA-TRACE] graph=73 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.56ms
+[XDNA-TRACE] graph_compute END id=73
+[XDNA-TRACE] graph=73 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=111 completed_seq=110
+[XDNA-TRACE] drain_ms=396.965
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=74 n_nodes=2
+[XDNA-TRACE] graph=74 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=74 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.96ms
+[XDNA-TRACE] graph=74 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.35ms
+[XDNA-TRACE] graph_compute END id=74
+[XDNA-TRACE] graph=74 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=113 completed_seq=111
+[XDNA-TRACE] drain_ms=859.310
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=75 n_nodes=1
+[XDNA-TRACE] graph=75 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.12ms
+[XDNA-TRACE] graph_compute END id=75
+[XDNA-TRACE] graph=75 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=114 completed_seq=113
+[XDNA-TRACE] drain_ms=396.835
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=76 n_nodes=2
+[XDNA-TRACE] graph=76 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=76 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.58ms
+[XDNA-TRACE] graph=76 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.04ms
+[XDNA-TRACE] graph_compute END id=76
+[XDNA-TRACE] graph=76 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=116 completed_seq=114
+[XDNA-TRACE] drain_ms=859.931
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=77 n_nodes=1
+[XDNA-TRACE] graph=77 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.27ms
+[XDNA-TRACE] graph_compute END id=77
+[XDNA-TRACE] graph=77 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=117 completed_seq=116
+[XDNA-TRACE] drain_ms=397.098
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=78 n_nodes=2
+[XDNA-TRACE] graph=78 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=78 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.93ms
+[XDNA-TRACE] graph=78 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.92ms
+[XDNA-TRACE] graph_compute END id=78
+[XDNA-TRACE] graph=78 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=119 completed_seq=117
+[XDNA-TRACE] drain_ms=860.177
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=79 n_nodes=1
+[XDNA-TRACE] graph=79 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=33.48ms
+[XDNA-TRACE] graph_compute END id=79
+[XDNA-TRACE] graph=79 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=120 completed_seq=119
+[XDNA-TRACE] drain_ms=397.173
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=0 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=80 n_nodes=2
+[XDNA-TRACE] graph=80 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=80 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.20ms
+[XDNA-TRACE] graph=80 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.25ms
+[XDNA-TRACE] graph_compute END id=80
+[XDNA-TRACE] graph=80 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=122 completed_seq=120
+[XDNA-TRACE] drain_ms=858.466
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=81 n_nodes=1
+[XDNA-TRACE] graph=81 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.49ms
+[XDNA-TRACE] graph_compute END id=81
+[XDNA-TRACE] graph=81 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=123 completed_seq=122
+[XDNA-TRACE] drain_ms=396.965
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=82 n_nodes=2
+[XDNA-TRACE] graph=82 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=82 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.12ms
+[XDNA-TRACE] graph=82 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.56ms
+[XDNA-TRACE] graph_compute END id=82
+[XDNA-TRACE] graph=82 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=125 completed_seq=123
+[XDNA-TRACE] drain_ms=860.463
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=83 n_nodes=1
+[XDNA-TRACE] graph=83 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=15.82ms
+[XDNA-TRACE] graph_compute END id=83
+[XDNA-TRACE] graph=83 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=126 completed_seq=125
+[XDNA-TRACE] drain_ms=396.977
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=84 n_nodes=2
+[XDNA-TRACE] graph=84 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=84 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.61ms
+[XDNA-TRACE] graph=84 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.92ms
+[XDNA-TRACE] graph_compute END id=84
+[XDNA-TRACE] graph=84 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=128 completed_seq=126
+[XDNA-TRACE] drain_ms=859.306
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=85 n_nodes=1
+[XDNA-TRACE] graph=85 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=17.10ms
+[XDNA-TRACE] graph_compute END id=85
+[XDNA-TRACE] graph=85 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=129 completed_seq=128
+[XDNA-TRACE] drain_ms=397.238
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=86 n_nodes=2
+[XDNA-TRACE] graph=86 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=86 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.39ms
+[XDNA-TRACE] graph=86 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.74ms
+[XDNA-TRACE] graph_compute END id=86
+[XDNA-TRACE] graph=86 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=131 completed_seq=129
+[XDNA-TRACE] drain_ms=860.044
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=87 n_nodes=1
+[XDNA-TRACE] graph=87 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=18.91ms
+[XDNA-TRACE] graph_compute END id=87
+[XDNA-TRACE] graph=87 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=132 completed_seq=131
+[XDNA-TRACE] drain_ms=396.939
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=1024 N=3584 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=512 K=3584 N=1024 src0_type=8 src1_type=0 result=1
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-SUPPORTS] op=MUL_MAT M=1 K=1024 N=248320 src0_type=8 src1_type=0 result=0
+[XDNA-TRACE] graph_compute START id=88 n_nodes=2
+[XDNA-TRACE] graph=88 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=88 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.38ms
+[XDNA-TRACE] graph=88 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.52ms
+[XDNA-TRACE] graph_compute END id=88
+[XDNA-TRACE] graph=88 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=134 completed_seq=132
+[XDNA-TRACE] drain_ms=863.338
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=89 n_nodes=1
+[XDNA-TRACE] graph=89 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=21.03ms
+[XDNA-TRACE] graph_compute END id=89
+[XDNA-TRACE] graph=89 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=135 completed_seq=134
+[XDNA-TRACE] drain_ms=396.909
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=90 n_nodes=2
+[XDNA-TRACE] graph=90 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=90 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.98ms
+[XDNA-TRACE] graph=90 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.81ms
+[XDNA-TRACE] graph_compute END id=90
+[XDNA-TRACE] graph=90 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=137 completed_seq=135
+[XDNA-TRACE] drain_ms=860.440
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=91 n_nodes=1
+[XDNA-TRACE] graph=91 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=19.08ms
+[XDNA-TRACE] graph_compute END id=91
+[XDNA-TRACE] graph=91 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=138 completed_seq=137
+[XDNA-TRACE] drain_ms=396.906
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=92 n_nodes=2
+[XDNA-TRACE] graph=92 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=92 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=9.14ms
+[XDNA-TRACE] graph=92 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.67ms
+[XDNA-TRACE] graph_compute END id=92
+[XDNA-TRACE] graph=92 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=140 completed_seq=138
+[XDNA-TRACE] drain_ms=860.076
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=93 n_nodes=1
+[XDNA-TRACE] graph=93 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.18ms
+[XDNA-TRACE] graph_compute END id=93
+[XDNA-TRACE] graph=93 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=141 completed_seq=140
+[XDNA-TRACE] drain_ms=396.860
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=94 n_nodes=2
+[XDNA-TRACE] graph=94 persistent_mode ON (mul_mat_count=2)
+[XDNA-TRACE] graph=94 node=0 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=7.91ms
+[XDNA-TRACE] graph=94 node=1 op=MUL_MAT M=512 K=1024 N=3584 engine=q8-c4-mmul-v2 time=8.35ms
+[XDNA-TRACE] graph_compute END id=94
+[XDNA-TRACE] graph=94 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=2 submitted_seq=143 completed_seq=141
+[XDNA-TRACE] drain_ms=859.906
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA-TRACE] graph_compute START id=95 n_nodes=1
+[XDNA-TRACE] graph=95 node=0 op=MUL_MAT M=512 K=3584 N=1024 engine=q8-c4-mmul-v2 time=16.12ms
+[XDNA-TRACE] graph_compute END id=95
+[XDNA-TRACE] graph=95 draining pending submissions (cleanup)
+[XDNA-TRACE] drain submissions=1 submitted_seq=144 completed_seq=143
+[XDNA-TRACE] drain_ms=396.974
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[MUL_MAT] dst=0x7cac444cde90 data=0x7cab62602000 ne=[248320,1,1,1]
+[MUL_MAT]   dst name: result_output
+[MUL_MAT] src0=0x5d026ff79aa0 data=0x7cac030c8000 ne=[1024,248320,1,1]
+[MUL_MAT] src1=0x7cabea615ce0 data=0x7cab62401000 ne=[1024,1,1,1]
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=144 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=144 missing_kernel=0
+[XDNA-TIME] no chunks executed
+[XDNA] backend_free done

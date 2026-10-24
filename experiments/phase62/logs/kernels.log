@@ -1,0 +1,48 @@
+=== A_c256_c4_sep
+compile ok in 4.78s
+ "ms_median": 148.005,
+ "gop_s": 25.392,
+ "max_abs_err": 0.006758318158972543,
+ "rel_rmse": 2.026668859221998e-09
+=== A_c256_c4_mrg
+compile ok in 2.39s
+=== A_c256_c7_mrg
+compile ok in 3.31s
+=== A_c256_c8_mrg
+compile ok in 5.23s
+=== A_c256_c14_mrg
+compile FAILED in 2.69s
+(1/40) [0/1] placed.mlir/workspace/llama.cpp/experiments/phase62/kernels/A_c256_c14_mrg/design.prj/aie.mlir:25:28: error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used
+=== B_c256x2_c4
+compile ok in 4.01s
+ "ms_median": 113.059,
+ "gop_s": 33.24,
+ "max_abs_err": 0.006758318158972543,
+ "rel_rmse": 2.026668859221998e-09
+=== B_c256x2_c8
+compile ok in 3.61s
+=== C_c256_mt32
+compile ok in 5.41s
+ "ms_median": 151.257,
+ "gop_s": 24.846,
+ "max_abs_err": 0.006758318158972543,
+ "rel_rmse": 2.026668859221998e-09
+=== C_c256_mt128
+compile FAILED in 0.03s
+=== C_c256_nt32
+compile ok in 6.34s
+ "ms_median": 152.922,
+ "gop_s": 24.575,
+ "max_abs_err": 0.006758318158972543,
+ "rel_rmse": 2.026668859221998e-09
+=== C_c256_kc128
+compile ok in 4.03s
+=== D_c256_down_c4
+compile ok in 3.14s
+ "ms_median": 109.758,
+ "gop_s": 34.24,
+ "max_abs_err": 0.00834993250464322,
+ "rel_rmse": 6.03629865898415e-09
+=== D_c256_down_c7
+compile ok in 2.94s
+########## KERNEL CAMPAIGN DONE ##########

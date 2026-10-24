@@ -1,0 +1,1 @@
+/usr/bin/c++  -O2 -Wall -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/xdna-phase18-harness.dir/link.d "CMakeFiles/xdna-phase18-harness.dir/xdna_phase18_harness.cpp.o" -o xdna-phase18-harness  -lGGML_LIB-NOTFOUND -lGGML_BASE_LIB-NOTFOUND -lGGML_CPU_LIB-NOTFOUND -lGGML_VK_LIB-NOTFOUND -lGGML_XDNA_LIB-NOTFOUND /usr/lib/x86_64-linux-gnu/libxrt_coreutil.so -lpthread -ldl

@@ -1,0 +1,14 @@
+{
+ "tag": "relay_c1r1_m",
+ "cols": 1,
+ "rows": 1,
+ "split": "m",
+ "merge": false,
+ "workers": 1,
+ "m_tile": 64,
+ "n_tile": 64,
+ "k_chunk": 256,
+ "compile_ok": false,
+ "compile_s": 2.2,
+ "error": "[aiecc] Compilation failed with exit code 1:\n\n(0/40) input.mlir\n(1/40)           \n(1/40) [0/1] placed.mlir\n(2/40)                  \n(2/40) [0/1] traced.mlir\n(3/40)                  \n(3/40) [0/1] default_stack_size.mlir\n(4/40)                              \n(4/40) [0/1] input_with_addresses.mlir/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c1r1_m/design.prj/aie.mlir:19:5: error: 'aie.objectfifo.allocate' op objectfifo has no shared memory access to delegate tile's memory module\n    aie.objectfifo.allocate @c0_0(%logical_mem_4)\n    ^\n/workspace/llama.cpp/experiments/phase63/designs/audit/relay_c1r1_m/design.prj/aie.mlir:19:5: note: see current operation: \"aie.objectfifo.allocate\"(%0) <{objFifo_name = @c0_0}> : (index) -> ()\n\naiecc: edge 'input_with_addresses.mlir' (key 'input.mlir') failed\naiecc: pipeline failed\n"
+}

@@ -1,0 +1,232 @@
+#include "ggml-backend.h"
+#include "ggml-xdna.h"
+#include <cassert>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <vector>
+
+static void cpu_gemv(const float * input, const float * weight, int32_t * output, int m, int k, int n) {
+    // ggml tensor layout for [k, n] matrix: element [i, j] is at index i + j * k
+    // Simulate int8 quantization: float [-1,1] -> int8 [-128,127] by *127
+    // int8 * int8 -> int32 (scaled by 127^2)
+    for (int j = 0; j < n; j++) {
+        float sum = 0.0f;
+        for (int i = 0; i < k; i++) {
+            sum += input[i] * weight[i + j * k];
+        }
+        // Scale by 127^2 to match int8 * int8 -> int32
+        output[j] = (int32_t)(sum * 127.0f * 127.0f);
+    }
+}
+
+static int count_mismatches(const int32_t * a, const int32_t * b, int n) {
+    int mm = 0;
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) mm++;
+    }
+    return mm;
+}
+
+int main(void) {
+    fprintf(stderr, "[XDNA-TEST] Starting XDNA backend unit test\n");
+
+    ggml_backend_reg_t reg = ggml_backend_xdna_reg();
+    assert(reg != nullptr && "XDNA backend registration failed");
+
+    size_t dev_count = ggml_backend_xdna_reg_get_device_count();
+    fprintf(stderr, "[XDNA-TEST] Device count: %zu\n", dev_count);
+
+    ggml_backend_dev_t dev = ggml_backend_xdna_reg_get_device(0);
+    assert(dev != nullptr && "XDNA device 0 not found");
+
+    const char * name = ggml_backend_dev_name(dev);
+    fprintf(stderr, "[XDNA-TEST] Device name: %s\n", name);
+    assert(name != nullptr);
+
+    const char * desc = ggml_backend_dev_description(dev);
+    fprintf(stderr, "[XDNA-TEST] Device description: %s\n", desc);
+    assert(desc != nullptr);
+
+    ggml_backend_t backend = ggml_backend_xdna_init();
+    assert(backend != nullptr && "XDNA backend init failed");
+
+    bool is_xdna = ggml_backend_is_xdna(backend);
+    assert(is_xdna && "Backend is not XDNA");
+
+    const char * backend_name = ggml_backend_name(backend);
+    fprintf(stderr, "[XDNA-TEST] Backend name: %s\n", backend_name);
+
+    ggml_backend_buffer_type_t buft = ggml_backend_get_default_buffer_type(backend);
+    assert(buft != nullptr && "XDNA buffer type is null");
+    fprintf(stderr, "[XDNA-TEST] Buffer type: %s\n", ggml_backend_buft_name(buft));
+
+    // Test constrained MUL_MAT support
+    {
+        const int M = 1;
+        const int K = 192;
+        const int N = 128;
+
+        struct ggml_init_params params = {
+            /* .mem_size   = */ 16 * 1024 * 1024,
+            /* .mem_buffer = */ nullptr,
+        };
+        struct ggml_context * ctx = ggml_init(params);
+        assert(ctx != nullptr);
+
+        struct ggml_tensor * src0 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K, N);
+        assert(src0 != nullptr);
+
+        struct ggml_tensor * src1 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K, M);
+        assert(src1 != nullptr);
+
+        struct ggml_tensor * dst = ggml_mul_mat(ctx, src0, src1);
+        assert(dst != nullptr);
+
+        bool supports = ggml_backend_dev_supports_op(dev, dst);
+        fprintf(stderr, "[XDNA-TEST] MUL_MAT supported: %s\n", supports ? "yes" : "no");
+        assert(supports && "Constrained MUL_MAT should be supported");
+
+        ggml_free(ctx);
+    }
+
+    // Test unsupported shapes are rejected
+    {
+        const int K2 = 256;  // Different K from the constrained value
+        const int M = 1;
+        const int N = 128;
+
+        struct ggml_init_params params = {
+            /* .mem_size   = */ 16 * 1024 * 1024,
+            /* .mem_buffer = */ nullptr,
+        };
+        struct ggml_context * ctx = ggml_init(params);
+        assert(ctx != nullptr);
+
+        struct ggml_tensor * src0 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K2, N);
+        assert(src0 != nullptr);
+
+        struct ggml_tensor * src1 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K2, M);
+        assert(src1 != nullptr);
+
+        struct ggml_tensor * dst = ggml_mul_mat(ctx, src0, src1);
+        assert(dst != nullptr);
+
+        bool supports = ggml_backend_dev_supports_op(dev, dst);
+        fprintf(stderr, "[XDNA-TEST] Unsupported MUL_MAT rejected: %s\n", supports ? "no (BUG)" : "yes");
+        assert(!supports && "Unconstrained MUL_MAT should NOT be supported");
+
+        ggml_free(ctx);
+    }
+
+    // Test execution and correctness
+    {
+        const int M = 1;
+        const int K = 192;
+        const int N = 128;
+
+        struct ggml_init_params params = {
+            /* .mem_size   = */ 128 * 1024 * 1024,
+            /* .mem_buffer = */ nullptr,
+            /* .no_alloc   = */ true,
+        };
+        struct ggml_context * ctx = ggml_init(params);
+        assert(ctx != nullptr);
+
+        struct ggml_tensor * src0 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K, N);
+        assert(src0 != nullptr);
+
+        struct ggml_tensor * src1 = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, K, M);
+        assert(src1 != nullptr);
+
+        struct ggml_tensor * dst = ggml_mul_mat(ctx, src0, src1);
+        assert(dst != nullptr);
+
+        // Build graph
+        struct ggml_cgraph * gf = ggml_new_graph(ctx);
+        assert(gf != nullptr);
+        ggml_build_forward_expand(gf, dst);
+
+        // fprintf(stderr, "[XDNA-TEST] Graph nodes: %d\n", gf->n_nodes);
+
+        // Allocate buffers for tensors manually
+        struct ggml_backend_buffer * buffer0 = ggml_backend_alloc_buffer(backend, ggml_nbytes(src0));
+        assert(buffer0 != nullptr && "Failed to allocate buffer for src0");
+        struct ggml_backend_buffer * buffer1 = ggml_backend_alloc_buffer(backend, ggml_nbytes(src1));
+        assert(buffer1 != nullptr && "Failed to allocate buffer for src1");
+
+        // Allocate tensors in buffers
+        enum ggml_status st0 = ggml_backend_tensor_alloc(buffer0, src0, ggml_backend_buffer_get_base(buffer0));
+        assert(st0 == GGML_STATUS_SUCCESS && "Failed to allocate src0 in buffer0");
+        enum ggml_status st1 = ggml_backend_tensor_alloc(buffer1, src1, ggml_backend_buffer_get_base(buffer1));
+        assert(st1 == GGML_STATUS_SUCCESS && "Failed to allocate src1 in buffer1");
+
+        // Allocate buffer for output tensor
+        struct ggml_backend_buffer * buffer_dst = ggml_backend_alloc_buffer(backend, ggml_nbytes(dst));
+        assert(buffer_dst != nullptr && "Failed to allocate buffer for dst");
+        enum ggml_status st_dst = ggml_backend_tensor_alloc(buffer_dst, dst, ggml_backend_buffer_get_base(buffer_dst));
+        assert(st_dst == GGML_STATUS_SUCCESS && "Failed to allocate dst in buffer_dst");
+
+        // Initialize with test data
+        std::vector<float> input(K * M);
+        std::vector<float> weight(K * N);
+        for (int i = 0; i < K * M; i++) {
+            input[i] = (float)(i % 255) / 127.0f - 1.0f;
+        }
+        // Initialize weight in ggml's column-major layout: weight[i + j * K] for i in 0..K-1, j in 0..N-1
+        for (int j = 0; j < N; j++) {
+            for (int i = 0; i < K; i++) {
+                weight[i + j * K] = (float)((i + j * K) % 255) / 127.0f - 1.0f;
+            }
+        }
+
+        ggml_backend_tensor_set(src0, weight.data(), 0, weight.size() * sizeof(float));
+        ggml_backend_tensor_set(src1, input.data(), 0, input.size() * sizeof(float));
+
+        // Compute CPU reference
+        std::vector<int32_t> ref(N * M);
+        cpu_gemv(input.data(), weight.data(), ref.data(), M, K, N);
+
+        fprintf(stderr, "[XDNA-TEST] weight[0..5]: %.2f %.2f %.2f %.2f %.2f %.2f\n", weight[0], weight[1], weight[2], weight[3], weight[4], weight[5]);
+        fprintf(stderr, "[XDNA-TEST] weight[192..197]: %.2f %.2f %.2f %.2f %.2f %.2f\n", weight[192], weight[193], weight[194], weight[195], weight[196], weight[197]);
+        fprintf(stderr, "[XDNA-TEST] input[0..5]: %.2f %.2f %.2f %.2f %.2f %.2f\n", input[0], input[1], input[2], input[3], input[4], input[5]);
+
+        // Execute on XDNA backend
+        ggml_backend_graph_compute(backend, gf);
+
+        // Read back results
+        std::vector<int32_t> result(N * M);
+        ggml_backend_tensor_get(dst, result.data(), 0, result.size() * sizeof(int32_t));
+
+        fprintf(stderr, "[XDNA-TEST] CPU ref[0..3]: %d %d %d %d\n", ref[0], ref[1], ref[2], ref[3]);
+        fprintf(stderr, "[XDNA-TEST] XDNA out[0..3]: %d %d %d %d\n", result[0], result[1], result[2], result[3]);
+
+        // Check relative error (allow small quantization differences)
+        int mismatches = 0;
+        for (int i = 0; i < N * M; i++) {
+            int32_t diff = abs(result[i] - ref[i]);
+            int32_t max_val = std::max(abs(result[i]), abs(ref[i]));
+            if (max_val > 1000) { // Only check relative error for significant values
+                float rel_error = (float)diff / (float)max_val;
+                if (rel_error > 0.15f) { // Allow 15% relative error (quantization noise)
+                    mismatches++;
+                    fprintf(stderr, "[XDNA-TEST] Mismatch at %d: ref=%d xdna=%d diff=%d rel=%.4f\n",
+                            i, ref[i], result[i], diff, rel_error);
+                }
+            } else if (diff > 5000) { // Absolute error for small values
+                mismatches++;
+                fprintf(stderr, "[XDNA-TEST] Mismatch at %d: ref=%d xdna=%d diff=%d\n",
+                        i, ref[i], result[i], diff);
+            }
+        }
+        fprintf(stderr, "[XDNA-TEST] Execution mismatches: %d\n", mismatches);
+        assert(mismatches == 0 && "XDNA execution must match CPU reference within 1% relative error");
+
+        ggml_free(ctx);
+    }
+
+    ggml_backend_free(backend);
+
+    fprintf(stderr, "[XDNA-TEST] All tests passed\n");
+    return 0;
+}

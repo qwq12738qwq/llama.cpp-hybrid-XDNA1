@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0,AMD Phoenix XDNA1 NPU
+RESULT,pp=1536,batch=1536,ubatch=512,mode=bench,pp_tps=1212.45,pp_tps_sd=22.07,pp_ms=1266.851,pp_ms_sd=22.993,pp_tps_mean=1215.77,n_warmup=2,n_measure=5,peak_rss_kb=243032,tag=hybrid_r2

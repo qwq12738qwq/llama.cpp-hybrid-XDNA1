@@ -1,0 +1,3 @@
+candidate,backend,primitive,throughput,slope_vs_context,transfer_bound,source
+attention_qk_pv,vulkan,FLASH_ATTN_EXT,~2300-3600 GFLOPS measured,linear O(C) per ubatch / O(C^2) total,no (compute bound),phase28_vk_perf_logger
+attention_qk_pv,xdna,NOT_IMPLEMENTED (only GGML_OP_MUL_MAT Q8_0 whole-array),int8 GEMM ~36 GFLOPS (18 GMAC/s),DMA-bound O(C) KV staging,yes (shim ~2 GB/s),phase20g+phase22

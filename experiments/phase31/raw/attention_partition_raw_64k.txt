@@ -1,0 +1,11 @@
+hsk=256 hsv=256 n_head=8 n_head_kv=2 N=512 reps=5
+TIME,B0,vulkan,full,KV=32768,split_k=1,median_ms=56.6956
+TIME,B3,vulkan,full,KV=32768,split_k=1,median_ms=56.9282
+TIME,B1,vulkan,split,KV=32768,half=16384,T_A_ms=25.2262,T_B_ms=27.6888,T_serial_ms=52.9150
+TIME,splitk2,vulkan,full,KV=32768,split_k=2,median_ms=59.6574
+CORR,vk_splitk2_vs_full,max_abs=2.487991e-04,max_rel=2.477058e+01,cosine=0.999995603
+TIME,B0,vulkan,full,KV=65536,split_k=1,median_ms=117.0368
+TIME,B3,vulkan,full,KV=65536,split_k=1,median_ms=121.7498
+TIME,B1,vulkan,split,KV=65536,half=32768,T_A_ms=55.9098,T_B_ms=55.3581,T_serial_ms=111.2679
+TIME,splitk2,vulkan,full,KV=65536,split_k=2,median_ms=272.2184
+CORR,vk_splitk2_vs_full,max_abs=3.715698e-04,max_rel=3.218691e+01,cosine=0.999991719

@@ -1,0 +1,2 @@
+mode,tag,M,K,N,m_tile,n_tile,k_chunk,G,reps,med_ms,min_ms,max_ms,gops,eff_gops,submit_ms,dma_in_ms,compute_ms,dma_out_ms,total_ms,null_overhead,arith_intensity,status
+null,null_overhead,0,0,0,0,0,0,0,5,3.8692,3.8692,3.8692,0.0,0.0,0.0,0.0,0.0,3.8692,0.0,0.0,0.0,ok

@@ -1,0 +1,9 @@
+M,K,N,activation,status,mismatches,run_ms,note
+512,1024,3584,relu,PASS,0,7.023,
+512,1024,4096,relu,PASS,0,8.195,
+512,2048,3584,relu,PASS,0,10.899,
+512,2048,4096,relu,HANG,,,no return in 35s
+512,4096,3584,relu,PASS,0,17.798,
+512,4096,4096,relu,HANG,,,no return in 35s
+512,8192,3584,relu,HANG,,,no return in 35s
+512,8192,4096,relu,HANG,,,no return in 35s

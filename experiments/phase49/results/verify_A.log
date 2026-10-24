@@ -1,0 +1,2 @@
+INFO,n_layer=24,n_embd=1024,dev=Vulkan0
+VERIFY,pp=512,batch=512,ubatch=512,n_predict=8,md5=0ec3a71b13cb7372,tokens=94427,258,32070,14804,178084,1482,59420,59420

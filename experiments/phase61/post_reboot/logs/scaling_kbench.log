@@ -1,0 +1,14 @@
+compile ok in 4.56s
+ "ms_median": 20.782,
+ "gop_s": 180.838,
+ "rel_rmse": 0.01798875184623112
+compile ok in 5.44s
+RuntimeError: DRM_IOCTL_AMDXDNA_GET_INFO IOCTL failed (err=-22): Invalid argument
+compile ok in 7.0s
+RuntimeError: DRM_IOCTL_AMDXDNA_GET_INFO IOCTL failed (err=-22): Invalid argument
+compile ok in 7.44s
+RuntimeError: DRM_IOCTL_AMDXDNA_GET_INFO IOCTL failed (err=-22): Invalid argument
+compile ok in 7.39s
+RuntimeError: DRM_IOCTL_AMDXDNA_GET_INFO IOCTL failed (err=-22): Invalid argument
+compile FAILED in 53.78s
+(1/40) [0/1] placed.mlir/workspace/llama.cpp/experiments/phase61/post_reboot/kernels/C_w8sep/design.prj/aie.mlir:19:28: error: no ShimNOCTile on the device has 0 input/1 output DMA channel(s) free: all 4 ShimNOCTile(s) are at 0/8 input, 8/8 output channels used

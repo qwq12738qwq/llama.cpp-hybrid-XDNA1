@@ -1,0 +1,94 @@
+
+MEMORY
+{
+   program (RX) : ORIGIN = 0, LENGTH = 0x4000
+   data (!RX) : ORIGIN = 0x72400, LENGTH = 0x1C00
+}
+ENTRY(__start)
+SECTIONS
+{
+  . = 0x0;
+  .text : {
+     /* the __start symbol has to come at address zero. */
+     *crt0.o(.text*)
+     _ctors_start = .;
+     _init_array_start = .;
+     KEEP(SORT(*.init_array))
+     _ctors_end = .;
+     _init_array_end = .;
+     _dtors_start = .;
+     _dtors_end = .;
+     *(.text*)
+  } > program
+  .data : {
+     *(.data*)
+     *(.rodata*)
+  } > data
+  .comment : {
+     *(.comment*)
+  }
+  .symtab : {
+     *(.symtab)
+  }
+  .shstrtab : {
+     *(.shstrtab)
+  }
+  .strtab : {
+     *(.strtab)
+  }
+  .stack_sizes : {
+     *(.stack_sizes)
+  }
+
+. = 0x70000;
+_sp_start_value_DM_stack = .;
+. += 0x400; /* stack */
+. = 0x40400;
+A2_r0_1_cons_buff_0 = .;
+. += 0x2000;
+. = 0x44000;
+A2_r0_1_cons_buff_1 = .;
+. += 0x2000;
+. = 0x4C000;
+B2_c1_0_cons_buff_0 = .;
+. += 0x4000;
+. = 0x48000;
+B2_c1_0_cons_buff_1 = .;
+. += 0x4000;
+. = 0x46000;
+C_r0_c1_buff_0 = .;
+. += 0x2000;
+. = 0x50400;
+A2_r1_0_cons_buff_0 = .;
+. += 0x2000;
+. = 0x54000;
+A2_r1_0_cons_buff_1 = .;
+. += 0x2000;
+. = 0x5C000;
+B2_c0_1_cons_buff_0 = .;
+. += 0x4000;
+. = 0x58000;
+B2_c0_1_cons_buff_1 = .;
+. += 0x4000;
+. = 0x56000;
+C_r1_c0_buff_0 = .;
+. += 0x2000;
+. = 0x70400;
+A2_r1_1_cons_buff_0 = .;
+. += 0x2000;
+. = 0x74000;
+A2_r1_1_cons_buff_1 = .;
+. += 0x2000;
+. = 0x7C000;
+B2_c1_1_cons_buff_0 = .;
+. += 0x4000;
+. = 0x78000;
+B2_c1_1_cons_buff_1 = .;
+. += 0x4000;
+. = 0x76000;
+C_r1_c1_buff_0 = .;
+. += 0x2000;
+  .bss : { *(.bss*) } > data
+}
+INPUT(/workspace/llama.cpp/experiments/phase60/kernels/test2x2/int8_pure_mmul_v2.o)
+PROVIDE(main = core_1_3);

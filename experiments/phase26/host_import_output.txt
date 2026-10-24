@@ -1,0 +1,9 @@
+host alloc = 0x7d83b4350000 (64K aligned)
+host ptr props: result=0 memoryTypeBits=0x20
+chosen memory type=5 flags=0xe
+vkAllocateMemory(host import) = 0
+TEST A GPU->host: correct 262144/262144  (h[0]=0xdeadbeef)
+TEST B host->GPU: correct 262144/262144  (sp[0]=0x00000000 exp=0x00000000)
+XRT userptr bo: map=0x7d83b4350000 host=0x7d83b4350000 same=yes size=1048576
+
+RESULT: Vulkan host-pointer import SUPPORTED; shared host allocation Vulkan<->XRT is possible via VK_EXT_external_memory_host + XRT userptr

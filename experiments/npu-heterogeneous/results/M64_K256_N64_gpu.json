@@ -1,0 +1,14 @@
+{
+  "status": "OK",
+  "op": "GEMM",
+  "M": 64,
+  "K": 256,
+  "N": 64,
+  "h2d_ms": 0.059,
+  "compute_ms": 0.036,
+  "d2h_ms": 0.046,
+  "total_ms": 0.199,
+  "gops": 58.93,
+  "total_ops": 2097152,
+  "gmac": 0.0
+}

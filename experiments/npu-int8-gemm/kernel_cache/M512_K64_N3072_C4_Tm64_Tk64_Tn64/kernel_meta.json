@@ -1,0 +1,18 @@
+{
+  "M": 512,
+  "K": 64,
+  "N": 3072,
+  "n_cols": 4,
+  "tile_m": 64,
+  "tile_k": 64,
+  "tile_n": 64,
+  "dtype": "int8",
+  "accum_dtype": "int32",
+  "compile_time_s": 3.695,
+  "xclbin_path": "/workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache/M512_K64_N3072_C4_Tm64_Tk64_Tn64/design.xclbin",
+  "insts_path": "/workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache/M512_K64_N3072_C4_Tm64_Tk64_Tn64/design.insts.bin",
+  "pdi_path": "/workspace/llama.cpp/experiments/npu-int8-gemm/kernel_cache/M512_K64_N3072_C4_Tm64_Tk64_Tn64/main.pdi",
+  "xclbin_size_bytes": 26233,
+  "insts_size_bytes": 155152,
+  "pdi_size_bytes": 19776
+}

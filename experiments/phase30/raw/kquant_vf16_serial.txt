@@ -1,0 +1,6 @@
+=== ctk f16 ctv f16 ===
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |   1 |         pp16384 |       1180.60 ± 4.92 |
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |   1 |         pp65536 |        714.31 ± 1.25 |
+=== ctk q8_0 ctv f16 (K quant, V f16 -> no dequant_kv) ===
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |   q8_0 |   1 |         pp16384 |       1121.61 ± 1.54 |
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |   q8_0 |   1 |         pp65536 |        624.41 ± 0.48 |

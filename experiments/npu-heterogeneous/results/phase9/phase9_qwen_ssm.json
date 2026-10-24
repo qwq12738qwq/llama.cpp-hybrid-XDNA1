@@ -1,0 +1,63 @@
+{
+  "phase": "9-D",
+  "description": "Qwen3.5 SSM operator validation targets",
+  "target_operators": [
+    {
+      "name": "ssm_beta",
+      "shape": "M=1, K=1024, N=16",
+      "type": "INT8 weights, INT8 input, INT32 accumulation",
+      "description": "Recurrent state space model beta projection"
+    },
+    {
+      "name": "ssm_alpha", 
+      "shape": "M=1, K=1024, N=16",
+      "type": "INT8 weights, INT8 input, INT32 accumulation",
+      "description": "Recurrent state space model alpha projection"
+    },
+    {
+      "name": "ssm_beta_batch2",
+      "shape": "M=2, K=1024, N=16",
+      "type": "INT8 weights, INT8 input, INT32 accumulation", 
+      "description": "Batched SSM for speculative decoding"
+    }
+  ],
+  "validation_matrix": {
+    "cpu_reference": {
+      "status": "PENDING",
+      "iterations": 100,
+      "metrics": ["median_us", "p95_us", "p99_us", "mismatches"]
+    },
+    "gpu_vulkan": {
+      "status": "PENDING", 
+      "iterations": 100,
+      "metrics": ["median_us", "p95_us", "p99_us", "mismatches"]
+    },
+    "xdn_npu": {
+      "status": "PENDING",
+      "iterations": 100, 
+      "metrics": ["median_us", "p95_us", "p99_us", "mismatches"]
+    },
+    "gpu_then_npu_sequential": {
+      "status": "PENDING",
+      "iterations": 100,
+      "metrics": ["median_us", "p95_us", "p99_us"]
+    },
+    "gpu_npu_concurrent": {
+      "status": "PENDING",
+      "iterations": 100,
+      "metrics": ["median_us", "p95_us", "p99_us", "speedup_vs_sequential"]
+    },
+    "double_buffer_pipeline": {
+      "status": "PENDING",
+      "iterations": 100,
+      "metrics": ["median_us", "p95_us", "p99_us", "speedup_vs_sequential"]
+    }
+  },
+  "acceptance_criteria": {
+    "numerical_correctness": "0 mismatches vs CPU reference for all backends",
+    "concurrent_speedup": ">= 1.10x vs sequential",
+    "gpu_slowdown": "<= 20%",
+    "iterations": ">= 100 steady-state",
+    "pipeline_speedup": ">= 1.10x vs sequential (depth=2)"
+  }
+}

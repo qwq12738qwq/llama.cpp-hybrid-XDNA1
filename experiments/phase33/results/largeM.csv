@@ -1,0 +1,2 @@
+mode,tag,M,K,N,m_tile,n_tile,k_chunk,G,reps,med_ms,min_ms,max_ms,gops,eff_gops,submit_ms,dma_in_ms,compute_ms,dma_out_ms,total_ms,null_overhead,arith_intensity,status
+timing,largeM_M512,512,1024,1024,64,64,256,1,5,34.6291,34.6291,34.6291,31.01,31.2,0.0246,0.0957,34.413,0.0955,34.6291,0.0,292571428571.43,ok

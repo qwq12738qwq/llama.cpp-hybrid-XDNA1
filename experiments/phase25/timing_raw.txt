@@ -1,0 +1,182 @@
+# Phase 25 raw timing lines (grep of XDNA-WA* / pp512)
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] engine ready M=512 K=1024 N=1792 a=524288 b=1835008 c=3670016
+[XDNA-WA-VK] alloc=0.10 set=1.36 compute=2.38 get=14.18 free=0.19
+[XDNA-WA-T] wait=0.01ms copyback=0.33ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.15 pack_w=8.83 get_w0=0.12 quant=1.79 submit=0.32 vk=18.22 wait=1.74 merge=3.14 set=2.75 total=37.08
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 182.13ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA-VK] alloc=0.12 set=0.70 compute=1.11 get=15.43 free=0.27
+[XDNA-WA-T] wait=0.01ms copyback=0.53ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.41 pack_w=0.26 get_w0=0.29 quant=2.08 submit=0.31 vk=17.66 wait=1.58 merge=2.53 set=0.93 total=26.06
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 27.49ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA-VK] alloc=0.11 set=0.74 compute=1.28 get=13.55 free=0.22
+[XDNA-WA-T] wait=0.01ms copyback=0.32ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.19 pack_w=0.19 get_w0=0.73 quant=1.79 submit=0.35 vk=15.92 wait=1.64 merge=2.77 set=0.53 total=24.11
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 25.07ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 | blk.0.ffn_gate.weight=CPU |           pp512 |      1204.76 ± 19.96 |
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=3 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=3 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] engine ready M=512 K=1024 N=1792 a=524288 b=1835008 c=3670016
+[XDNA-WA-VK] alloc=1.50 set=0.51 compute=3.93 get=13.19 free=0.15
+[XDNA-WA-T] wait=0.01ms copyback=0.33ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.16 pack_w=10.33 get_w0=0.08 quant=1.75 submit=0.27 vk=19.28 wait=1.54 merge=2.73 set=2.33 total=38.46
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 200.40ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA-VK] alloc=0.09 set=0.53 compute=1.25 get=12.07 free=0.15
+[XDNA-WA-T] wait=0.00ms copyback=0.55ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.09 pack_w=0.12 get_w0=0.14 quant=1.83 submit=0.18 vk=14.10 wait=0.85 merge=1.45 set=0.57 total=19.32
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 20.20ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA-VK] alloc=0.10 set=0.54 compute=1.20 get=13.14 free=0.13
+[XDNA-WA-T] wait=0.00ms copyback=0.34ms
+[XDNA-WA-SPLIT] n_gpu=1792 get_a=0.13 pack_w=0.16 get_w0=0.65 quant=1.83 submit=0.20 vk=15.11 wait=1.63 merge=2.89 set=0.53 total=23.14
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 23.99ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 | blk.0.ffn_gate.weight=CPU |           pp512 |       1295.48 ± 3.79 |
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=3 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=3 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] engine ready M=512 K=1024 N=1792 a=524288 b=1835008 c=3670016
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 196.81ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 24.06ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 28.78ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 30.39ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 28.86ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 | blk.0.ffn_gate.weight=CPU |           pp512 |      1186.56 ± 63.62 |
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=5 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=5 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] engine ready M=512 K=1024 N=1792 a=524288 b=1835008 c=3670016
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 204.73ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 21.83ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 26.98ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 25.18ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+[XDNA] graph_compute START: n_nodes=1
+[XDNA-WA] ffn_gate M=512 K=1024 N=3584 n_gpu=1792 async=0 in 28.60ms
+[XDNA] counters: persistent_execute=0 xrt_submit=0 xrt_complete=0
+[XDNA] graph_compute END
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 | blk.0.ffn_gate.weight=CPU |           pp512 |      1248.98 ± 40.83 |
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=5 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=5 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+| qwen35 0.8B Q8_0               | 763.78 MiB |   752.39 M | Vulkan,XDNA |  99 |           pp512 |      1391.18 ± 25.71 |
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA] backend_free done
+[XDNA] ggml_xdna_device_init: called
+[XDNA] ggml_xdna_backend_init: starting
+[XDNA] ggml_xdna_backend_init: context created
+[XDNA] ggml_xdna_backend_init: registry obtained
+[XDNA] ggml_xdna_backend_init: registry printed
+[XDNA] Backend initialized with kernel registry
+[XDNA] backend_free called
+[XDNA] XDNA ops executed=0 missing_kernel=0
+[XDNA] backend_free done

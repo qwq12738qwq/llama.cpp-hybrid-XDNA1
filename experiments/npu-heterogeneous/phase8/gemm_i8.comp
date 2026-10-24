@@ -1,0 +1,34 @@
+#version 450
+// INT8 GEMM: C = A x B
+// A[M x K], B[K x N], C[M x N]
+// Each element is stored as 32-bit int but logically int8.
+// Each compute shader invocation computes one element of C.
+layout (local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+
+layout (std430, binding = 0) readonly buffer BufA { int a_data[]; };
+layout (std430, binding = 1) readonly buffer BufB { int b_data[]; };
+layout (std430, binding = 2) writeonly buffer BufC { int c_data[]; };
+
+layout (push_constant) uniform PushBlock {
+    uint M;
+    uint K;
+    uint N;
+};
+
+void main() {
+    uint row = gl_GlobalInvocationID.y;
+    uint col = gl_GlobalInvocationID.x;
+    if (row >= M || col >= N) {
+        return;
+    }
+    int sum = 0;
+    for (uint k = 0; k < K; k++) {
+        int a = a_data[row * K + k];
+        int b = b_data[k * N + col];
+        // clamp to int8 range for logical correctness
+        a = clamp(a, -128, 127);
+        b = clamp(b, -128, 127);
+        sum += a * b;
+    }
+    c_data[row * N + col] = sum;
+}

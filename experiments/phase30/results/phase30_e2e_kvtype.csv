@@ -1,0 +1,11 @@
+config,kv_len,pp_t_s,retention_vs_512,note
+vulkan-f16-kv,512,1414.18,1.0000,serial run -r 3
+vulkan-f16-kv,4096,1379.57,0.9755,serial run
+vulkan-f16-kv,16384,1182.33,0.8361,serial run
+vulkan-f16-kv,32768,964.91,0.6823,serial run
+vulkan-f16-kv,65536,712.27,0.5037,serial run
+vulkan-q8_0-kv,512,1383.84,1.0000,serial run -r 3
+vulkan-q8_0-kv,4096,1375.11,0.9937,serial run
+vulkan-q8_0-kv,16384,1163.62,0.8409,serial run
+vulkan-q8_0-kv,32768,933.96,0.6750,serial run
+vulkan-q8_0-kv,65536,675.97,0.4885,serial run
